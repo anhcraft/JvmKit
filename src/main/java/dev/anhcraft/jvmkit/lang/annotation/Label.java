@@ -1,6 +1,7 @@
 package dev.anhcraft.jvmkit.lang.annotation;
 
 import dev.anhcraft.jvmkit.lang.enumeration.ComparisonOption;
+import dev.anhcraft.jvmkit.utils.ObjectUtil;
 
 import java.lang.annotation.*;
 
@@ -16,7 +17,7 @@ public @interface Label {
      * This label is used during the deep comparison process.<br>
      * For classes, it informs that the target class has field restriction.<br>
      * For fields, it indicates which fields are restricted.
-     * @see dev.anhcraft.jvmkit.util.ObjectUtil#deepCompare(Object, Object, ComparisonOption...)
+     * @see ObjectUtil#deepCompare(Object, Object, ComparisonOption...)
      */
     String COMPARISON_LABEL = "ObjectUtil#deepCompare";
 
