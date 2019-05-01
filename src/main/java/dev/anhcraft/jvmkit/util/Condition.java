@@ -221,4 +221,61 @@ public class Condition {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Validates whether the first given argument is "lower" than the second.<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * <em>&#96;&lt;first param&gt;&#96; must be lower than &#96;&lt;second param&gt;&#96; (&lt;previous class&gt;#&lt;previous method&gt;)</em>
+     * @param firstParam the first parameter which the first argument was passed into
+     * @param secondParam the second parameter which the second argument was passed into
+     * @param firstArg the first argument
+     * @param secondArg the second argument
+     */
+    public static void argLower(String firstParam, String secondParam, Object firstArg, Object secondArg){
+        if(ObjectUtil.deepCompare(firstArg, secondArg) < 0) return;
+        var stacktrace = Thread.currentThread().getStackTrace()[2];
+        try {
+            throw new IllegalArgumentException("`"+firstParam+"` must be lower than `"+secondParam+"` ("+stacktrace.getClassName()+"#"+stacktrace.getMethodName()+")");
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Validates whether the first given argument equals the second.<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * <em>&#96;&lt;first param&gt;&#96; must equal &#96;&lt;second param&gt;&#96; (&lt;previous class&gt;#&lt;previous method&gt;)</em>
+     * @param firstParam the first parameter which the first argument was passed into
+     * @param secondParam the second parameter which the second argument was passed into
+     * @param firstArg the first argument
+     * @param secondArg the second argument
+     */
+    public static void argEqual(String firstParam, String secondParam, Object firstArg, Object secondArg){
+        if(ObjectUtil.deepCompare(firstArg, secondArg) == 0) return;
+        var stacktrace = Thread.currentThread().getStackTrace()[2];
+        try {
+            throw new IllegalArgumentException("`"+firstParam+"` must equal `"+secondParam+"` ("+stacktrace.getClassName()+"#"+stacktrace.getMethodName()+")");
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Validates whether the first given argument is "higher" than the second.<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * <em>&#96;&lt;first param&gt;&#96; must be higher than &#96;&lt;second param&gt;&#96; (&lt;previous class&gt;#&lt;previous method&gt;)</em>
+     * @param firstParam the first parameter which the first argument was passed into
+     * @param secondParam the second parameter which the second argument was passed into
+     * @param firstArg the first argument
+     * @param secondArg the second argument
+     */
+    public static void argHigher(String firstParam, String secondParam, Object firstArg, Object secondArg){
+        if(ObjectUtil.deepCompare(firstArg, secondArg) > 0) return;
+        var stacktrace = Thread.currentThread().getStackTrace()[2];
+        try {
+            throw new IllegalArgumentException("`"+firstParam+"` must be higher than `"+secondParam+"` ("+stacktrace.getClassName()+"#"+stacktrace.getMethodName()+")");
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
 }
