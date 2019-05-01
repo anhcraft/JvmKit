@@ -6,7 +6,6 @@ import dev.anhcraft.jvmkit.lang.annotation.NotNull;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -1412,5 +1411,96 @@ public class ArrayUtil {
             left++;
             right--;
         }
+    }
+
+    /**
+     * Picks a random element from the given array.
+     * @param array array
+     * @return a random element
+     */
+    public static int pickRandom(@NotNull @NotEmpty int[] array){
+        Condition.argNotEmpty("array", array);
+        return array[RandomUtil.randomInt(0, array.length-1)];
+    }
+
+    /**
+     * Picks a random element from the given array.
+     * @param array array
+     * @return a random element
+     */
+    public static boolean pickRandom(@NotNull @NotEmpty boolean[] array){
+        Condition.argNotEmpty("array", array);
+        return array[RandomUtil.randomInt(0, array.length-1)];
+    }
+
+    /**
+     * Picks a random element from the given array.
+     * @param array array
+     * @return a random element
+     */
+    public static long pickRandom(@NotNull @NotEmpty long[] array){
+        Condition.argNotEmpty("array", array);
+        return array[RandomUtil.randomInt(0, array.length-1)];
+    }
+
+    /**
+     * Picks a random element from the given array.
+     * @param array array
+     * @return a random element
+     */
+    public static byte pickRandom(@NotNull @NotEmpty byte[] array){
+        Condition.argNotEmpty("array", array);
+        return array[RandomUtil.randomInt(0, array.length-1)];
+    }
+
+    /**
+     * Picks a random element from the given array.
+     * @param array array
+     * @return a random element
+     */
+    public static short pickRandom(@NotNull @NotEmpty short[] array){
+        Condition.argNotEmpty("array", array);
+        return array[RandomUtil.randomInt(0, array.length-1)];
+    }
+
+    /**
+     * Picks a random element from the given array.
+     * @param array array
+     * @return a random element
+     */
+    public static float pickRandom(@NotNull @NotEmpty float[] array){
+        Condition.argNotEmpty("array", array);
+        return array[RandomUtil.randomInt(0, array.length-1)];
+    }
+
+    /**
+     * Picks a random element from the given array.
+     * @param array array
+     * @return a random element
+     */
+    public static double pickRandom(@NotNull @NotEmpty double[] array){
+        Condition.argNotEmpty("array", array);
+        return array[RandomUtil.randomInt(0, array.length-1)];
+    }
+
+    /**
+     * Picks a random element from the given array.
+     * @param array array
+     * @return a random element
+     */
+    public static char pickRandom(@NotNull @NotEmpty char[] array){
+        Condition.argNotEmpty("array", array);
+        return array[RandomUtil.randomInt(0, array.length-1)];
+    }
+
+    /**
+     * Picks a random element from the given array.
+     * @param array array
+     * @param <T> element type
+     * @return a random element
+     */
+    public static <T> T pickRandom(@NotNull @NotEmpty T[] array){
+        Condition.argNotEmpty("array", array);
+        return array[RandomUtil.randomInt(0, array.length-1)];
     }
 }
