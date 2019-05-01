@@ -184,17 +184,7 @@ public class Condition {
         }
     }
 
-    /**
-     * Validates whether the given argument is non-empty.<br>
-     * Even if the argument is null, it still can't get accepted.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
-     * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
-     * @param param the parameter which the argument was passed into
-     * @param arg the argument
-     * @param <T> the element type of the given argument
-     */
-    public static <T> void argNotEmpty(String param, T[] arg){
-        if(arg != null && arg.length > 0) return;
+    private static void emptyThrow(String param){
         var stacktrace = Thread.currentThread().getStackTrace()[2];
         try {
             throw new IllegalArgumentException("`"+param+"` must be non-empty ("+stacktrace.getClassName()+"#"+stacktrace.getMethodName()+")");
@@ -210,16 +200,119 @@ public class Condition {
      * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param param the parameter which the argument was passed into
      * @param arg the argument
+     */
+    public static void argNotEmpty(String param, int[] arg){
+        if(arg == null || arg.length == 0) emptyThrow(param);
+    }
+
+    /**
+     * Validates whether the given argument is non-empty.<br>
+     * Even if the argument is null, it still can't get accepted.<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
+     * @param param the parameter which the argument was passed into
+     * @param arg the argument
+     */
+    public static void argNotEmpty(String param, boolean[] arg){
+        if(arg == null || arg.length == 0) emptyThrow(param);
+    }
+
+    /**
+     * Validates whether the given argument is non-empty.<br>
+     * Even if the argument is null, it still can't get accepted.<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
+     * @param param the parameter which the argument was passed into
+     * @param arg the argument
+     */
+    public static void argNotEmpty(String param, long[] arg){
+        if(arg == null || arg.length == 0) emptyThrow(param);
+    }
+
+    /**
+     * Validates whether the given argument is non-empty.<br>
+     * Even if the argument is null, it still can't get accepted.<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
+     * @param param the parameter which the argument was passed into
+     * @param arg the argument
+     */
+    public static void argNotEmpty(String param, byte[] arg){
+        if(arg == null || arg.length == 0) emptyThrow(param);
+    }
+
+    /**
+     * Validates whether the given argument is non-empty.<br>
+     * Even if the argument is null, it still can't get accepted.<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
+     * @param param the parameter which the argument was passed into
+     * @param arg the argument
+     */
+    public static void argNotEmpty(String param, short[] arg){
+        if(arg == null || arg.length == 0) emptyThrow(param);
+    }
+
+    /**
+     * Validates whether the given argument is non-empty.<br>
+     * Even if the argument is null, it still can't get accepted.<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
+     * @param param the parameter which the argument was passed into
+     * @param arg the argument
+     */
+    public static void argNotEmpty(String param, float[] arg){
+        if(arg == null || arg.length == 0) emptyThrow(param);
+    }
+
+    /**
+     * Validates whether the given argument is non-empty.<br>
+     * Even if the argument is null, it still can't get accepted.<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
+     * @param param the parameter which the argument was passed into
+     * @param arg the argument
+     */
+    public static void argNotEmpty(String param, double[] arg){
+        if(arg == null || arg.length == 0) emptyThrow(param);
+    }
+
+    /**
+     * Validates whether the given argument is non-empty.<br>
+     * Even if the argument is null, it still can't get accepted.<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
+     * @param param the parameter which the argument was passed into
+     * @param arg the argument
+     */
+    public static void argNotEmpty(String param, char[] arg){
+        if(arg == null || arg.length == 0) emptyThrow(param);
+    }
+
+    /**
+     * Validates whether the given argument is non-empty.<br>
+     * Even if the argument is null, it still can't get accepted.<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
+     * @param param the parameter which the argument was passed into
+     * @param arg the argument
+     * @param <T> the element type of the given argument
+     */
+    public static <T> void argNotEmpty(String param, T[] arg){
+        if(arg == null || arg.length == 0) emptyThrow(param);
+    }
+
+    /**
+     * Validates whether the given argument is non-empty.<br>
+     * Even if the argument is null, it still can't get accepted.<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
+     * @param param the parameter which the argument was passed into
+     * @param arg the argument
      * @param <T> the element type of the given argument
      */
     public static <T> void argNotEmpty(String param, Iterable<T> arg){
-        if(arg != null && arg.iterator().hasNext()) return;
-        var stacktrace = Thread.currentThread().getStackTrace()[2];
-        try {
-            throw new IllegalArgumentException("`"+param+"` must be non-empty ("+stacktrace.getClassName()+"#"+stacktrace.getMethodName()+")");
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
+        if(arg == null || !arg.iterator().hasNext()) emptyThrow("param");
     }
 
     /**
