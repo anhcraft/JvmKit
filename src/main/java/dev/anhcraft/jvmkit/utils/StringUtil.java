@@ -1,4 +1,4 @@
-package dev.anhcraft.jvmkit.util;
+package dev.anhcraft.jvmkit.utils;
 
 /**
  * This class provides utility methods for {@link String} manipulation.

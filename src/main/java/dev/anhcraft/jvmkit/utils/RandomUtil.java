@@ -1,7 +1,6 @@
-package dev.anhcraft.jvmkit.util;
+package dev.anhcraft.jvmkit.utils;
 
 import java.security.SecureRandom;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * A utility class for interacting with {@link java.util.Random}.

@@ -1,4 +1,4 @@
-package dev.anhcraft.jvmkit.util;
+package dev.anhcraft.jvmkit.utils;
 
 import dev.anhcraft.jvmkit.lang.annotation.NotNull;
 
