@@ -1,18 +1,14 @@
-package dev.anhcraft.jvmkit;
+package dev.anhcraft.jvmkit.utils;
 
-import com.sun.source.tree.AssertTree;
 import dev.anhcraft.jvmkit.lang.enumeration.ComparisonOption;
-import dev.anhcraft.jvmkit.util.*;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-public class UtilTest {
+public class Test1 {
     private static final Integer[] ARRAY_1 = new Integer[]{2, 5, 8, 9};
     private static final Integer[] ARRAY_2 = new Integer[]{6, 4, 5, 2, 7};
 
