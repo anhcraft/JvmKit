@@ -1503,4 +1503,222 @@ public class ArrayUtil {
         Condition.argNotEmpty("array", array);
         return array[RandomUtil.randomInt(0, array.length-1)];
     }
+
+    /**
+     * Shuffles the order of elements in the given array.
+     * @param array array
+     */
+    public static void shuffle(int[] array){
+        if(array == null || array.length == 0) return;
+        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+    }
+
+    /**
+     * Shuffles the order of elements in the given array.
+     * @param array array
+     */
+    public static void shuffle(boolean[] array){
+        if(array == null || array.length == 0) return;
+        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+    }
+
+    /**
+     * Shuffles the order of elements in the given array.
+     * @param array array
+     */
+    public static void shuffle(long[] array){
+        if(array == null || array.length == 0) return;
+        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+    }
+
+    /**
+     * Shuffles the order of elements in the given array.
+     * @param array array
+     */
+    public static void shuffle(byte[] array){
+        if(array == null || array.length == 0) return;
+        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+    }
+
+    /**
+     * Shuffles the order of elements in the given array.
+     * @param array array
+     */
+    public static void shuffle(short[] array){
+        if(array == null || array.length == 0) return;
+        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+    }
+
+    /**
+     * Shuffles the order of elements in the given array.
+     * @param array array
+     */
+    public static void shuffle(float[] array){
+        if(array == null || array.length == 0) return;
+        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+    }
+
+    /**
+     * Shuffles the order of elements in the given array.
+     * @param array array
+     */
+    public static void shuffle(double[] array){
+        if(array == null || array.length == 0) return;
+        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+    }
+
+    /**
+     * Shuffles the order of elements in the given array.
+     * @param array array
+     */
+    public static void shuffle(char[] array){
+        if(array == null || array.length == 0) return;
+        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+    }
+
+    /**
+     * Shuffles the order of elements in the given array.
+     * @param array array
+     * @param <T> element type
+     */
+    public static <T> void shuffle(T[] array){
+        if(array == null || array.length == 0) return;
+        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+    }
+
+    /**
+     * Eliminates duplicate elements from the given array.
+     * @param array array
+     * @return array
+     */
+    public static int[] uniquify(@NotNull @NotEmpty int[] array){
+        Condition.argNotEmpty("array", array);
+        for(var i = 0; i < array.length-1; i++){
+            for(var j = i+1; j < array.length; j++){
+                if(array[i] == array[j]) array = remove(array, j);
+            }
+        }
+        return array;
+    }
+
+    /**
+     * Eliminates duplicate elements from the given array.
+     * @param array array
+     * @return array
+     */
+    public static boolean[] uniquify(@NotNull @NotEmpty boolean[] array){
+        Condition.argNotEmpty("array", array);
+        for(var i = 0; i < array.length-1; i++){
+            for(var j = i+1; j < array.length; j++){
+                if(array[i] == array[j]) array = remove(array, j);
+            }
+        }
+        return array;
+    }
+
+    /**
+     * Eliminates duplicate elements from the given array.
+     * @param array array
+     * @return array
+     */
+    public static long[] uniquify(@NotNull @NotEmpty long[] array){
+        Condition.argNotEmpty("array", array);
+        for(var i = 0; i < array.length-1; i++){
+            for(var j = i+1; j < array.length; j++){
+                if(array[i] == array[j]) array = remove(array, j);
+            }
+        }
+        return array;
+    }
+
+    /**
+     * Eliminates duplicate elements from the given array.
+     * @param array array
+     * @return array
+     */
+    public static byte[] uniquify(@NotNull @NotEmpty byte[] array){
+        Condition.argNotEmpty("array", array);
+        for(var i = 0; i < array.length-1; i++){
+            for(var j = i+1; j < array.length; j++){
+                if(array[i] == array[j]) array = remove(array, j);
+            }
+        }
+        return array;
+    }
+
+    /**
+     * Eliminates duplicate elements from the given array.
+     * @param array array
+     * @return array
+     */
+    public static short[] uniquify(@NotNull @NotEmpty short[] array){
+        Condition.argNotEmpty("array", array);
+        for(var i = 0; i < array.length-1; i++){
+            for(var j = i+1; j < array.length; j++){
+                if(array[i] == array[j]) array = remove(array, j);
+            }
+        }
+        return array;
+    }
+
+    /**
+     * Eliminates duplicate elements from the given array.
+     * @param array array
+     * @return array
+     */
+    public static float[] uniquify(@NotNull @NotEmpty float[] array){
+        Condition.argNotEmpty("array", array);
+        for(var i = 0; i < array.length-1; i++){
+            for(var j = i+1; j < array.length; j++){
+                if(array[i] == array[j]) array = remove(array, j);
+            }
+        }
+        return array;
+    }
+
+    /**
+     * Eliminates duplicate elements from the given array.
+     * @param array array
+     * @return array
+     */
+    public static double[] uniquify(@NotNull @NotEmpty double[] array){
+        Condition.argNotEmpty("array", array);
+        for(var i = 0; i < array.length-1; i++){
+            for(var j = i+1; j < array.length; j++){
+                if(array[i] == array[j]) array = remove(array, j);
+            }
+        }
+        return array;
+    }
+
+    /**
+     * Eliminates duplicate elements from the given array.
+     * @param array array
+     * @return array
+     */
+    public static char[] uniquify(@NotNull @NotEmpty char[] array){
+        Condition.argNotEmpty("array", array);
+        for(var i = 0; i < array.length-1; i++){
+            for(var j = i+1; j < array.length; j++){
+                if(array[i] == array[j]) array = remove(array, j);
+            }
+        }
+        return array;
+    }
+
+    /**
+     * Eliminates duplicate elements from the given array.
+     * @param array array
+     * @param <T> element type
+     * @return array
+     */
+    public static <T> T[] uniquify(@NotNull @NotEmpty T[] array){
+        Condition.argNotEmpty("array", array);
+        for(var i = 0; i < array.length-1; i++){
+            for(var j = i+1; j < array.length; j++){
+                if(ObjectUtil.deepCompare(array[i], array[j]) == 0) array = remove(array, j);
+            }
+        }
+        return array;
+    }
 }
