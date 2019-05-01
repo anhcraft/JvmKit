@@ -1,5 +1,6 @@
 package dev.anhcraft.jvmkit;
 
+import com.sun.source.tree.AssertTree;
 import dev.anhcraft.jvmkit.lang.enumeration.ComparisonOption;
 import dev.anhcraft.jvmkit.util.*;
 import org.junit.Assert;
@@ -45,6 +46,9 @@ public class UtilTest {
         Assert.assertArrayEquals(new Integer[]{-7, 0, -4, 3, 6, -2}, array);
         ArrayUtil.reverse(array);
         Assert.assertArrayEquals(new Integer[]{-2, 6, 3, -4, 0, -7}, array);
+        array = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50};
+        ArrayUtil.shuffle(array);
+        Assert.assertArrayEquals(new Integer[]{0, 2, 4, 1, 3, 8, 6, 5}, ArrayUtil.uniquify(new Integer[]{0, 2, 4, 1, 2, 0, 3, 0, 8, 6, 4, 5, 2, 3, 0, 6}));
     }
 
     @Test
