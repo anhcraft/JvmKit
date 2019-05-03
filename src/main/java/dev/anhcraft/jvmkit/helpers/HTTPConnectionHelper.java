@@ -1,6 +1,7 @@
 package dev.anhcraft.jvmkit.helpers;
 
 import dev.anhcraft.jvmkit.lang.annotation.NotNull;
+import dev.anhcraft.jvmkit.utils.ArrayUtil;
 import dev.anhcraft.jvmkit.utils.Condition;
 
 import java.io.BufferedInputStream;
@@ -153,6 +154,22 @@ public class HTTPConnectionHelper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new byte[0];
+        return ArrayUtil.EMPTY_BYTE_ARRAY;
+    }
+
+    /**
+     * Returns the input stream of this connection.
+     * @return input stream
+     */
+    public BufferedInputStream getInput(){
+        return input;
+    }
+
+    /**
+     * Returns the output stream of this connection.
+     * @return output stream
+     */
+    public BufferedOutputStream getOutput(){
+        return output;
     }
 }
