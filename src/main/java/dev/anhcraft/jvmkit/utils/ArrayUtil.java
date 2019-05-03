@@ -1721,4 +1721,186 @@ public class ArrayUtil {
         }
         return array;
     }
+
+    /**
+     * Gets the last element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static int last(@NotNull @NotEmpty int[] array){
+        Condition.argNotEmpty("array", array);
+        return array[array.length-1];
+    }
+
+    /**
+     * Gets the last element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static boolean last(@NotNull @NotEmpty boolean[] array){
+        Condition.argNotEmpty("array", array);
+        return array[array.length-1];
+    }
+
+    /**
+     * Gets the last element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static long last(@NotNull @NotEmpty long[] array){
+        Condition.argNotEmpty("array", array);
+        return array[array.length-1];
+    }
+
+    /**
+     * Gets the last element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static byte last(@NotNull @NotEmpty byte[] array){
+        Condition.argNotEmpty("array", array);
+        return array[array.length-1];
+    }
+
+    /**
+     * Gets the last element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static short last(@NotNull @NotEmpty short[] array){
+        Condition.argNotEmpty("array", array);
+        return array[array.length-1];
+    }
+
+    /**
+     * Gets the last element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static float last(@NotNull @NotEmpty float[] array){
+        Condition.argNotEmpty("array", array);
+        return array[array.length-1];
+    }
+
+    /**
+     * Gets the last element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static double last(@NotNull @NotEmpty double[] array){
+        Condition.argNotEmpty("array", array);
+        return array[array.length-1];
+    }
+
+    /**
+     * Gets the last element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static char last(@NotNull @NotEmpty char[] array){
+        Condition.argNotEmpty("array", array);
+        return array[array.length-1];
+    }
+
+    /**
+     * Gets the last element of the given array.
+     * @param array array
+     * @param <T> element type
+     * @return last element
+     */
+    public static <T> T last(@NotNull @NotEmpty T[] array){
+        Condition.argNotEmpty("array", array);
+        return array[array.length-1];
+    }
+
+    /**
+     * Gets the middle element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static int mid(@NotNull @NotEmpty int[] array){
+        Condition.argNotEmpty("array", array);
+        return array[Math.floorDiv(array.length, 2)];
+    }
+
+    /**
+     * Gets the middle element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static boolean mid(@NotNull @NotEmpty boolean[] array){
+        Condition.argNotEmpty("array", array);
+        return array[Math.floorDiv(array.length, 2)];
+    }
+
+    /**
+     * Gets the middle element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static long mid(@NotNull @NotEmpty long[] array){
+        Condition.argNotEmpty("array", array);
+        return array[Math.floorDiv(array.length, 2)];
+    }
+
+    /**
+     * Gets the middle element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static byte mid(@NotNull @NotEmpty byte[] array){
+        Condition.argNotEmpty("array", array);
+        return array[Math.floorDiv(array.length, 2)];
+    }
+
+    /**
+     * Gets the middle element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static short mid(@NotNull @NotEmpty short[] array){
+        Condition.argNotEmpty("array", array);
+        return array[Math.floorDiv(array.length, 2)];
+    }
+
+    /**
+     * Gets the middle element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static float mid(@NotNull @NotEmpty float[] array){
+        Condition.argNotEmpty("array", array);
+        return array[Math.floorDiv(array.length, 2)];
+    }
+
+    /**
+     * Gets the middle element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static double mid(@NotNull @NotEmpty double[] array){
+        Condition.argNotEmpty("array", array);
+        return array[Math.floorDiv(array.length, 2)];
+    }
+
+    /**
+     * Gets the middle element of the given array.
+     * @param array array
+     * @return last element
+     */
+    public static char mid(@NotNull @NotEmpty char[] array){
+        Condition.argNotEmpty("array", array);
+        return array[Math.floorDiv(array.length, 2)];
+    }
+
+    /**
+     * Gets the middle element of the given array.
+     * @param array array
+     * @param <T> element type
+     * @return last element
+     */
+    public static <T> T mid(@NotNull @NotEmpty T[] array){
+        Condition.argNotEmpty("array", array);
+        return array[Math.floorDiv(array.length, 2)];
+    }
 }
