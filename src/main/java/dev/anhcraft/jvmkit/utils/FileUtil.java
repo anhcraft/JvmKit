@@ -89,6 +89,25 @@ public class FileUtil {
     }
 
     /**
+     * Initializes a file for the first time with the data from the given input stream.<br>
+     * If the file is already existed, this method won't work.
+     * @param file file
+     * @param stream input stream
+     * @return {@code true} if the file was initialized. Otherwise is {@code false}.
+     */
+    public static boolean init(@NotNull File file, @NotNull InputStream stream){
+        Condition.argNotNull("file", file);
+        Condition.argNotNull("stream", stream);
+        try {
+            if(!file.createNewFile()) return false;
+            write(file, stream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    /**
      * Initializes a file for the first time with the given data.<br>
      * If the file is already existed, this method won't work.
      * @param file file
@@ -119,7 +138,30 @@ public class FileUtil {
     }
 
     /**
-     * Overrides the current data of a file by the given new data.<br>
+     * Overrides the current data of a file with the data from the given input stream.<br>
+     * This method will create the file automatically if it wasn't existed yet.<br>
+     * This method won't work if the {@code File} object represents a directory.
+     * @param file file
+     * @param stream input stream
+     * @return {@code true} if the file data was successfully overridden. Otherwise is {@code false}.
+     */
+    public static boolean write(@NotNull File file, @NotNull InputStream stream){
+        Condition.argNotNull("file", file);
+        Condition.argNotNull("stream", stream);
+        try {
+            if(!file.exists() && !file.createNewFile()) return false;
+            BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(file));
+            stream.transferTo(output);
+            output.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Overrides the current data of a file with the given new data.<br>
      * This method will create the file automatically if it wasn't existed yet.<br>
      * This method won't work if the {@code File} object represents a directory.
      * @param file file
@@ -135,15 +177,15 @@ public class FileUtil {
             f.setLength(data.length);
             f.write(data);
             f.close();
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
-        return true;
     }
 
     /**
-     * Overrides the current content of a file by the given new content.
+     * Overrides the current content of a file with the given new content.
      * @param file file
      * @param content new content
      * @return {@code true} if the file content was successfully overridden. Otherwise is {@code false}.
@@ -151,6 +193,29 @@ public class FileUtil {
      */
     public static boolean write(@NotNull File file, @NotNull String content){
         return write(file, content.getBytes(StandardCharsets.UTF_8));
+    }
+
+    /**
+     * Appends the data from the given input stream to the end of a file.<br>
+     * This method will create the file automatically if it wasn't existed yet.<br>
+     * This method won't work if the {@code File} object represents a directory.
+     * @param file file
+     * @param stream stream
+     * @return {@code true} if the given data was successfully appended. Otherwise is {@code false}.
+     */
+    public static boolean append(@NotNull File file, @NotNull InputStream stream){
+        Condition.argNotNull("file", file);
+        Condition.argNotNull("stream", stream);
+        try {
+            if(!file.exists() && !file.createNewFile()) return false;
+            BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(file, true));
+            stream.transferTo(output);
+            output.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /**
@@ -170,11 +235,11 @@ public class FileUtil {
             f.seek(f.length());
             f.write(data);
             f.close();
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
-        return true;
     }
 
     /**

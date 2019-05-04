@@ -4,9 +4,7 @@ import dev.anhcraft.jvmkit.lang.enumeration.ComparisonOption;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
@@ -95,7 +93,7 @@ public class Test1 {
     }
 
     @Test
-    public void fileUtil(){/*
+    public void fileUtil(){
         var f1 = new File("./src/test/resources/hello world.txt");
         var f2 = new File("./src/test/resources/temp.hello world.txt");
         Assert.assertEquals("hello world", FileUtil.readText(f1));
@@ -108,7 +106,19 @@ public class Test1 {
         Assert.assertEquals("hello world", FileUtil.readText(f2));
         FileUtil.clean(f2);
         Assert.assertTrue(FileUtil.readText(f2).isEmpty());
-        f2.delete();*/
+        try {
+            var if1 = new BufferedInputStream(new FileInputStream(f1));
+            FileUtil.append(f2, if1);
+            if1.close();
+            if1 = new BufferedInputStream(new FileInputStream(f1));
+            FileUtil.append(f2, if1);
+            if1.close();
+            var tf1 = FileUtil.readText(f1);
+            Assert.assertEquals(tf1+tf1, FileUtil.readText(f2));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        f2.delete();
     }
 
     @Test
