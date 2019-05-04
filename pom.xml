@@ -6,7 +6,7 @@
 
     <groupId>dev.anhcraft.jvmkit</groupId>
     <artifactId>JvmKit</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <developers>
@@ -58,7 +58,6 @@
                 <version>3.1.0</version>
                 <configuration>
                     <docfilessubdirs>true</docfilessubdirs>
-                    <detectJavaApiLink>true</detectJavaApiLink>
                     <linksource>true</linksource>
                 </configuration>
                 <executions>
@@ -67,7 +66,6 @@
                         <phase>package</phase>
                         <goals>
                             <goal>jar</goal>
-                            <goal>javadoc</goal>
                         </goals>
                     </execution>
                 </executions>
