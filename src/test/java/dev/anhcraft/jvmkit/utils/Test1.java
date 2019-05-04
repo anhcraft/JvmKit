@@ -54,7 +54,7 @@ public class Test1 {
 
     @Test
     public void collectionUtil(){
-        Assert.assertArrayEquals(CollectionUtil.toArray(new ArrayList<>(), byte.class), new Byte[]{});
+        Assert.assertArrayEquals(CollectionUtil.toArray(new ArrayList<>(), byte.class), new Byte[0]);
     }
 
     @Test
@@ -109,5 +109,27 @@ public class Test1 {
         FileUtil.clean(f2);
         Assert.assertTrue(FileUtil.readText(f2).isEmpty());
         f2.delete();*/
+    }
+
+    @Test
+    public void stringUtil(){
+        Assert.assertEquals("TheQuickBrownFoxJumpsOverTheLazyDog",
+                StringUtil.toUpperCamelCase("The _quick brown fox j-um-ps over the lazy dog"));
+        Assert.assertEquals("TheQuickBrOwnFoxJumpsOverTheLazyDog",
+                StringUtil.toUpperCamelCase("ThE Quick _brOwN F$ox jUmps, oveR tHe lAzy dOg"));
+        Assert.assertEquals("TheQuIckBrOwnFoxJumpsOverTheLaZyDog",
+                StringUtil.toUpperCamelCase("T!he quI!ck_BrOwN foxJ!umps overThe laZyDog."));
+        Assert.assertEquals("theQuickBrownFoxJumpsOverTheLazyDog",
+                StringUtil.toLowerCamelCase("The _quick brown fox j-um-ps over the lazy dog"));
+        Assert.assertEquals("theQuickBrOwnFoxJumpsOverTheLazyDog",
+                StringUtil.toLowerCamelCase("ThE Quick _brOwN F$ox jUmps, oveR tHe lAzy dOg"));
+        Assert.assertEquals("theQuIckBrOwnFoxJumpsOverTheLaZyDog",
+                StringUtil.toLowerCamelCase("T!he quI!ck_BrOwN foxJ!umps overThe laZyDog."));
+        Assert.assertEquals("2__driven__jocks_help_f_ax_my_big_q_u_iz",
+                StringUtil.toSnakeCase("2 _driven _jocks help f_ax my big q_u_iz."));
+        Assert.assertEquals("2__driven__jocks_he___lp_f_ax_my_big_q_u_iz",
+                StringUtil.toSnakeCase("2. -_dr.ivEn _-Jo-Cks. he.___lp f_.Ax m.y b.-ig q_u_i-z."));
+        Assert.assertEquals("TW0__DRIVEN_JOCKS_HE1P_FAX_MY_BIG_QUIZ",
+                StringUtil.toScreamSnakeCase("T.w*.0_ dr.i-v$e.n joc-ks h@e.1p f.ax& my. b.i-#g quiz"));
     }
 }
