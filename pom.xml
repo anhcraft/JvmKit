@@ -58,8 +58,6 @@
                 <version>3.1.0</version>
                 <configuration>
                     <docfilessubdirs>true</docfilessubdirs>
-                    <detectLinks>true</detectLinks>
-                    <detectOfflineLinks>true</detectOfflineLinks>
                     <detectJavaApiLink>true</detectJavaApiLink>
                     <linksource>true</linksource>
                 </configuration>
@@ -68,6 +66,7 @@
                         <id>generate-javadoc</id>
                         <phase>package</phase>
                         <goals>
+                            <goal>jar</goal>
                             <goal>javadoc</goal>
                         </goals>
                     </execution>
