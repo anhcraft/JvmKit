@@ -45,8 +45,18 @@ public class FileUtil {
                 return true;
             } else return false;
         } else {
-            if(target.isDirectory()) return write(new File(target, source.getName()), read(source));
-            else return write(target, read(source));
+            if(target.isDirectory()) target = new File(target, source.getName());
+            try {
+                BufferedInputStream input = new BufferedInputStream(new FileInputStream(source));
+                BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(target));
+                input.transferTo(output);
+                input.close();
+                output.close();
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
         }
     }
 
