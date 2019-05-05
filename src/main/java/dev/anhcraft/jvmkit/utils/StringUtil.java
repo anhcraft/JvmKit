@@ -3,6 +3,8 @@ package dev.anhcraft.jvmkit.utils;
 import dev.anhcraft.jvmkit.lang.annotation.NotNull;
 
 import java.util.Iterator;
+import java.util.function.IntPredicate;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 /**
@@ -131,5 +133,45 @@ public class StringUtil {
      */
     public static String toSnakeCase(@NotNull String str){
         return toSnakeCase(str, false);
+    }
+
+    /**
+     * Reverses the order of characters in the given string.
+     * @param str a string
+     * @return reversed string
+     */
+    public static String reverse(@NotNull String str){
+        Condition.argNotNull("str", str);
+        var chars = str.toCharArray();
+        ArrayUtil.reverse(chars);
+        return new String(chars);
+    }
+
+    /**
+     * Removes all digits from the given string.
+     * @param str a string
+     * @return a string with no digits
+     */
+    public static String removeDigits(@NotNull String str) {
+        Condition.argNotNull("str", str);
+        return str.chars().filter(value -> !Character.isDigit(value)).collect(
+                StringBuilder::new,
+                (sb, i) -> sb.append((char)i),
+                StringBuilder::append
+        ).toString();
+    }
+
+    /**
+     * Removes all letters from the given string.
+     * @param str a string
+     * @return a string with no letters
+     */
+    public static String removeLetters(@NotNull String str) {
+        Condition.argNotNull("str", str);
+        return str.chars().filter(value -> !Character.isLetter(value)).collect(
+                StringBuilder::new,
+                (sb, i) -> sb.append((char)i),
+                StringBuilder::append
+        ).toString();
     }
 }

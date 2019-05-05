@@ -147,5 +147,8 @@ public class Test1 {
                 StringUtil.toSnakeCase("2. -_dr.ivEn _-Jo-Cks. he.___lp f_.Ax m.y b.-ig q_u_i-z."));
         Assert.assertEquals("TW0__DRIVEN_JOCKS_HE1P_FAX_MY_BIG_QUIZ",
                 StringUtil.toScreamSnakeCase("T.w*.0_ dr.i-v$e.n joc-ks h@e.1p f.ax& my. b.i-#g quiz"));
+        Assert.assertEquals("dlrow olleh", StringUtil.reverse("hello world"));
+        Assert.assertEquals("he wrd", StringUtil.removeDigits("he110 w0r1d"));
+        Assert.assertEquals("110 01", StringUtil.removeLetters("he110 w0r1d"));
     }
 }
