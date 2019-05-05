@@ -122,6 +122,7 @@ public class Test1 {
             FileUtil.decompress(f3, f2);
             Assert.assertEquals(tf1, FileUtil.readText(f2));
             f2.delete();
+            f3.delete();
         } catch (IOException e) {
             e.printStackTrace();
         }
