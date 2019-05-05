@@ -56,7 +56,7 @@ public class Test1 {
     }
 
     @Test
-    public void IOUtil(){/*
+    public void IOUtil(){
         try {
             var in1 = new FileInputStream("JvmKit.iml");
             var in2 = new FileInputStream("pom.xml");
@@ -65,7 +65,7 @@ public class Test1 {
             in2.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     @Test
@@ -96,17 +96,19 @@ public class Test1 {
     public void fileUtil(){
         var f1 = new File("./src/test/resources/hello world.txt");
         var f2 = new File("./src/test/resources/temp.hello world.txt");
-        Assert.assertEquals("hello world", FileUtil.readText(f1));
+        var f3 = new File("./src/test/resources/temp.hello world.dat");
         try {
-            f2.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Assert.assertTrue(FileUtil.copy(f1, f2));
-        Assert.assertEquals("hello world", FileUtil.readText(f2));
-        FileUtil.clean(f2);
-        Assert.assertTrue(FileUtil.readText(f2).isEmpty());
-        try {
+            Assert.assertEquals("hello world", FileUtil.readText(f1));
+            try {
+                f2.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Assert.assertTrue(FileUtil.copy(f1, f2));
+            Assert.assertEquals("hello world", FileUtil.readText(f2));
+            FileUtil.clean(f2);
+            Assert.assertTrue(FileUtil.readText(f2).isEmpty());
+
             var if1 = new BufferedInputStream(new FileInputStream(f1));
             FileUtil.append(f2, if1);
             if1.close();
@@ -115,10 +117,14 @@ public class Test1 {
             if1.close();
             var tf1 = FileUtil.readText(f1);
             Assert.assertEquals(tf1+tf1, FileUtil.readText(f2));
+
+            FileUtil.compress(f1, f3);
+            FileUtil.decompress(f3, f2);
+            Assert.assertEquals(tf1, FileUtil.readText(f2));
+            f2.delete();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        f2.delete();
     }
 
     @Test

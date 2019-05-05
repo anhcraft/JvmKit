@@ -4,6 +4,8 @@ import dev.anhcraft.jvmkit.lang.annotation.NotNull;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 /**
  * A utility class which contains useful methods to interact with the file system safely.
@@ -63,7 +65,7 @@ public class FileUtil {
     /**
      * Cleans a directory or the content of a file without deleting it.
      * @param file file
-     * @return {@code true} if the file/directory was cleaned successfully. Otherwise is {@code false}.
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
      */
     public static boolean clean(@NotNull File file){
         Condition.argNotNull("file", file);
@@ -90,10 +92,10 @@ public class FileUtil {
 
     /**
      * Initializes a file for the first time with the data from the given input stream.<br>
-     * If the file is already existed, this method won't work.
+     * If the file exists, this method won't work.
      * @param file file
      * @param stream input stream
-     * @return {@code true} if the file was initialized. Otherwise is {@code false}.
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
      */
     public static boolean init(@NotNull File file, @NotNull InputStream stream){
         Condition.argNotNull("file", file);
@@ -109,10 +111,10 @@ public class FileUtil {
 
     /**
      * Initializes a file for the first time with the given data.<br>
-     * If the file is already existed, this method won't work.
+     * If the file exists, this method won't work.
      * @param file file
      * @param data data
-     * @return {@code true} if the file was initialized. Otherwise is {@code false}.
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
      */
     public static boolean init(@NotNull File file, @NotNull byte[] data){
         Condition.argNotNull("file", file);
@@ -130,7 +132,7 @@ public class FileUtil {
      * Initializes a file for the first time with the given content.
      * @param file file
      * @param content content
-     * @return {@code true} if the file was initialized. Otherwise is {@code false}.
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
      * @see #init(File, byte[])
      */
     public static boolean init(@NotNull File file, @NotNull String content){
@@ -139,11 +141,11 @@ public class FileUtil {
 
     /**
      * Overrides the current data of a file with the data from the given input stream.<br>
-     * This method will create the file automatically if it wasn't existed yet.<br>
+     * This method will create the file automatically if it has not existed yet.<br>
      * This method won't work if the {@code File} object represents a directory.
      * @param file file
      * @param stream input stream
-     * @return {@code true} if the file data was successfully overridden. Otherwise is {@code false}.
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
      */
     public static boolean write(@NotNull File file, @NotNull InputStream stream){
         Condition.argNotNull("file", file);
@@ -162,11 +164,11 @@ public class FileUtil {
 
     /**
      * Overrides the current data of a file with the given new data.<br>
-     * This method will create the file automatically if it wasn't existed yet.<br>
+     * This method will create the file automatically if it has not existed yet.<br>
      * This method won't work if the {@code File} object represents a directory.
      * @param file file
      * @param data new data
-     * @return {@code true} if the file data was successfully overridden. Otherwise is {@code false}.
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
      */
     public static boolean write(@NotNull File file, @NotNull byte[] data){
         Condition.argNotNull("file", file);
@@ -188,7 +190,7 @@ public class FileUtil {
      * Overrides the current content of a file with the given new content.
      * @param file file
      * @param content new content
-     * @return {@code true} if the file content was successfully overridden. Otherwise is {@code false}.
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
      * @see #write(File, byte[])
      */
     public static boolean write(@NotNull File file, @NotNull String content){
@@ -197,11 +199,11 @@ public class FileUtil {
 
     /**
      * Appends the data from the given input stream to the end of a file.<br>
-     * This method will create the file automatically if it wasn't existed yet.<br>
+     * This method will create the file automatically if it has not existed yet.<br>
      * This method won't work if the {@code File} object represents a directory.
      * @param file file
      * @param stream stream
-     * @return {@code true} if the given data was successfully appended. Otherwise is {@code false}.
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
      */
     public static boolean append(@NotNull File file, @NotNull InputStream stream){
         Condition.argNotNull("file", file);
@@ -220,11 +222,11 @@ public class FileUtil {
 
     /**
      * Appends the given data to the end of a file.<br>
-     * This method will create the file automatically if it wasn't existed yet.<br>
+     * This method will create the file automatically if it has not existed yet.<br>
      * This method won't work if the {@code File} object represents a directory.
      * @param file file
      * @param data data to be appended
-     * @return {@code true} if the given data was successfully appended. Otherwise is {@code false}.
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
      */
     public static boolean append(@NotNull File file, @NotNull byte[] data){
         Condition.argNotNull("file", file);
@@ -246,7 +248,7 @@ public class FileUtil {
      * Appends the given content to the end of a file.
      * @param file file
      * @param content content to be appended
-     * @return {@code true} if the given content was successfully appended. Otherwise is {@code false}.
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
      * @see #append(File, byte[])
      */
     public static boolean append(@NotNull File file, @NotNull String content){
@@ -254,24 +256,23 @@ public class FileUtil {
     }
 
     /**
-     * Reads the given file and returns its data.<br>
-     * This method won't work if the {@code File} object represents a directory or a non-existing file.
+     * Reads the given file and returns its data.
      * @param file file
      * @return an array of bytes which represents the file data
+     * @throws FileNotFoundException if the file didn't exist
      */
-    public static byte[] read(@NotNull File file){
+    public static byte[] read(@NotNull File file) throws FileNotFoundException {
         Condition.argNotNull("file", file);
-        if(file.exists() && file.isFile()) {
-            try {
-                BufferedInputStream data = new BufferedInputStream(new FileInputStream(file));
-                var bytes = data.readAllBytes();
-                data.close();
-                return bytes;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if(!file.exists() || !file.isFile()) throw new FileNotFoundException();
+        try {
+            BufferedInputStream data = new BufferedInputStream(new FileInputStream(file));
+            var bytes = data.readAllBytes();
+            data.close();
+            return bytes;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ArrayUtil.EMPTY_BYTE_ARRAY;
         }
-        return ArrayUtil.EMPTY_BYTE_ARRAY;
     }
 
     /**
@@ -279,9 +280,62 @@ public class FileUtil {
      * If you don't know what the type of the file is, use {@link #read(File)} instead.
      * @param file file
      * @return a string which represents the file content
+     * @throws FileNotFoundException if the file didn't exist
      * @see #read(File)
      */
-    public static String readText(@NotNull File file){
+    public static String readText(@NotNull File file) throws FileNotFoundException {
         return new String(read(file), StandardCharsets.UTF_8);
+    }
+
+    /**
+     * Compresses the given source file in GZIP format then copies the result to the target file.<br>
+     * The action will be cancelled if the source file has not existed yet.<br>
+     * Only the target file can be non-existent.<br>
+     * @param source source file
+     * @param target target file
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
+     */
+    public static boolean compress(@NotNull File source, @NotNull File target){
+        Condition.argNotNull("source", source);
+        Condition.argNotNull("target", target);
+        try {
+            if(!source.exists() || !source.isFile()) return false;
+            if(!target.exists() && !target.createNewFile()) return false;
+            FileInputStream in = new FileInputStream(source);
+            GZIPOutputStream out = new GZIPOutputStream(new FileOutputStream(target));
+            in.transferTo(out);
+            in.close();
+            out.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Decompresses the given source file in GZIP format then copies the result to the target file.<br>
+     * The action will be cancelled if the source file has not existed yet.<br>
+     * Only the target file can be non-existent.<br>
+     * @param source source file
+     * @param target target file
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
+     */
+    public static boolean decompress(@NotNull File source, @NotNull File target){
+        Condition.argNotNull("source", source);
+        Condition.argNotNull("target", target);
+        try {
+            if(!source.exists() || !source.isFile()) return false;
+            if(!target.exists() && !target.createNewFile()) return false;
+            GZIPInputStream in = new GZIPInputStream(new FileInputStream(source));
+            FileOutputStream out = new FileOutputStream(target);
+            in.transferTo(out);
+            in.close();
+            out.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
