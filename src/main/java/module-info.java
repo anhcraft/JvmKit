@@ -1,5 +1,6 @@
 module dev.anhcraft.jvmkit {
     requires kotlin.stdlib;
+    requires java.sql;
 
     exports dev.anhcraft.jvmkit.builders;
     exports dev.anhcraft.jvmkit.helpers;
