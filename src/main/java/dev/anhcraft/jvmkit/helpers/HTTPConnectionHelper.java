@@ -28,6 +28,7 @@ public class HTTPConnectionHelper {
 
     private final HashMap<String, String> properties = new HashMap<>();
     private URL url;
+    private HttpURLConnection conn;
     private boolean doOutput;
     private String method = "GET";
     private BufferedInputStream input;
@@ -94,16 +95,16 @@ public class HTTPConnectionHelper {
      */
     public HTTPConnectionHelper connect(){
         try {
-            var url = (HttpURLConnection) this.url.openConnection();
-            url.setRequestMethod(method);
+            conn = (HttpURLConnection) this.url.openConnection();
+            conn.setRequestMethod(method);
             for(Map.Entry<String, String> entry : properties.entrySet()) {
-                url.setRequestProperty(entry.getKey(), entry.getValue());
+                conn.setRequestProperty(entry.getKey(), entry.getValue());
             }
             if(doOutput) {
-                url.setDoOutput(true);
-                output = new BufferedOutputStream(url.getOutputStream());
+                conn.setDoOutput(true);
+                output = new BufferedOutputStream(conn.getOutputStream());
             }
-            input = new BufferedInputStream(url.getInputStream());
+            input = new BufferedInputStream(conn.getInputStream());
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -171,5 +172,12 @@ public class HTTPConnectionHelper {
      */
     public BufferedOutputStream getOutput(){
         return output;
+    }
+
+    /**
+     * Disconnects from the current connection.
+     */
+    public void disconnect(){
+        conn.disconnect();
     }
 }
