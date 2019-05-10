@@ -2,11 +2,6 @@ package dev.anhcraft.jvmkit.utils;
 
 import dev.anhcraft.jvmkit.lang.annotation.NotNull;
 
-import java.util.Iterator;
-import java.util.function.IntPredicate;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-
 /**
  * This class provides utility methods for {@link String} manipulation.
  */
