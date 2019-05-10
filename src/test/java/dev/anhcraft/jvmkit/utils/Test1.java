@@ -152,4 +152,20 @@ public class Test1 {
         Assert.assertEquals("he wrd", StringUtil.removeDigits("he110 w0r1d"));
         Assert.assertEquals("110 01", StringUtil.removeLetters("he110 w0r1d"));
     }
+
+    @Test
+    public void mathUtil(){
+        Assert.assertEquals(1.0, MathUtil.round(0.987, 0), 0);
+        Assert.assertEquals(1.0, MathUtil.round(0.987, 1), 0);
+        Assert.assertEquals(0.99, MathUtil.round(0.987, 2), 0);
+        Assert.assertEquals(0.12346, MathUtil.round(0.123456789, 5), 0);
+        Assert.assertTrue(MathUtil.isPrime(2));
+        Assert.assertTrue(MathUtil.isPrime(3));
+        Assert.assertTrue(MathUtil.isPrime(5));
+        Assert.assertTrue(MathUtil.isPrime(7));
+        Assert.assertTrue(MathUtil.isPrime(11));
+        Assert.assertTrue(MathUtil.isPrime(13));
+        Assert.assertFalse(MathUtil.isPrime(4));
+        Assert.assertFalse(MathUtil.isPrime(6));
+    }
 }
