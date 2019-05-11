@@ -50,7 +50,7 @@ public class ImmutableTimedMap<K, V> extends TimedMap<K, V> {
      */
     @Override
     @Deprecated
-    public void concat(TimedMap<K, V> map) {
+    public void concat(TimedMap<K, V>... maps) {
         throw new UnsupportedOperationException();
     }
 }
