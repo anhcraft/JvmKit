@@ -608,7 +608,7 @@ public class ArrayUtil {
      */
     public static int[] insert(@NotNull int[] array, int elem, int index){
         Condition.argNotNull("array", array);
-        index = Math.max(0, Math.min(array.length, index));
+        index = Math.max(0, Math.min(array.length-1, index));
         int[] na = (int[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
@@ -626,7 +626,7 @@ public class ArrayUtil {
      */
     public static boolean[] insert(@NotNull boolean[] array, boolean elem, int index){
         Condition.argNotNull("array", array);
-        index = Math.max(0, Math.min(array.length, index));
+        index = Math.max(0, Math.min(array.length-1, index));
         boolean[] na = (boolean[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
@@ -644,7 +644,7 @@ public class ArrayUtil {
      */
     public static long[] insert(@NotNull long[] array, long elem, int index){
         Condition.argNotNull("array", array);
-        index = Math.max(0, Math.min(array.length, index));
+        index = Math.max(0, Math.min(array.length-1, index));
         long[] na = (long[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
@@ -662,7 +662,7 @@ public class ArrayUtil {
      */
     public static byte[] insert(@NotNull byte[] array, byte elem, int index){
         Condition.argNotNull("array", array);
-        index = Math.max(0, Math.min(array.length, index));
+        index = Math.max(0, Math.min(array.length-1, index));
         byte[] na = (byte[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
@@ -680,7 +680,7 @@ public class ArrayUtil {
      */
     public static short[] insert(@NotNull short[] array, short elem, int index){
         Condition.argNotNull("array", array);
-        index = Math.max(0, Math.min(array.length, index));
+        index = Math.max(0, Math.min(array.length-1, index));
         short[] na = (short[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
@@ -698,7 +698,7 @@ public class ArrayUtil {
      */
     public static float[] insert(@NotNull float[] array, float elem, int index){
         Condition.argNotNull("array", array);
-        index = Math.max(0, Math.min(array.length, index));
+        index = Math.max(0, Math.min(array.length-1, index));
         float[] na = (float[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
@@ -716,7 +716,7 @@ public class ArrayUtil {
      */
     public static double[] insert(@NotNull double[] array, double elem, int index){
         Condition.argNotNull("array", array);
-        index = Math.max(0, Math.min(array.length, index));
+        index = Math.max(0, Math.min(array.length-1, index));
         double[] na = (double[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
@@ -734,7 +734,7 @@ public class ArrayUtil {
      */
     public static char[] insert(@NotNull char[] array, char elem, int index){
         Condition.argNotNull("array", array);
-        index = Math.max(0, Math.min(array.length, index));
+        index = Math.max(0, Math.min(array.length-1, index));
         char[] na = (char[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
@@ -753,7 +753,7 @@ public class ArrayUtil {
      */
     public static <T> T[] insert(@NotNull T[] array, T elem, int index){
         Condition.argNotNull("array", array);
-        index = Math.max(0, Math.min(array.length, index));
+        index = Math.max(0, Math.min(array.length-1, index));
         T[] na = (T[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
@@ -772,8 +772,7 @@ public class ArrayUtil {
     public static int[] remove(@NotNull int[] array, int index){
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
-        index = Math.max(0, index);
-        index = Math.min(array.length, index);
+        index = Math.max(0, Math.min(array.length-1, index));
         int[] na = (int[]) Array.newInstance(int.class, array.length-1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
@@ -791,8 +790,7 @@ public class ArrayUtil {
     public static boolean[] remove(@NotNull boolean[] array, int index){
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
-        index = Math.max(0, index);
-        index = Math.min(array.length, index);
+        index = Math.max(0, Math.min(array.length-1, index));
         boolean[] na = (boolean[]) Array.newInstance(boolean.class, array.length-1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
@@ -810,8 +808,7 @@ public class ArrayUtil {
     public static long[] remove(@NotNull long[] array, int index){
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
-        index = Math.max(0, index);
-        index = Math.min(array.length, index);
+        index = Math.max(0, Math.min(array.length-1, index));
         long[] na = (long[]) Array.newInstance(long.class, array.length-1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
@@ -829,8 +826,7 @@ public class ArrayUtil {
     public static byte[] remove(@NotNull byte[] array, int index){
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
-        index = Math.max(0, index);
-        index = Math.min(array.length, index);
+        index = Math.max(0, Math.min(array.length-1, index));
         byte[] na = (byte[]) Array.newInstance(byte.class, array.length-1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
@@ -848,8 +844,7 @@ public class ArrayUtil {
     public static short[] remove(@NotNull short[] array, int index){
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
-        index = Math.max(0, index);
-        index = Math.min(array.length, index);
+        index = Math.max(0, Math.min(array.length-1, index));
         short[] na = (short[]) Array.newInstance(short.class, array.length-1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
@@ -867,8 +862,7 @@ public class ArrayUtil {
     public static float[] remove(@NotNull float[] array, int index){
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
-        index = Math.max(0, index);
-        index = Math.min(array.length, index);
+        index = Math.max(0, Math.min(array.length-1, index));
         float[] na = (float[]) Array.newInstance(float.class, array.length-1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
@@ -886,8 +880,7 @@ public class ArrayUtil {
     public static double[] remove(@NotNull double[] array, int index){
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
-        index = Math.max(0, index);
-        index = Math.min(array.length, index);
+        index = Math.max(0, Math.min(array.length-1, index));
         double[] na = (double[]) Array.newInstance(double.class, array.length-1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
@@ -905,8 +898,7 @@ public class ArrayUtil {
     public static char[] remove(@NotNull char[] array, int index){
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
-        index = Math.max(0, index);
-        index = Math.min(array.length, index);
+        index = Math.max(0, Math.min(array.length-1, index));
         char[] na = (char[]) Array.newInstance(char.class, array.length-1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
@@ -925,8 +917,7 @@ public class ArrayUtil {
     public static <T> T[] remove(@NotNull T[] array, int index){
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
-        index = Math.max(0, index);
-        index = Math.min(array.length, index);
+        index = Math.max(0, Math.min(array.length-1, index));
         T[] na = (T[]) Array.newInstance(array.getClass().getComponentType(), array.length-1);
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
@@ -1132,8 +1123,8 @@ public class ArrayUtil {
      */
     public static void swap(int[] array, int first, int second){
         if(array == null || array.length == 0) return;
-        first = Math.max(0, Math.min(array.length, first));
-        second = Math.max(0, Math.min(array.length, second));
+        first = Math.max(0, Math.min(array.length-1, first));
+        second = Math.max(0, Math.min(array.length-1, second));
         var temp = array[first];
         array[first] = array[second];
         array[second] = temp;
@@ -1148,8 +1139,8 @@ public class ArrayUtil {
      */
     public static void swap(boolean[] array, int first, int second){
         if(array == null || array.length == 0) return;
-        first = Math.max(0, Math.min(array.length, first));
-        second = Math.max(0, Math.min(array.length, second));
+        first = Math.max(0, Math.min(array.length-1, first));
+        second = Math.max(0, Math.min(array.length-1, second));
         var temp = array[first];
         array[first] = array[second];
         array[second] = temp;
@@ -1164,8 +1155,8 @@ public class ArrayUtil {
      */
     public static void swap(long[] array, int first, int second){
         if(array == null || array.length == 0) return;
-        first = Math.max(0, Math.min(array.length, first));
-        second = Math.max(0, Math.min(array.length, second));
+        first = Math.max(0, Math.min(array.length-1, first));
+        second = Math.max(0, Math.min(array.length-1, second));
         var temp = array[first];
         array[first] = array[second];
         array[second] = temp;
@@ -1180,8 +1171,8 @@ public class ArrayUtil {
      */
     public static void swap(byte[] array, int first, int second){
         if(array == null || array.length == 0) return;
-        first = Math.max(0, Math.min(array.length, first));
-        second = Math.max(0, Math.min(array.length, second));
+        first = Math.max(0, Math.min(array.length-1, first));
+        second = Math.max(0, Math.min(array.length-1, second));
         var temp = array[first];
         array[first] = array[second];
         array[second] = temp;
@@ -1196,8 +1187,8 @@ public class ArrayUtil {
      */
     public static void swap(short[] array, int first, int second){
         if(array == null || array.length == 0) return;
-        first = Math.max(0, Math.min(array.length, first));
-        second = Math.max(0, Math.min(array.length, second));
+        first = Math.max(0, Math.min(array.length-1, first));
+        second = Math.max(0, Math.min(array.length-1, second));
         var temp = array[first];
         array[first] = array[second];
         array[second] = temp;
@@ -1212,8 +1203,8 @@ public class ArrayUtil {
      */
     public static void swap(float[] array, int first, int second){
         if(array == null || array.length == 0) return;
-        first = Math.max(0, Math.min(array.length, first));
-        second = Math.max(0, Math.min(array.length, second));
+        first = Math.max(0, Math.min(array.length-1, first));
+        second = Math.max(0, Math.min(array.length-1, second));
         var temp = array[first];
         array[first] = array[second];
         array[second] = temp;
@@ -1228,8 +1219,8 @@ public class ArrayUtil {
      */
     public static void swap(double[] array, int first, int second){
         if(array == null || array.length == 0) return;
-        first = Math.max(0, Math.min(array.length, first));
-        second = Math.max(0, Math.min(array.length, second));
+        first = Math.max(0, Math.min(array.length-1, first));
+        second = Math.max(0, Math.min(array.length-1, second));
         var temp = array[first];
         array[first] = array[second];
         array[second] = temp;
@@ -1244,8 +1235,8 @@ public class ArrayUtil {
      */
     public static void swap(char[] array, int first, int second){
         if(array == null || array.length == 0) return;
-        first = Math.max(0, Math.min(array.length, first));
-        second = Math.max(0, Math.min(array.length, second));
+        first = Math.max(0, Math.min(array.length-1, first));
+        second = Math.max(0, Math.min(array.length-1, second));
         var temp = array[first];
         array[first] = array[second];
         array[second] = temp;
@@ -1261,8 +1252,8 @@ public class ArrayUtil {
      */
     public static <T> void swap(T[] array, int first, int second){
         if(array == null || array.length == 0) return;
-        first = Math.max(0, Math.min(array.length, first));
-        second = Math.max(0, Math.min(array.length, second));
+        first = Math.max(0, Math.min(array.length-1, first));
+        second = Math.max(0, Math.min(array.length-1, second));
         var temp = array[first];
         array[first] = array[second];
         array[second] = temp;
