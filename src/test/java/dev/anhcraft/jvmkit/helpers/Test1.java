@@ -3,8 +3,6 @@ package dev.anhcraft.jvmkit.helpers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.function.Consumer;
-
 public class Test1 {
     @Test
     public void HTTPConnectionHelper(){
@@ -17,5 +15,10 @@ public class Test1 {
         Assert.assertArrayEquals(new Integer[]{6, 4}, x.collect());
         Assert.assertArrayEquals(new Integer[]{0, 2}, x.next().collect());
         Assert.assertArrayEquals(new Integer[]{7}, x.next().collect());
+
+        x = new PaginationHelper<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, 4);
+        Assert.assertArrayEquals(new Integer[]{1, 2, 3, 4}, x.collect());
+        Assert.assertArrayEquals(new Integer[]{5, 6, 7, 8}, x.next().collect());
+        Assert.assertArrayEquals(new Integer[]{9}, x.next().collect());
     }
 }
