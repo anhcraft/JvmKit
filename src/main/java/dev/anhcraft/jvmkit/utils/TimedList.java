@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Represents a {@link ArrayList} which can clean its expired elements automatically.
+ * Represents an {@link ArrayList} which can clean its expired elements automatically.
  * @param <E> element type
  */
 public class TimedList<E> extends TimedCollection<E> implements Serializable {

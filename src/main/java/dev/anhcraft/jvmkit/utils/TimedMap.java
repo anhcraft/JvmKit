@@ -1,6 +1,7 @@
 package dev.anhcraft.jvmkit.utils;
 
 import dev.anhcraft.jvmkit.lang.annotation.Beta;
+import dev.anhcraft.jvmkit.lang.annotation.NotEmpty;
 import dev.anhcraft.jvmkit.lang.annotation.NotNull;
 import kotlin.Pair;
 
@@ -173,13 +174,16 @@ public class TimedMap<K, V> implements Serializable {
     }
 
     /**
-     * Concatenate the given map into this one.
-     * @param map map
+     * Concatenate given timed maps into this one.
+     * @param maps maps
      */
-    public void concat(@NotNull TimedMap<K, V> map) {
-        Condition.argNotNull("map", "map");
+    public void concat(@NotNull @NotEmpty TimedMap<K, V>... maps) {
+        Condition.argNotEmpty("maps", maps);
         cleanExpiredElements();
-        data.entrySet().addAll(map.data.entrySet());
+        for(var map : maps){
+            if(map == null || map.isEmpty()) continue;
+            data.putAll(map.data);
+        }
     }
 
     /**
