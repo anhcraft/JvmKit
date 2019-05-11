@@ -1,5 +1,8 @@
 package dev.anhcraft.jvmkit.helpers;
 
+import dev.anhcraft.jvmkit.lang.annotation.NotNull;
+import dev.anhcraft.jvmkit.utils.Condition;
+
 import java.util.Arrays;
 import java.util.function.Consumer;
 
@@ -20,7 +23,9 @@ public class PaginationHelper<T> {
      * @param data an array of data
      * @param slot the number of slots per page
      */
-    public PaginationHelper(T[] data, int slot){
+    public PaginationHelper(@NotNull T[] data, int slot){
+        Condition.argNotNull("data", data);
+        Condition.check(slot > 0, "the slot number must be higher than zero");
         this.data = data;
         this.slotPerPage = slot;
         this.totalSlot = data.length;
@@ -109,7 +114,9 @@ public class PaginationHelper<T> {
      * @return this object
      */
     public PaginationHelper<T> each(Consumer<T> consumer){
-        for(T e : collect()) consumer.accept(e);
+        if(consumer != null) {
+            for (T e : collect()) consumer.accept(e);
+        }
         return this;
     }
 }
