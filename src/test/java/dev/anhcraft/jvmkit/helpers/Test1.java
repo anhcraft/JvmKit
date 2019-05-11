@@ -1,19 +1,21 @@
 package dev.anhcraft.jvmkit.helpers;
 
-import dev.anhcraft.jvmkit.lang.enumeration.ComparisonOption;
-import dev.anhcraft.jvmkit.utils.*;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class Test1 {
     @Test
     public void HTTPConnectionHelper(){
-       //new HTTPConnectionHelper("https://raw.githubusercontent.com/anhcraft/JvmKit/master/README.md").setProperty("User-Agent", HTTPConnectionHelper.USER_AGENT_CHROME).connect().read();
+        new HTTPConnectionHelper("https://raw.githubusercontent.com/anhcraft/JvmKit/master/README.md").setProperty("User-Agent", HTTPConnectionHelper.USER_AGENT_CHROME).connect().read();
+    }
+
+    @Test
+    public void PaginationHelper(){
+        PaginationHelper<Integer> x = new PaginationHelper<>(new Integer[]{6, 4, 0, 2, 7}, 2);
+        Assert.assertArrayEquals(new Integer[]{6, 4}, x.collect());
+        Assert.assertArrayEquals(new Integer[]{0, 2}, x.next().collect());
+        Assert.assertArrayEquals(new Integer[]{7}, x.next().collect());
     }
 }
