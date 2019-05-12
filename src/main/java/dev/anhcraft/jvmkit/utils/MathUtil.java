@@ -3,6 +3,12 @@ package dev.anhcraft.jvmkit.utils;
 import java.text.DecimalFormat;
 
 public class MathUtil {
+    private static final DecimalFormat format = new DecimalFormat();
+
+    static {
+        format.setGroupingUsed(false);
+    }
+
     /**
      * Rounds up the given a number.
      * @param number the number
@@ -10,7 +16,6 @@ public class MathUtil {
      * @return rounded number
      */
     public static double round(double number, int fractionDigits){
-        DecimalFormat format = new DecimalFormat();
         format.setMaximumFractionDigits(fractionDigits);
         return Double.parseDouble(format.format(number));
     }
