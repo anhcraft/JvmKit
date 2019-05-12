@@ -2,6 +2,7 @@ package dev.anhcraft.jvmkit.utils;
 
 import dev.anhcraft.jvmkit.lang.annotation.NotNull;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -28,5 +29,21 @@ public class IOUtil {
             if(byteA != byteB) return byteA - byteB;
         } while(byteA != -1);
         return 0;
+    }
+
+    /**
+     * Converts the given input stream into a {@code byte} array.
+     * @param stream input stream
+     * @param buff buffer size
+     * @return an array of bytes
+     * @throws IOException if I/O errors occur
+     */
+    public static byte[] toByteArray(@NotNull InputStream stream, int buff) throws IOException {
+        Condition.argNotNull("stream", stream);
+        byte[] data = new byte[buff];
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int n;
+        while((n = stream.read(data, 0, data.length)) != -1) buffer.write(data, 0, n);
+        return buffer.toByteArray();
     }
 }
