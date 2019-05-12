@@ -1,7 +1,7 @@
 package dev.anhcraft.jvmkit.builders;
 
 /**
- * This class represents a builder implementation. A builder has the capacity of creating complex things in easier steps than the usual way.
+ * This class represents a builder implementation.
  * @param <T> the data type of the result
  */
 public interface Builder<T> {
