@@ -146,27 +146,33 @@ public class HTTPConnectionHelper {
     }
 
     /**
-     * Reads the connection input and returns it as an array of bytes.
+     * Reads the connection input and returns it as an array of bytes.<br>
+     * This method only works after use the method {@link #connect()}.
      * @return data
      */
     public byte[] read(){
-        try {
-            return input.readAllBytes();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(input != null) {
+            try {
+                return input.readAllBytes();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return ArrayUtil.EMPTY_BYTE_ARRAY;
     }
 
     /**
-     * Reads the connection input and returns it as a string.
+     * Reads the connection input and returns it as a string.<br>
+     * This method only works after use the method {@link #connect()}.
      * @return text
      */
     public String readText(){
-        try {
-            return new String(input.readAllBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(input != null) {
+            try {
+                return new String(input.readAllBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -192,5 +198,21 @@ public class HTTPConnectionHelper {
      */
     public void disconnect(){
         conn.disconnect();
+    }
+
+    /**
+     * Returns the length of content.
+     * @return content's length (or {@code -1} if this connection did not start)
+     */
+    public long getContentLength(){
+        return conn.getContentLengthLong();
+    }
+
+    /**
+     * Returns this connection.
+     * @return connection
+     */
+    public HttpURLConnection getConnection(){
+        return conn;
     }
 }
