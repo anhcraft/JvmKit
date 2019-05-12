@@ -1,5 +1,7 @@
 package dev.anhcraft.jvmkit.utils;
 
+import dev.anhcraft.jvmkit.lang.annotation.NotNull;
+
 import java.util.HashSet;
 
 /**
@@ -18,7 +20,7 @@ public class ImmutableTimedSet<E> extends ImmutableTimedCollection<E> {
      * Constructs an instance of {@code ImmutableTimedSet} by cloning given mutable one.
      * @param set timed set
      */
-    public ImmutableTimedSet(TimedSet<E> set) {
-        super(set.data);
+    public ImmutableTimedSet(@NotNull TimedSet<E> set) {
+        super(new HashSet<>(set.data));
     }
 }
