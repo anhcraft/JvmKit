@@ -159,6 +159,19 @@ public class HTTPConnectionHelper {
     }
 
     /**
+     * Reads the connection input and returns it as a string.
+     * @return text
+     */
+    public String readText(){
+        try {
+            return new String(input.readAllBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * Returns the input stream of this connection.
      * @return input stream
      */
