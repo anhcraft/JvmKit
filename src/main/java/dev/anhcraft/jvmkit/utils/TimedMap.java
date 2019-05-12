@@ -27,6 +27,15 @@ public class TimedMap<K, V> implements Serializable {
         this.data = new HashMap<>();
     }
 
+    /**
+     * Constructs an instance of {@code TimedMap} by cloning existing one.
+     * @param map timed map
+     */
+    public TimedMap(@NotNull TimedMap<K, V> map) {
+        Condition.argNotNull("map", map);
+        this.data = new HashMap<>(map.data);
+    }
+
     private boolean isExpired(long time) {
         return System.currentTimeMillis() >= time;
     }

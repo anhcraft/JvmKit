@@ -1,5 +1,7 @@
 package dev.anhcraft.jvmkit.utils;
 
+import dev.anhcraft.jvmkit.lang.annotation.NotNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -21,7 +23,7 @@ public class TimedList<E> extends TimedCollection<E> implements Serializable {
      * Constructs an instance of {@code TimedList} by cloning existing one.
      * @param list timed list
      */
-    public TimedList(TimedList<E> list) {
-        super(list.data);
+    public TimedList(@NotNull TimedList<E> list) {
+        super(new ArrayList<>(list.data));
     }
 }

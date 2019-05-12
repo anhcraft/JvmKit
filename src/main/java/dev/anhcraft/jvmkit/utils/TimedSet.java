@@ -1,5 +1,7 @@
 package dev.anhcraft.jvmkit.utils;
 
+import dev.anhcraft.jvmkit.lang.annotation.NotNull;
+
 import java.io.Serializable;
 import java.util.HashSet;
 
@@ -21,7 +23,7 @@ public class TimedSet<E> extends TimedCollection<E> implements Serializable {
      * Constructs an instance of {@code TimedSet} by cloning existing one.
      * @param set timed set
      */
-    public TimedSet(TimedSet<E> set) {
-        super(set.data);
+    public TimedSet(@NotNull TimedSet<E> set) {
+        super(new HashSet<>(set.data));
     }
 }

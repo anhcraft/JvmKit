@@ -3,10 +3,7 @@ package dev.anhcraft.jvmkit.utils;
 import dev.anhcraft.jvmkit.lang.annotation.Beta;
 import kotlin.Pair;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -19,6 +16,7 @@ public abstract class TimedCollection<E> implements Iterable<E> {
     protected Collection<Pair<E, Long>> data;
 
     TimedCollection(Collection<Pair<E, Long>> data) {
+        Condition.argNotNull("data", data);
         this.data = data;
     }
 
