@@ -169,6 +169,7 @@ public class TimedMap<K, V> implements Serializable {
     /**
      * Gets the value of an entry.
      * @param key entry's key
+     * @return the value
      */
     public V getValue(K key) {
         cleanExpiredElements();
@@ -197,6 +198,7 @@ public class TimedMap<K, V> implements Serializable {
 
     /**
      * Returns all keys.
+     * @return set of keys
      */
     public Set<K> keySet(){
         cleanExpiredElements();
@@ -205,6 +207,7 @@ public class TimedMap<K, V> implements Serializable {
 
     /**
      * Returns all values.
+     * @return collection of values
      */
     public Collection<V> values(){
         cleanExpiredElements();
