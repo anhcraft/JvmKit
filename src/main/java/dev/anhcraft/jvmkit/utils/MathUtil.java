@@ -21,6 +21,15 @@ public class MathUtil {
     }
 
     /**
+     * Checks if the given number is not a whole number (e.g: -0.2, 1.7, 2.4 but not 0.0, 2.0, 3.0)
+     * @param number the number
+     * @return {@code true} if it is not a whole number. Otherwise is {@code false}
+     */
+    public static boolean isFraction(double number){
+        return number % 1 != 0;
+    }
+
+    /**
      * Checks if the given number is a prime.
      * @param num number
      * @return {@code true} if that number is a prime, or {@code false} if not.
