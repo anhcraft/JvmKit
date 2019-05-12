@@ -7,5 +7,7 @@ module dev.anhcraft.jvmkit {
     exports dev.anhcraft.jvmkit.lang;
     exports dev.anhcraft.jvmkit.lang.annotation;
     exports dev.anhcraft.jvmkit.lang.enumeration;
+    exports dev.anhcraft.jvmkit.trackers;
+    exports dev.anhcraft.jvmkit.trackers.reports;
     exports dev.anhcraft.jvmkit.utils;
 }
