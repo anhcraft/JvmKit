@@ -40,10 +40,10 @@ public class IOUtil {
      */
     public static byte[] toByteArray(@NotNull InputStream stream, int buff) throws IOException {
         Condition.argNotNull("stream", stream);
-        byte[] data = new byte[buff];
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        int n;
-        while((n = stream.read(data, 0, data.length)) != -1) buffer.write(data, 0, n);
+        var data = new byte[buff];
+        var buffer = new ByteArrayOutputStream();
+        int b;
+        while((b = stream.read(data, 0, buff)) != -1) buffer.write(data, 0, b);
         return buffer.toByteArray();
     }
 }
