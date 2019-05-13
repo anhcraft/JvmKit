@@ -609,7 +609,7 @@ public class ArrayUtil {
     public static int[] insert(@NotNull int[] array, int elem, int index){
         Condition.argNotNull("array", array);
         index = Math.max(0, Math.min(array.length-1, index));
-        int[] na = (int[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
+        int[] na = new int[array.length+1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
         na[index] = elem;
@@ -627,7 +627,7 @@ public class ArrayUtil {
     public static boolean[] insert(@NotNull boolean[] array, boolean elem, int index){
         Condition.argNotNull("array", array);
         index = Math.max(0, Math.min(array.length-1, index));
-        boolean[] na = (boolean[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
+        boolean[] na = new boolean[array.length+1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
         na[index] = elem;
@@ -645,7 +645,7 @@ public class ArrayUtil {
     public static long[] insert(@NotNull long[] array, long elem, int index){
         Condition.argNotNull("array", array);
         index = Math.max(0, Math.min(array.length-1, index));
-        long[] na = (long[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
+        long[] na = new long[array.length+1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
         na[index] = elem;
@@ -663,7 +663,7 @@ public class ArrayUtil {
     public static byte[] insert(@NotNull byte[] array, byte elem, int index){
         Condition.argNotNull("array", array);
         index = Math.max(0, Math.min(array.length-1, index));
-        byte[] na = (byte[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
+        byte[] na = new byte[array.length+1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
         na[index] = elem;
@@ -681,7 +681,7 @@ public class ArrayUtil {
     public static short[] insert(@NotNull short[] array, short elem, int index){
         Condition.argNotNull("array", array);
         index = Math.max(0, Math.min(array.length-1, index));
-        short[] na = (short[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
+        short[] na = new short[array.length+1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
         na[index] = elem;
@@ -699,7 +699,7 @@ public class ArrayUtil {
     public static float[] insert(@NotNull float[] array, float elem, int index){
         Condition.argNotNull("array", array);
         index = Math.max(0, Math.min(array.length-1, index));
-        float[] na = (float[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
+        float[] na = new float[array.length+1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
         na[index] = elem;
@@ -717,7 +717,7 @@ public class ArrayUtil {
     public static double[] insert(@NotNull double[] array, double elem, int index){
         Condition.argNotNull("array", array);
         index = Math.max(0, Math.min(array.length-1, index));
-        double[] na = (double[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
+        double[] na = new double[array.length+1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
         na[index] = elem;
@@ -735,7 +735,7 @@ public class ArrayUtil {
     public static char[] insert(@NotNull char[] array, char elem, int index){
         Condition.argNotNull("array", array);
         index = Math.max(0, Math.min(array.length-1, index));
-        char[] na = (char[]) Array.newInstance(array.getClass().getComponentType(), array.length+1);
+        char[] na = new char[array.length+1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index, na, index+1, array.length-index);
         na[index] = elem;
@@ -773,7 +773,7 @@ public class ArrayUtil {
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
         index = Math.max(0, Math.min(array.length-1, index));
-        int[] na = (int[]) Array.newInstance(int.class, array.length-1);
+        int[] na = new int[array.length-1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
         return na;
@@ -791,7 +791,7 @@ public class ArrayUtil {
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
         index = Math.max(0, Math.min(array.length-1, index));
-        boolean[] na = (boolean[]) Array.newInstance(boolean.class, array.length-1);
+        boolean[] na = new boolean[array.length-1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
         return na;
@@ -809,7 +809,7 @@ public class ArrayUtil {
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
         index = Math.max(0, Math.min(array.length-1, index));
-        long[] na = (long[]) Array.newInstance(long.class, array.length-1);
+        long[] na = new long[array.length-1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
         return na;
@@ -827,7 +827,7 @@ public class ArrayUtil {
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
         index = Math.max(0, Math.min(array.length-1, index));
-        byte[] na = (byte[]) Array.newInstance(byte.class, array.length-1);
+        byte[] na = new byte[array.length-1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
         return na;
@@ -845,7 +845,7 @@ public class ArrayUtil {
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
         index = Math.max(0, Math.min(array.length-1, index));
-        short[] na = (short[]) Array.newInstance(short.class, array.length-1);
+        short[] na = new short[array.length-1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
         return na;
@@ -863,7 +863,7 @@ public class ArrayUtil {
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
         index = Math.max(0, Math.min(array.length-1, index));
-        float[] na = (float[]) Array.newInstance(float.class, array.length-1);
+        float[] na = new float[array.length-1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
         return na;
@@ -881,7 +881,7 @@ public class ArrayUtil {
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
         index = Math.max(0, Math.min(array.length-1, index));
-        double[] na = (double[]) Array.newInstance(double.class, array.length-1);
+        double[] na = new double[array.length-1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
         return na;
@@ -899,7 +899,7 @@ public class ArrayUtil {
         Condition.argNotNull("array", array);
         if(array.length == 0) return array;
         index = Math.max(0, Math.min(array.length-1, index));
-        char[] na = (char[]) Array.newInstance(char.class, array.length-1);
+        char[] na = new char[array.length-1];
         System.arraycopy(array, 0, na, 0, index);
         System.arraycopy(array, index+1, na, index, array.length-index-1);
         return na;
@@ -935,7 +935,7 @@ public class ArrayUtil {
         Condition.argNotEmpty("arrays", arrays);
         var length = 0;
         for(int[] a : arrays) length += (a == null ? 0 : a.length);
-        int[] na = (int[]) Array.newInstance(arrays[0].getClass().getComponentType(), length);
+        int[] na = new int[length];
         var current = 0;
         for(int[] a : arrays){
             if(a == null) continue;
@@ -956,7 +956,7 @@ public class ArrayUtil {
         Condition.argNotEmpty("arrays", arrays);
         var length = 0;
         for(boolean[] a : arrays) length += (a == null ? 0 : a.length);
-        boolean[] na = (boolean[]) Array.newInstance(arrays[0].getClass().getComponentType(), length);
+        boolean[] na = new boolean[length];
         var current = 0;
         for(boolean[] a : arrays){
             if(a == null) continue;
@@ -977,7 +977,7 @@ public class ArrayUtil {
         Condition.argNotEmpty("arrays", arrays);
         var length = 0;
         for(long[] a : arrays) length += (a == null ? 0 : a.length);
-        long[] na = (long[]) Array.newInstance(arrays[0].getClass().getComponentType(), length);
+        long[] na = new long[length];
         var current = 0;
         for(long[] a : arrays){
             if(a == null) continue;
@@ -998,7 +998,7 @@ public class ArrayUtil {
         Condition.argNotEmpty("arrays", arrays);
         var length = 0;
         for(byte[] a : arrays) length += (a == null ? 0 : a.length);
-        byte[] na = (byte[]) Array.newInstance(arrays[0].getClass().getComponentType(), length);
+        byte[] na = new byte[length];
         var current = 0;
         for(byte[] a : arrays){
             if(a == null) continue;
@@ -1019,7 +1019,7 @@ public class ArrayUtil {
         Condition.argNotEmpty("arrays", arrays);
         var length = 0;
         for(short[] a : arrays) length += (a == null ? 0 : a.length);
-        short[] na = (short[]) Array.newInstance(arrays[0].getClass().getComponentType(), length);
+        short[] na = new short[length];
         var current = 0;
         for(short[] a : arrays){
             if(a == null) continue;
@@ -1040,7 +1040,7 @@ public class ArrayUtil {
         Condition.argNotEmpty("arrays", arrays);
         var length = 0;
         for(float[] a : arrays) length += (a == null ? 0 : a.length);
-        float[] na = (float[]) Array.newInstance(arrays[0].getClass().getComponentType(), length);
+        float[] na = new float[length];
         var current = 0;
         for(float[] a : arrays){
             if(a == null) continue;
@@ -1061,7 +1061,7 @@ public class ArrayUtil {
         Condition.argNotEmpty("arrays", arrays);
         var length = 0;
         for(double[] a : arrays) length += (a == null ? 0 : a.length);
-        double[] na = (double[]) Array.newInstance(arrays[0].getClass().getComponentType(), length);
+        double[] na = new double[length];
         var current = 0;
         for(double[] a : arrays){
             if(a == null) continue;
@@ -1082,7 +1082,7 @@ public class ArrayUtil {
         Condition.argNotEmpty("arrays", arrays);
         var length = 0;
         for(char[] a : arrays) length += (a == null ? 0 : a.length);
-        char[] na = (char[]) Array.newInstance(arrays[0].getClass().getComponentType(), length);
+        char[] na = new char[length];
         var current = 0;
         for(char[] a : arrays){
             if(a == null) continue;
