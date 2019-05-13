@@ -12,6 +12,23 @@ import java.util.zip.GZIPOutputStream;
  */
 public class FileUtil {
     /**
+     * The path to the system temporary directory.
+     */
+    public static final String TEMP_DIR_PATH = System.getProperty("java.io.tmpdir");
+    /**
+     * The system temporary directory.
+     */
+    public static final File TEMP_DIR = new File(TEMP_DIR_PATH);
+    /**
+     * The path to the user's home directory.
+     */
+    public static final String USER_HOME_DIR_PATH = System.getProperty("user.home");
+    /**
+     * The user's home directory.
+     */
+    public static final File USER_HOME_DIR = new File(TEMP_DIR_PATH);
+
+    /**
      * This method will copy:
      * <ul>
      *     <li>the content of a file to another file</li>
@@ -299,14 +316,17 @@ public class FileUtil {
         Condition.argNotNull("source", source);
         Condition.argNotNull("target", target);
         try {
+            var tempUsed = source.equals(target);
             if(!source.exists() || !source.isFile()) return false;
-            if(!target.exists() && !target.createNewFile()) return false;
+            if(tempUsed) target = new File(TEMP_DIR, new String(RandomUtil.randomLetters(15))+".tmp");
+            else if(!target.exists() && !target.createNewFile()) return false;
             FileInputStream in = new FileInputStream(source);
             GZIPOutputStream out = new GZIPOutputStream(new FileOutputStream(target));
             in.transferTo(out);
             in.close();
             out.close();
-            return true;
+            if(tempUsed) return copy(target, source) && target.delete();
+            else return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
@@ -325,14 +345,17 @@ public class FileUtil {
         Condition.argNotNull("source", source);
         Condition.argNotNull("target", target);
         try {
+            var tempUsed = source.equals(target);
             if(!source.exists() || !source.isFile()) return false;
-            if(!target.exists() && !target.createNewFile()) return false;
+            if(tempUsed) target = new File(TEMP_DIR, new String(RandomUtil.randomLetters(15))+".tmp");
+            else if(!target.exists() && !target.createNewFile()) return false;
             GZIPInputStream in = new GZIPInputStream(new FileInputStream(source));
             FileOutputStream out = new FileOutputStream(target);
             in.transferTo(out);
             in.close();
             out.close();
-            return true;
+            if(tempUsed) return copy(target, source) && target.delete();
+            else return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
