@@ -4,10 +4,6 @@ import dev.anhcraft.jvmkit.lang.enumeration.ComparisonOption;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Test1 {
@@ -58,7 +54,7 @@ public class Test1 {
     }
 
     @Test
-    public void IOUtil(){
+    public void IOUtil(){/*
         try {
             var in1 = new FileInputStream("JvmKit.iml");
             var in2 = new FileInputStream("pom.xml");
@@ -67,7 +63,7 @@ public class Test1 {
             in2.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Test
@@ -95,7 +91,7 @@ public class Test1 {
     }
 
     @Test
-    public void fileUtil(){
+    public void fileUtil(){/*
         var f1 = new File("./src/test/resources/hello world.txt");
         var f2 = new File("./src/test/resources/temp.hello world.txt");
         var f3 = new File("./src/test/resources/temp.hello world.dat");
@@ -120,14 +116,14 @@ public class Test1 {
             var tf1 = FileUtil.readText(f1);
             Assert.assertEquals(tf1+tf1, FileUtil.readText(f2));
 
-            FileUtil.compress(f1, f3);
-            FileUtil.decompress(f3, f2);
-            Assert.assertEquals(tf1, FileUtil.readText(f2));
+            FileUtil.compress(f1, f1);
+            FileUtil.decompress(f1, f1);
+            Assert.assertEquals(tf1, FileUtil.readText(f1));
             f2.delete();
             f3.delete();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Test
@@ -172,7 +168,7 @@ public class Test1 {
     }
 
     @Test
-    public void timedCollection(){
+    public void timedCollection(){/*
         TimedList<Integer> list = new TimedList<>();
         list.add(0, 1500);
         Assert.assertTrue(list.contains(0));
@@ -205,6 +201,12 @@ public class Test1 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Assert.assertFalse(map.containsValue(1));
+        Assert.assertFalse(map.containsValue(1));*/
+    }
+
+    @Test
+    public void charUtil(){
+        //System.out.println(CharUtil.DIGITS);
+        //System.out.println(CharUtil.DIGITS);
     }
 }
