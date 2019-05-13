@@ -40,4 +40,28 @@ public class RandomUtil {
         Condition.argLower("min", "max", min, max);
         return min + RANDOMIZER.nextFloat() * (max-min);
     }
+
+    /**
+     * Generates an array of letters.
+     * @param length array's length
+     * @return {@code char} array
+     */
+    public static char[] randomLetters(int length){
+        Condition.check(length >= 0, "'length' must not be negative");
+        char[] chars = new char[length];
+        for(var i = 0; i < length; i++) chars[i] = ArrayUtil.pickRandom(CharUtil.LETTERS);
+        return chars;
+    }
+
+    /**
+     * Generates an array of digits.
+     * @param length array's length
+     * @return {@code char} array
+     */
+    public static char[] randomDigits(int length){
+        Condition.check(length >= 0, "'length' must not be negative");
+        char[] chars = new char[length];
+        for(var i = 0; i < length; i++) chars[i] = ArrayUtil.pickRandom(CharUtil.DIGITS);
+        return chars;
+    }
 }
