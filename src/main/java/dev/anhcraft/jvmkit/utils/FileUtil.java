@@ -4,6 +4,7 @@ import dev.anhcraft.jvmkit.lang.annotation.NotNull;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -27,6 +28,14 @@ public class FileUtil {
      * The user's home directory.
      */
     public static final File USER_HOME_DIR = new File(TEMP_DIR_PATH);
+    /**
+     * The path to the current working directory.
+     */
+    public static final String WORKING_DIR_PATH = Paths.get("").toAbsolutePath().toString();
+    /**
+     * The current working directory.
+     */
+    public static final File WORKING_DIR = Paths.get("").toFile();
 
     /**
      * This method will copy:
