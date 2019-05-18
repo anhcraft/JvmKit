@@ -24,6 +24,7 @@ public class FilePathBuilder implements Builder<String> {
 
     /**
      * Constructs an instance of {@code FilePathBuilder} with the given parent directory.
+     * @param parentDir parent dir
      */
     public FilePathBuilder(@NotNull File parentDir){
         Condition.argNotNull("parentDir", parentDir);
