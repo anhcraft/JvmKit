@@ -1,8 +1,9 @@
 # JvmKit
-[![Release](https://travis-ci.org/anhcraft/JvmKit.svg?branch=master)](https://travis-ci.org/anhcraft/JvmKit)
+[![Release](https://travis-ci.org/anhcraft/JvmKit.svg?branch=master)](https://travis-ci.org/anhcraft/JvmKit)<br>
+Report bugs here: https://anhcraft.myjetbrains.com/youtrack/projects/03654bab-ad2e-481e-92d6-93ab053426c7
 
 My personal utility kit for JVM languages (currently are Java and Kotlin).<br>
-This library only works on Java SE 11 and above, so you must use the right version of those languages.
+This library only works on Java SE 11 and above.
 
 ## packages
 - **builders**: This is a collection of builders. A builder has the capacity of creating complex things in simpler steps than usual. You command it by calling methods, and the builder will “memorize” that instruction in variables. When you are ready, you tell it to start by calling the build method. An advantage of builders is that you can reuse them with no limit and no performance problems.
