@@ -1,6 +1,5 @@
 # JvmKit
 [![Release](https://travis-ci.org/anhcraft/JvmKit.svg?branch=master)](https://travis-ci.org/anhcraft/JvmKit)<br>
-Report bugs here: https://anhcraft.myjetbrains.com/youtrack/projects/03654bab-ad2e-481e-92d6-93ab053426c7
 
 My personal utility kit for JVM languages (currently are Java and Kotlin).<br>
 This library only works on Java SE 11 and above.
