@@ -1,7 +1,7 @@
 package dev.anhcraft.jvmkit.builders;
 
-import dev.anhcraft.jvmkit.lang.annotation.NotNull;
 import dev.anhcraft.jvmkit.utils.Condition;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;

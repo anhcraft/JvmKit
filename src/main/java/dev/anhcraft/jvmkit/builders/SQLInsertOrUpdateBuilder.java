@@ -1,6 +1,6 @@
 package dev.anhcraft.jvmkit.builders;
 
-import dev.anhcraft.jvmkit.lang.annotation.NotNull;
+import org.jetbrains.annotations.NotNull;
 import dev.anhcraft.jvmkit.utils.Condition;
 import dev.anhcraft.jvmkit.utils.StringUtil;
 

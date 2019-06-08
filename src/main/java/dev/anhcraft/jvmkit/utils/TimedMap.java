@@ -2,7 +2,7 @@ package dev.anhcraft.jvmkit.utils;
 
 import dev.anhcraft.jvmkit.lang.annotation.Beta;
 import dev.anhcraft.jvmkit.lang.annotation.NotEmpty;
-import dev.anhcraft.jvmkit.lang.annotation.NotNull;
+import org.jetbrains.annotations.NotNull;
 import kotlin.Pair;
 
 import java.io.Serializable;

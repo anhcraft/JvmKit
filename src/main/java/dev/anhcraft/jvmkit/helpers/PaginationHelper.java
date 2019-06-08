@@ -1,6 +1,6 @@
 package dev.anhcraft.jvmkit.helpers;
 
-import dev.anhcraft.jvmkit.lang.annotation.NotNull;
+import org.jetbrains.annotations.NotNull;
 import dev.anhcraft.jvmkit.utils.Condition;
 
 import java.util.Arrays;

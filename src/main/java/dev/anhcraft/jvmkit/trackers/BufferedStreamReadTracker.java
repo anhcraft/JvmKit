@@ -1,6 +1,6 @@
 package dev.anhcraft.jvmkit.trackers;
 
-import dev.anhcraft.jvmkit.lang.annotation.NotNull;
+import org.jetbrains.annotations.NotNull;
 import dev.anhcraft.jvmkit.trackers.reports.StreamTransferReport;
 import dev.anhcraft.jvmkit.utils.Condition;
 

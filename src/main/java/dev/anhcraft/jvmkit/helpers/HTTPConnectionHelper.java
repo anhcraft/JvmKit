@@ -1,8 +1,9 @@
 package dev.anhcraft.jvmkit.helpers;
 
-import dev.anhcraft.jvmkit.lang.annotation.NotNull;
+import org.jetbrains.annotations.NotNull;
 import dev.anhcraft.jvmkit.utils.ArrayUtil;
 import dev.anhcraft.jvmkit.utils.Condition;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -166,6 +167,7 @@ public class HTTPConnectionHelper {
      * This method only works after use the method {@link #connect()}.
      * @return text
      */
+    @Nullable
     public String readText(){
         if(input != null) {
             try {
