@@ -169,7 +169,7 @@ public class Condition {
 
     /**
      * Validates whether the given argument is non-null.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;param&gt;&#96; must be non-null (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param param the parameter which the argument was passed into
      * @param arg the argument
@@ -196,7 +196,7 @@ public class Condition {
     /**
      * Validates whether the given argument is non-empty.<br>
      * Even if the argument is null, it still can't get accepted.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param param the parameter which the argument was passed into
      * @param arg the argument
@@ -208,7 +208,7 @@ public class Condition {
     /**
      * Validates whether the given argument is non-empty.<br>
      * Even if the argument is null, it still can't get accepted.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param param the parameter which the argument was passed into
      * @param arg the argument
@@ -220,7 +220,7 @@ public class Condition {
     /**
      * Validates whether the given argument is non-empty.<br>
      * Even if the argument is null, it still can't get accepted.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param param the parameter which the argument was passed into
      * @param arg the argument
@@ -232,7 +232,7 @@ public class Condition {
     /**
      * Validates whether the given argument is non-empty.<br>
      * Even if the argument is null, it still can't get accepted.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param param the parameter which the argument was passed into
      * @param arg the argument
@@ -244,7 +244,7 @@ public class Condition {
     /**
      * Validates whether the given argument is non-empty.<br>
      * Even if the argument is null, it still can't get accepted.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param param the parameter which the argument was passed into
      * @param arg the argument
@@ -256,7 +256,7 @@ public class Condition {
     /**
      * Validates whether the given argument is non-empty.<br>
      * Even if the argument is null, it still can't get accepted.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param param the parameter which the argument was passed into
      * @param arg the argument
@@ -268,7 +268,7 @@ public class Condition {
     /**
      * Validates whether the given argument is non-empty.<br>
      * Even if the argument is null, it still can't get accepted.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param param the parameter which the argument was passed into
      * @param arg the argument
@@ -280,7 +280,7 @@ public class Condition {
     /**
      * Validates whether the given argument is non-empty.<br>
      * Even if the argument is null, it still can't get accepted.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param param the parameter which the argument was passed into
      * @param arg the argument
@@ -292,7 +292,7 @@ public class Condition {
     /**
      * Validates whether the given argument is non-empty.<br>
      * Even if the argument is null, it still can't get accepted.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param param the parameter which the argument was passed into
      * @param arg the argument
@@ -305,7 +305,7 @@ public class Condition {
     /**
      * Validates whether the given argument is non-empty.<br>
      * Even if the argument is null, it still can't get accepted.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;param&gt;&#96; must be non-empty (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param param the parameter which the argument was passed into
      * @param arg the argument
@@ -317,7 +317,7 @@ public class Condition {
 
     /**
      * Validates whether the first given argument is "lower" than the second.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;first param&gt;&#96; must be lower than &#96;&lt;second param&gt;&#96; (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param firstParam the first parameter which the first argument was passed into
      * @param secondParam the second parameter which the second argument was passed into
@@ -336,7 +336,7 @@ public class Condition {
 
     /**
      * Validates whether the first given argument equals the second.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;first param&gt;&#96; must equal &#96;&lt;second param&gt;&#96; (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param firstParam the first parameter which the first argument was passed into
      * @param secondParam the second parameter which the second argument was passed into
@@ -355,7 +355,7 @@ public class Condition {
 
     /**
      * Validates whether the first given argument is "higher" than the second.<br>
-     * If the condition is not met, {@link IllegalArgumentException} will be thrown with a message:<br>
+     * If the condition is not met, {@link IllegalArgumentException} will be thrown with the following message:<br>
      * <em>&#96;&lt;first param&gt;&#96; must be higher than &#96;&lt;second param&gt;&#96; (&lt;previous class&gt;#&lt;previous method&gt;)</em>
      * @param firstParam the first parameter which the first argument was passed into
      * @param secondParam the second parameter which the second argument was passed into
