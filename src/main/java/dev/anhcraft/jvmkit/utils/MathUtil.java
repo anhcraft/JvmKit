@@ -47,4 +47,26 @@ public class MathUtil {
         }
         return true;
     }
+
+    /**
+     * Rounds the given number up to the next multiple.
+     * @param num the number
+     * @param multiplier the multiplier
+     * @return the next multiple
+     */
+    public static double nextMultiple(double num, double multiplier){
+        if(num % multiplier != 0) num += multiplier - num % multiplier;
+        return num;
+    }
+
+    /**
+     * Rounds the given number to the previous multiple.
+     * @param num the number
+     * @param multiplier the multiplier
+     * @return the previous multiple
+     */
+    public static double prevMultiple(double num, double multiplier){
+        if(num % multiplier != 0) num -= num % multiplier;
+        return num;
+    }
 }
