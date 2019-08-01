@@ -49,7 +49,7 @@ public class RandomUtil {
     public static char[] randomLetters(int length){
         Condition.check(length >= 0, "'length' must not be negative");
         char[] chars = new char[length];
-        for(var i = 0; i < length; i++) chars[i] = ArrayUtil.pickRandom(CharUtil.LETTERS);
+        for(char i = 0; i < length; i++) chars[i] = ArrayUtil.pickRandom(CharUtil.LETTERS);
         return chars;
     }
 
@@ -61,7 +61,7 @@ public class RandomUtil {
     public static char[] randomDigits(int length){
         Condition.check(length >= 0, "'length' must not be negative");
         char[] chars = new char[length];
-        for(var i = 0; i < length; i++) chars[i] = ArrayUtil.pickRandom(CharUtil.DIGITS);
+        for(char i = 0; i < length; i++) chars[i] = ArrayUtil.pickRandom(CharUtil.DIGITS);
         return chars;
     }
 }

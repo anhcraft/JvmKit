@@ -60,16 +60,16 @@ public class BufferedStreamReadTracker implements Tracker<StreamTransferReport> 
         Condition.check(!report.isFinished(), "the report has already been used");
         synchronized(lock){
             try {
-                var buffer = new byte[bufferSize];
+                byte[] buffer = new byte[bufferSize];
                 int n;
                 boolean eof;
                 do {
-                    var buffStartNanos = System.nanoTime();
+                    long buffStartNanos = System.nanoTime();
                     n = inputStream.read(buffer, 0, bufferSize);
                     eof = n != -1;
                     if(eof) {
-                        var buffEndNanos = System.nanoTime();
-                        var deltaNanos = buffEndNanos - buffStartNanos;
+                        long buffEndNanos = System.nanoTime();
+                        long deltaNanos = buffEndNanos - buffStartNanos;
                         report.setElapsedNanos(report.getElapsedNanos() + deltaNanos);
                         report.setTransferredBytes(report.getTransferredBytes() + n);
                         bufferCallback.accept(buffer);

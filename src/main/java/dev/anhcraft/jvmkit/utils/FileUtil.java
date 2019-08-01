@@ -37,6 +37,8 @@ public class FileUtil {
      */
     public static final File WORKING_DIR = Paths.get("").toFile();
 
+    private static final int DEFAULT_BUFF_SIZE = 8192;
+    
     /**
      * This method will copy:
      * <ul>
@@ -56,13 +58,13 @@ public class FileUtil {
         Condition.check(target.exists(), "The target must be existed: "+target.getPath());
         if(source.isDirectory()){
             if(target.isDirectory()){
-                var child = source.listFiles();
+                File[] child = source.listFiles();
                 if(child == null) return false;
                 try {
                     for(File f : child) {
                         if(f.equals(target)) continue; // the target can't be a sub-folder of the source
 
-                        var t = new File(target, f.getName());
+                        File t = new File(target, f.getName());
                         if (f.isDirectory()) t.mkdir(); else t.createNewFile();
                         if (!copy(f, t)) return false;
                     }
@@ -77,7 +79,7 @@ public class FileUtil {
             try {
                 BufferedInputStream input = new BufferedInputStream(new FileInputStream(source));
                 BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(target));
-                input.transferTo(output);
+                IOUtil.transfer(input, output, DEFAULT_BUFF_SIZE);
                 input.close();
                 output.close();
                 return true;
@@ -97,7 +99,7 @@ public class FileUtil {
         Condition.argNotNull("file", file);
         if(!file.exists()) return false;
         if(file.isDirectory()) {
-            var child = file.listFiles();
+            File[] child = file.listFiles();
             if(child == null) return false;
             for(File f : child){
                 if(f.isDirectory()) clean(f);
@@ -105,7 +107,7 @@ public class FileUtil {
             }
         } else{
             try {
-                var f = new RandomAccessFile(file, "rwd");
+                RandomAccessFile f = new RandomAccessFile(file, "rwd");
                 f.setLength(0);
                 f.close();
             } catch (IOException e) {
@@ -170,16 +172,16 @@ public class FileUtil {
      * This method will create the file automatically if it has not existed yet.<br>
      * This method won't work if the {@code File} object represents a directory.
      * @param file file
-     * @param stream input stream
+     * @param input input stream
      * @return {@code true} if the action was done. Otherwise is {@code false}.
      */
-    public static boolean write(@NotNull File file, @NotNull InputStream stream){
+    public static boolean write(@NotNull File file, @NotNull InputStream input){
         Condition.argNotNull("file", file);
-        Condition.argNotNull("stream", stream);
+        Condition.argNotNull("input", input);
         try {
             if(!file.exists() && !file.createNewFile()) return false;
             BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(file));
-            stream.transferTo(output);
+            IOUtil.transfer(input, output, DEFAULT_BUFF_SIZE);
             output.close();
             return true;
         } catch (IOException e) {
@@ -228,16 +230,16 @@ public class FileUtil {
      * This method will create the file automatically if it has not existed yet.<br>
      * This method won't work if the {@code File} object represents a directory.
      * @param file file
-     * @param stream stream
+     * @param input input stream
      * @return {@code true} if the action was done. Otherwise is {@code false}.
      */
-    public static boolean append(@NotNull File file, @NotNull InputStream stream){
+    public static boolean append(@NotNull File file, @NotNull InputStream input){
         Condition.argNotNull("file", file);
-        Condition.argNotNull("stream", stream);
+        Condition.argNotNull("input", input);
         try {
             if(!file.exists() && !file.createNewFile()) return false;
             BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(file, true));
-            stream.transferTo(output);
+            IOUtil.transfer(input, output, DEFAULT_BUFF_SIZE);
             output.close();
             return true;
         } catch (IOException e) {
@@ -291,9 +293,9 @@ public class FileUtil {
         Condition.argNotNull("file", file);
         if(!file.exists() || !file.isFile()) throw new FileNotFoundException();
         try {
-            BufferedInputStream data = new BufferedInputStream(new FileInputStream(file));
-            var bytes = data.readAllBytes();
-            data.close();
+            BufferedInputStream stream = new BufferedInputStream(new FileInputStream(file));
+            byte[] bytes = IOUtil.toByteArray(stream, DEFAULT_BUFF_SIZE);
+            stream.close();
             return bytes;
         } catch (IOException e) {
             e.printStackTrace();
@@ -325,13 +327,13 @@ public class FileUtil {
         Condition.argNotNull("source", source);
         Condition.argNotNull("target", target);
         try {
-            var tempUsed = source.equals(target);
+            boolean tempUsed = source.equals(target);
             if(!source.exists() || !source.isFile()) return false;
             if(tempUsed) target = new File(TEMP_DIR, new String(RandomUtil.randomLetters(15))+".tmp");
             else if(!target.exists() && !target.createNewFile()) return false;
             FileInputStream in = new FileInputStream(source);
             GZIPOutputStream out = new GZIPOutputStream(new FileOutputStream(target));
-            in.transferTo(out);
+            IOUtil.transfer(in, out, DEFAULT_BUFF_SIZE);
             in.close();
             out.close();
             if(tempUsed) return copy(target, source) && target.delete();
@@ -354,13 +356,13 @@ public class FileUtil {
         Condition.argNotNull("source", source);
         Condition.argNotNull("target", target);
         try {
-            var tempUsed = source.equals(target);
+            boolean tempUsed = source.equals(target);
             if(!source.exists() || !source.isFile()) return false;
             if(tempUsed) target = new File(TEMP_DIR, new String(RandomUtil.randomLetters(15))+".tmp");
             else if(!target.exists() && !target.createNewFile()) return false;
             GZIPInputStream in = new GZIPInputStream(new FileInputStream(source));
             FileOutputStream out = new FileOutputStream(target);
-            in.transferTo(out);
+            IOUtil.transfer(in, out, DEFAULT_BUFF_SIZE);
             in.close();
             out.close();
             if(tempUsed) return copy(target, source) && target.delete();

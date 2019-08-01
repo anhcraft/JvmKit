@@ -43,7 +43,7 @@ public class FilePathBuilder implements Builder<String> {
      */
     public FilePathBuilder dir(String... names){
         if(names != null && !locked.get()) {
-            for(var n : names) {
+            for(String n : names) {
                 if(n != null) path.append(n).append(File.separatorChar);
             }
         }

@@ -11,7 +11,7 @@ import java.util.Map;
  * A builder for creating {@code INSERT INTO ... ON DUPLICATE KEY UPDATE ...} SQL statement.
  */
 public class SQLInsertOrUpdateBuilder implements Builder<String> {
-    private final HashMap<String, String> data = new HashMap<>();
+    private final Map<String, String> data = new HashMap<>();
     private String tableName;
 
     /**
@@ -119,7 +119,7 @@ public class SQLInsertOrUpdateBuilder implements Builder<String> {
     public String build(){
         StringBuilder x = new StringBuilder("INSERT INTO `" + tableName + "`(" +
                 String.join(",", data.keySet()) + ") VALUES(");
-        var i = 0;
+        int i = 0;
         for(String n : data.values()){
             x.append("\"").append(StringUtil.escape(n)).append("\"");
             if(i < data.size() - 1) x.append(",");

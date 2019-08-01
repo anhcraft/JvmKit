@@ -3,7 +3,6 @@ package dev.anhcraft.jvmkit.utils;
 import dev.anhcraft.jvmkit.lang.annotation.Beta;
 import dev.anhcraft.jvmkit.lang.annotation.NotEmpty;
 import org.jetbrains.annotations.NotNull;
-import kotlin.Pair;
 
 import java.io.Serializable;
 import java.util.*;
@@ -141,10 +140,10 @@ public class TimedMap<K, V> implements Serializable {
      */
     public Map.Entry<K, V> getEntry(int index){
         cleanExpiredElements();
-        var opt = data.entrySet().stream().skip(index).findFirst();
+        Optional<Map.Entry<K, Pair<V, Long>>> opt = data.entrySet().stream().skip(index).findFirst();
         if(opt.isPresent()){
-            var ent = opt.get();
-            return new Map.Entry<>() {
+            Map.Entry<K, Pair<V, Long>> ent = opt.get();
+            return new Map.Entry<K, V>() {
                 @Override
                 public K getKey() {
                     return ent.getKey();
@@ -157,10 +156,9 @@ public class TimedMap<K, V> implements Serializable {
 
                 @Override
                 public V setValue(V value) {
-                    var val = ent.getValue();
-                    var old = val.getFirst();
-                    ent.setValue(ent.getValue().copy(value, val.getSecond()));
-                    return old;
+                    Pair<V, Long> val = ent.getValue();
+                    ent.setValue(new Pair<>(value, val.getSecond()));
+                    return val.getFirst();
                 }
             };
         } return null;
@@ -190,7 +188,7 @@ public class TimedMap<K, V> implements Serializable {
     public void concat(@NotNull @NotEmpty TimedMap<K, V>... maps) {
         Condition.argNotEmpty("maps", maps);
         cleanExpiredElements();
-        for(var map : maps){
+        for(TimedMap<K, V> map : maps){
             if(map == null || map.isEmpty()) continue;
             data.putAll(map.data);
         }

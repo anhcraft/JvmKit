@@ -1,4 +1,4 @@
-package dev.anhcraft.jvmkit.utils;
+package dev.anhcraft.jvmkit.experiment.utils;
 
 import java.util.Arrays;
 

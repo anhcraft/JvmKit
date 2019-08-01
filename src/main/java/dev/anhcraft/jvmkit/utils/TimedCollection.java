@@ -1,9 +1,11 @@
 package dev.anhcraft.jvmkit.utils;
 
 import dev.anhcraft.jvmkit.lang.annotation.Beta;
-import kotlin.Pair;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -103,9 +105,9 @@ public abstract class TimedCollection<E> implements Iterable<E> {
      */
     public void removeAt(int index) {
         cleanExpiredElements();
-        if(index < 0 || index >= data.size()) throw new IndexOutOfBoundsException(index);
+        if(index < 0 || index >= data.size()) throw new IndexOutOfBoundsException("Index out of range: "+index);
 
-        var it = data.iterator();
+        Iterator<Pair<E, Long>> it = data.iterator();
         for(int i = 0; i <= index; i++) it.next();
         it.remove();
     }

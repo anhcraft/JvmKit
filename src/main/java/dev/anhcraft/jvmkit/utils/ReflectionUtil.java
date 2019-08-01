@@ -310,7 +310,7 @@ public class ReflectionUtil {
      */
     public static Field[] getAllFields(@NotNull Class<?> clazz) {
         Condition.argNotNull("clazz", clazz);
-        var fields = clazz.getDeclaredFields();
+        Field[] fields = clazz.getDeclaredFields();
         while(!(clazz = clazz.getDeclaringClass().getSuperclass()).equals(Object.class)){
             fields = ArrayUtil.concat(fields, clazz.getDeclaredFields());
         }

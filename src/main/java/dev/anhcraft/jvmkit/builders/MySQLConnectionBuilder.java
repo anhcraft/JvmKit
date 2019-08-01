@@ -1,12 +1,13 @@
 package dev.anhcraft.jvmkit.builders;
 
-import org.jetbrains.annotations.NotNull;
 import dev.anhcraft.jvmkit.utils.Condition;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -26,7 +27,7 @@ public class MySQLConnectionBuilder implements Builder<Connection> {
     private String database;
     private String username;
     private String password;
-    private HashMap<String, String> properties;
+    private final Map<String, String> properties = new HashMap<>();
 
     /**
      * Returns the host name of the server which the database is hosted on.
@@ -117,7 +118,7 @@ public class MySQLConnectionBuilder implements Builder<Connection> {
      * This map is mutable, so you can manipulate that map directly to make changes in this object.
      * @return map
      */
-    public HashMap<String, String> getProperties() {
+    public Map<String, String> getProperties() {
         return properties;
     }
 

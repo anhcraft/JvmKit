@@ -31,13 +31,13 @@ public class StringUtil {
 
         StringBuilder builder = new StringBuilder();
         // split the sentence into words
-        var words = str.split(" ");
-        for(var w = 0; w < words.length; w++) {
-            var word = words[w];
+        String[] words = str.split(" ");
+        for(int w = 0; w < words.length; w++) {
+            String word = words[w];
             if (word.isEmpty()) continue; // ignore the word if it is empty
 
-            var word_builder = new StringBuilder(word);
-            var i = 0;
+            StringBuilder word_builder = new StringBuilder(word);
+            int i = 0;
             while (i < word_builder.length()) {
                 // remove any characters except letters
                 if (!Character.isLetter(word_builder.charAt(i))) word_builder.deleteCharAt(i);
@@ -51,7 +51,7 @@ public class StringUtil {
                 word_builder.setCharAt(word_builder.length() - 1,
                         Character.toLowerCase(word_builder.charAt(word_builder.length() - 1)));
 
-                var j = 0;
+                int j = 0;
                 while (j < word_builder.length() - 1) {
                     // if there are two capitalised letter next to each other, we will remove the first
                     if (Character.isUpperCase(word_builder.charAt(j)) &&
@@ -89,15 +89,15 @@ public class StringUtil {
         Condition.argNotNull("str", str);
 
         // split the sentence into words
-        var words = str.split(" ");
-        for(var w = 0; w < words.length; w++) {
-            var word = words[w];
+        String[] words = str.split(" ");
+        for(int w = 0; w < words.length; w++) {
+            String word = words[w];
             if (word.isEmpty()) continue; // ignore the word if it is empty
 
-            var word_builder = new StringBuilder(word);
-            var i = 0;
+            StringBuilder word_builder = new StringBuilder(word);
+            int i = 0;
             while (i < word_builder.length()) {
-                var c = word_builder.charAt(i);
+                char c = word_builder.charAt(i);
                 if (c == '_' || Character.isDigit(c)) i++;
                 else if(Character.isWhitespace(c)) {
                     word_builder.setCharAt(i, '_');
@@ -137,7 +137,7 @@ public class StringUtil {
      */
     public static String reverse(@NotNull String str){
         Condition.argNotNull("str", str);
-        var chars = str.toCharArray();
+        char[] chars = str.toCharArray();
         ArrayUtil.reverse(chars);
         return new String(chars);
     }

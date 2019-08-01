@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * This class provides utility methods for IO stream manipulation.
@@ -40,10 +41,25 @@ public class IOUtil {
      */
     public static byte[] toByteArray(@NotNull InputStream stream, int buff) throws IOException {
         Condition.argNotNull("stream", stream);
-        var data = new byte[buff];
-        var buffer = new ByteArrayOutputStream();
-        int b;
-        while((b = stream.read(data, 0, buff)) != -1) buffer.write(data, 0, b);
+        byte[] data = new byte[buff];
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int n;
+        while((n = stream.read(data, 0, buff)) != -1) buffer.write(data, 0, n);
         return buffer.toByteArray();
+    }
+
+    /**
+     * Transfers all data from the given input to the output
+     * @param in input stream
+     * @param out output stream
+     * @param buff buffer size
+     * @throws IOException if I/O errors occur
+     */
+    public static void transfer(@NotNull InputStream in, @NotNull OutputStream out, int buff) throws IOException {
+        Condition.argNotNull("in", in);
+        Condition.argNotNull("out", out);
+        byte[] data = new byte[buff];
+        int n;
+        while((n = in.read(data, 0, buff)) != -1) out.write(data, 0, n);
     }
 }

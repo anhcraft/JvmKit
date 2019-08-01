@@ -176,7 +176,7 @@ public class Condition {
      */
     public static void argNotNull(String param, Object arg){
         if(arg != null) return;
-        var stacktrace = Thread.currentThread().getStackTrace()[2];
+        StackTraceElement stacktrace = Thread.currentThread().getStackTrace()[2];
         try {
             throw new IllegalArgumentException("`"+param+"` must be non-null ("+stacktrace.getClassName()+"#"+stacktrace.getMethodName()+")");
         } catch (IllegalArgumentException e) {
@@ -185,7 +185,7 @@ public class Condition {
     }
 
     private static void emptyThrow(String param){
-        var stacktrace = Thread.currentThread().getStackTrace()[2];
+        StackTraceElement stacktrace = Thread.currentThread().getStackTrace()[2];
         try {
             throw new IllegalArgumentException("`"+param+"` must be non-empty ("+stacktrace.getClassName()+"#"+stacktrace.getMethodName()+")");
         } catch (IllegalArgumentException e) {
@@ -326,7 +326,7 @@ public class Condition {
      */
     public static void argLower(String firstParam, String secondParam, Object firstArg, Object secondArg){
         if(ObjectUtil.deepCompare(firstArg, secondArg) < 0) return;
-        var stacktrace = Thread.currentThread().getStackTrace()[2];
+        StackTraceElement stacktrace = Thread.currentThread().getStackTrace()[2];
         try {
             throw new IllegalArgumentException("`"+firstParam+"` must be lower than `"+secondParam+"` ("+stacktrace.getClassName()+"#"+stacktrace.getMethodName()+")");
         } catch (IllegalArgumentException e) {
@@ -345,7 +345,7 @@ public class Condition {
      */
     public static void argEqual(String firstParam, String secondParam, Object firstArg, Object secondArg){
         if(ObjectUtil.deepCompare(firstArg, secondArg) == 0) return;
-        var stacktrace = Thread.currentThread().getStackTrace()[2];
+        StackTraceElement stacktrace = Thread.currentThread().getStackTrace()[2];
         try {
             throw new IllegalArgumentException("`"+firstParam+"` must equal `"+secondParam+"` ("+stacktrace.getClassName()+"#"+stacktrace.getMethodName()+")");
         } catch (IllegalArgumentException e) {
@@ -364,7 +364,7 @@ public class Condition {
      */
     public static void argHigher(String firstParam, String secondParam, Object firstArg, Object secondArg){
         if(ObjectUtil.deepCompare(firstArg, secondArg) > 0) return;
-        var stacktrace = Thread.currentThread().getStackTrace()[2];
+        StackTraceElement stacktrace = Thread.currentThread().getStackTrace()[2];
         try {
             throw new IllegalArgumentException("`"+firstParam+"` must be higher than `"+secondParam+"` ("+stacktrace.getClassName()+"#"+stacktrace.getMethodName()+")");
         } catch (IllegalArgumentException e) {

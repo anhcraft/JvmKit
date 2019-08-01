@@ -6,7 +6,6 @@ import dev.anhcraft.jvmkit.lang.enumeration.ComparisonOption;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
 /**
@@ -31,11 +30,11 @@ public class ObjectUtil {
         else if(b == null) return 1;
         else if(a.getClass() == Object.class && b.getClass() == Object.class) return 0;
         else if(a.getClass().isArray() && b.getClass().isArray()) {
-            var ma = Array.getLength(a);
-            var mb = Array.getLength(b);
+            int ma = Array.getLength(a);
+            int mb = Array.getLength(b);
             if(ma != mb) return ma - mb;
             for(int i = 0; i < ma; i++) {
-                var x = deepCompare(Array.get(a, i), Array.get(b, i), options);
+                int x = deepCompare(Array.get(a, i), Array.get(b, i), options);
                 if(x != 0) return x;
             }
             return 0;
@@ -61,16 +60,14 @@ public class ObjectUtil {
                     Arrays.binarySearch(a.getClass().getAnnotation(Label.class).value(), Label.COMPARISON_LABEL) >= 0){
                 for(Field f : fields){
                     f.setAccessible(true);
-                    if(Modifier.isFinal(f.getModifiers())) continue;
                     if(!f.isAnnotationPresent(Label.class) || Arrays.binarySearch(f.getAnnotation(Label.class).value(), Label.COMPARISON_LABEL) < 0) continue;
-                    var x = deepCompare(f.get(a), f.get(b), options);
+                    int x = deepCompare(f.get(a), f.get(b), options);
                     if(x != 0) return x;
                 }
             } else {
                 for(Field f : fields) {
                     f.setAccessible(true);
-                    if(Modifier.isFinal(f.getModifiers())) continue;
-                    var x = deepCompare(f.get(a), f.get(b), options);
+                    int x = deepCompare(f.get(a), f.get(b), options);
                     if(x != 0) return x;
                 }
             }

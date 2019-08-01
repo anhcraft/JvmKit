@@ -34,13 +34,13 @@ public class MathUtil {
      * @param num number
      * @return {@code true} if that number is a prime, or {@code false} if not.
      */
-    public static boolean isPrime(int num){
+    public static boolean isPrime(long num){
         if(num < 2) return false;
         else if(num == 2 | num == 3) return true;
         else if(num % 2 == 0) return false;
 
-        var i = 3;
-        var m = num/2+1;
+        long i = 3;
+        long m = num/2+1;
         while(i < m){
             if(num % i == 0) return false;
             i += 2;

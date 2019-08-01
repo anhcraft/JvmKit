@@ -307,10 +307,10 @@ public class ArrayUtil {
      */
     public static int binarySearch(int[] arr, int elem){
         if(arr == null || arr.length == 0) return -1;
-        var low = 0;
-        var high = arr.length-1;
+        int low = 0;
+        int high = arr.length-1;
         while(low <= high){
-            var mid = (low + high) >>> 1;
+            int mid = (low + high) >>> 1;
             if(arr[mid] == elem) return mid;
             else if(arr[mid] < elem) low = mid + 1;
             else high = mid - 1;
@@ -327,10 +327,10 @@ public class ArrayUtil {
      */
     public static int binarySearch(boolean[] arr, boolean elem){
         if(arr == null || arr.length == 0) return -1;
-        var low = 0;
-        var high = arr.length-1;
+        int low = 0;
+        int high = arr.length-1;
         while(low <= high){
-            var mid = (low + high) >>> 1;
+            int mid = (low + high) >>> 1;
             if(arr[mid] == elem) return mid;
             else if(!arr[mid]) low = mid + 1;
             else high = mid - 1;
@@ -347,10 +347,10 @@ public class ArrayUtil {
      */
     public static int binarySearch(long[] arr, long elem){
         if(arr == null || arr.length == 0) return -1;
-        var low = 0;
-        var high = arr.length-1;
+        int low = 0;
+        int high = arr.length-1;
         while(low <= high){
-            var mid = (low + high) >>> 1;
+            int mid = (low + high) >>> 1;
             if(arr[mid] == elem) return mid;
             else if(arr[mid] < elem) low = mid + 1;
             else high = mid - 1;
@@ -367,10 +367,10 @@ public class ArrayUtil {
      */
     public static int binarySearch(byte[] arr, byte elem){
         if(arr == null || arr.length == 0) return -1;
-        var low = 0;
-        var high = arr.length-1;
+        int low = 0;
+        int high = arr.length-1;
         while(low <= high){
-            var mid = (low + high) >>> 1;
+            int mid = (low + high) >>> 1;
             if(arr[mid] == elem) return mid;
             else if(arr[mid] < elem) low = mid + 1;
             else high = mid - 1;
@@ -387,10 +387,10 @@ public class ArrayUtil {
      */
     public static int binarySearch(short[] arr, short elem){
         if(arr == null || arr.length == 0) return -1;
-        var low = 0;
-        var high = arr.length-1;
+        int low = 0;
+        int high = arr.length-1;
         while(low <= high){
-            var mid = (low + high) >>> 1;
+            int mid = (low + high) >>> 1;
             if(arr[mid] == elem) return mid;
             else if(arr[mid] < elem) low = mid + 1;
             else high = mid - 1;
@@ -407,10 +407,10 @@ public class ArrayUtil {
      */
     public static int binarySearch(float[] arr, float elem){
         if(arr == null || arr.length == 0) return -1;
-        var low = 0;
-        var high = arr.length-1;
+        int low = 0;
+        int high = arr.length-1;
         while(low <= high){
-            var mid = (low + high) >>> 1;
+            int mid = (low + high) >>> 1;
             if(arr[mid] == elem) return mid;
             else if(arr[mid] < elem) low = mid + 1;
             else high = mid - 1;
@@ -427,10 +427,10 @@ public class ArrayUtil {
      */
     public static int binarySearch(double[] arr, double elem){
         if(arr == null || arr.length == 0) return -1;
-        var low = 0;
-        var high = arr.length-1;
+        int low = 0;
+        int high = arr.length-1;
         while(low <= high){
-            var mid = (low + high) >>> 1;
+            int mid = (low + high) >>> 1;
             if(arr[mid] == elem) return mid;
             else if(arr[mid] < elem) low = mid + 1;
             else high = mid - 1;
@@ -447,10 +447,10 @@ public class ArrayUtil {
      */
     public static int binarySearch(char[] arr, char elem){
         if(arr == null || arr.length == 0) return -1;
-        var low = 0;
-        var high = arr.length-1;
+        int low = 0;
+        int high = arr.length-1;
         while(low <= high){
-            var mid = (low + high) >>> 1;
+            int mid = (low + high) >>> 1;
             if(arr[mid] == elem) return mid;
             else if(arr[mid] < elem) low = mid + 1;
             else high = mid - 1;
@@ -468,11 +468,11 @@ public class ArrayUtil {
      */
     public static <T> int binarySearch(T[] arr, T elem){
         if(arr == null || arr.length == 0) return -1;
-        var low = 0;
-        var high = arr.length-1;
+        int low = 0;
+        int high = arr.length-1;
         while(low <= high){
-            var mid = (low + high) >>> 1;
-            var x = ObjectUtil.deepCompare(arr[mid], elem);
+            int mid = (low + high) >>> 1;
+            int x = ObjectUtil.deepCompare(arr[mid], elem);
             if(x == 0) return mid;
             else if(x > 0) low = mid + 1;
             else high = mid - 1;
@@ -488,7 +488,7 @@ public class ArrayUtil {
      */
     public static int[] add(@NotNull int[] array, int elem){
         Condition.argNotNull("array", array);
-        var na = Arrays.copyOf(array, array.length+1);
+        int[] na = Arrays.copyOf(array, array.length+1);
         na[array.length] = elem;
         return na;
     }
@@ -501,7 +501,7 @@ public class ArrayUtil {
      */
     public static boolean[] add(@NotNull boolean[] array, boolean elem){
         Condition.argNotNull("array", array);
-        var na = Arrays.copyOf(array, array.length+1);
+        boolean[] na = Arrays.copyOf(array, array.length+1);
         na[array.length] = elem;
         return na;
     }
@@ -514,7 +514,7 @@ public class ArrayUtil {
      */
     public static long[] add(@NotNull long[] array, long elem){
         Condition.argNotNull("array", array);
-        var na = Arrays.copyOf(array, array.length+1);
+        long[] na = Arrays.copyOf(array, array.length+1);
         na[array.length] = elem;
         return na;
     }
@@ -527,7 +527,7 @@ public class ArrayUtil {
      */
     public static byte[] add(@NotNull byte[] array, byte elem){
         Condition.argNotNull("array", array);
-        var na = Arrays.copyOf(array, array.length+1);
+        byte[] na = Arrays.copyOf(array, array.length+1);
         na[array.length] = elem;
         return na;
     }
@@ -540,7 +540,7 @@ public class ArrayUtil {
      */
     public static short[] add(@NotNull short[] array, short elem){
         Condition.argNotNull("array", array);
-        var na = Arrays.copyOf(array, array.length+1);
+        short[] na = Arrays.copyOf(array, array.length+1);
         na[array.length] = elem;
         return na;
     }
@@ -553,7 +553,7 @@ public class ArrayUtil {
      */
     public static float[] add(@NotNull float[] array, float elem){
         Condition.argNotNull("array", array);
-        var na = Arrays.copyOf(array, array.length+1);
+        float[] na = Arrays.copyOf(array, array.length+1);
         na[array.length] = elem;
         return na;
     }
@@ -566,7 +566,7 @@ public class ArrayUtil {
      */
     public static double[] add(@NotNull double[] array, double elem){
         Condition.argNotNull("array", array);
-        var na = Arrays.copyOf(array, array.length+1);
+        double[] na = Arrays.copyOf(array, array.length+1);
         na[array.length] = elem;
         return na;
     }
@@ -579,7 +579,7 @@ public class ArrayUtil {
      */
     public static char[] add(@NotNull char[] array, char elem){
         Condition.argNotNull("array", array);
-        var na = Arrays.copyOf(array, array.length+1);
+        char[] na = Arrays.copyOf(array, array.length+1);
         na[array.length] = elem;
         return na;
     }
@@ -593,7 +593,7 @@ public class ArrayUtil {
      */
     public static <T> T[] add(@NotNull T[] array, T elem){
         Condition.argNotNull("array", array);
-        var na = Arrays.copyOf(array, array.length+1);
+        T[] na = Arrays.copyOf(array, array.length+1);
         na[array.length] = elem;
         return na;
     }
@@ -933,10 +933,10 @@ public class ArrayUtil {
      */
     public static int[] concat(@NotNull @NotEmpty int[]... arrays){
         Condition.argNotEmpty("arrays", arrays);
-        var length = 0;
+        int length = 0;
         for(int[] a : arrays) length += (a == null ? 0 : a.length);
         int[] na = new int[length];
-        var current = 0;
+        int current = 0;
         for(int[] a : arrays){
             if(a == null) continue;
             System.arraycopy(a, 0, na, current, a.length);
@@ -954,10 +954,10 @@ public class ArrayUtil {
      */
     public static boolean[] concat(@NotNull @NotEmpty boolean[]... arrays){
         Condition.argNotEmpty("arrays", arrays);
-        var length = 0;
+        int length = 0;
         for(boolean[] a : arrays) length += (a == null ? 0 : a.length);
         boolean[] na = new boolean[length];
-        var current = 0;
+        int current = 0;
         for(boolean[] a : arrays){
             if(a == null) continue;
             System.arraycopy(a, 0, na, current, a.length);
@@ -975,10 +975,10 @@ public class ArrayUtil {
      */
     public static long[] concat(@NotNull @NotEmpty long[]... arrays){
         Condition.argNotEmpty("arrays", arrays);
-        var length = 0;
+        int length = 0;
         for(long[] a : arrays) length += (a == null ? 0 : a.length);
         long[] na = new long[length];
-        var current = 0;
+        int current = 0;
         for(long[] a : arrays){
             if(a == null) continue;
             System.arraycopy(a, 0, na, current, a.length);
@@ -996,10 +996,10 @@ public class ArrayUtil {
      */
     public static byte[] concat(@NotNull @NotEmpty byte[]... arrays){
         Condition.argNotEmpty("arrays", arrays);
-        var length = 0;
+        int length = 0;
         for(byte[] a : arrays) length += (a == null ? 0 : a.length);
         byte[] na = new byte[length];
-        var current = 0;
+        int current = 0;
         for(byte[] a : arrays){
             if(a == null) continue;
             System.arraycopy(a, 0, na, current, a.length);
@@ -1017,10 +1017,10 @@ public class ArrayUtil {
      */
     public static short[] concat(@NotNull @NotEmpty short[]... arrays){
         Condition.argNotEmpty("arrays", arrays);
-        var length = 0;
+        int length = 0;
         for(short[] a : arrays) length += (a == null ? 0 : a.length);
         short[] na = new short[length];
-        var current = 0;
+        int current = 0;
         for(short[] a : arrays){
             if(a == null) continue;
             System.arraycopy(a, 0, na, current, a.length);
@@ -1038,10 +1038,10 @@ public class ArrayUtil {
      */
     public static float[] concat(@NotNull @NotEmpty float[]... arrays){
         Condition.argNotEmpty("arrays", arrays);
-        var length = 0;
+        int length = 0;
         for(float[] a : arrays) length += (a == null ? 0 : a.length);
         float[] na = new float[length];
-        var current = 0;
+        int current = 0;
         for(float[] a : arrays){
             if(a == null) continue;
             System.arraycopy(a, 0, na, current, a.length);
@@ -1059,10 +1059,10 @@ public class ArrayUtil {
      */
     public static double[] concat(@NotNull @NotEmpty double[]... arrays){
         Condition.argNotEmpty("arrays", arrays);
-        var length = 0;
+        int length = 0;
         for(double[] a : arrays) length += (a == null ? 0 : a.length);
         double[] na = new double[length];
-        var current = 0;
+        int current = 0;
         for(double[] a : arrays){
             if(a == null) continue;
             System.arraycopy(a, 0, na, current, a.length);
@@ -1080,10 +1080,10 @@ public class ArrayUtil {
      */
     public static char[] concat(@NotNull @NotEmpty char[]... arrays){
         Condition.argNotEmpty("arrays", arrays);
-        var length = 0;
+        int length = 0;
         for(char[] a : arrays) length += (a == null ? 0 : a.length);
         char[] na = new char[length];
-        var current = 0;
+        int current = 0;
         for(char[] a : arrays){
             if(a == null) continue;
             System.arraycopy(a, 0, na, current, a.length);
@@ -1102,10 +1102,10 @@ public class ArrayUtil {
      */
     public static <T> T[] concat(@NotNull @NotEmpty T[]... arrays){
         Condition.argNotEmpty("arrays", arrays);
-        var length = 0;
+        int length = 0;
         for(T[] a : arrays) length += (a == null ? 0 : a.length);
         T[] na = (T[]) Array.newInstance(arrays[0].getClass().getComponentType(), length);
-        var current = 0;
+        int current = 0;
         for(T[] a : arrays){
             if(a == null) continue;
             System.arraycopy(a, 0, na, current, a.length);
@@ -1125,7 +1125,7 @@ public class ArrayUtil {
         if(array == null || array.length == 0) return;
         first = Math.max(0, Math.min(array.length-1, first));
         second = Math.max(0, Math.min(array.length-1, second));
-        var temp = array[first];
+        int temp = array[first];
         array[first] = array[second];
         array[second] = temp;
     }
@@ -1141,7 +1141,7 @@ public class ArrayUtil {
         if(array == null || array.length == 0) return;
         first = Math.max(0, Math.min(array.length-1, first));
         second = Math.max(0, Math.min(array.length-1, second));
-        var temp = array[first];
+        boolean temp = array[first];
         array[first] = array[second];
         array[second] = temp;
     }
@@ -1157,7 +1157,7 @@ public class ArrayUtil {
         if(array == null || array.length == 0) return;
         first = Math.max(0, Math.min(array.length-1, first));
         second = Math.max(0, Math.min(array.length-1, second));
-        var temp = array[first];
+        long temp = array[first];
         array[first] = array[second];
         array[second] = temp;
     }
@@ -1173,7 +1173,7 @@ public class ArrayUtil {
         if(array == null || array.length == 0) return;
         first = Math.max(0, Math.min(array.length-1, first));
         second = Math.max(0, Math.min(array.length-1, second));
-        var temp = array[first];
+        byte temp = array[first];
         array[first] = array[second];
         array[second] = temp;
     }
@@ -1189,7 +1189,7 @@ public class ArrayUtil {
         if(array == null || array.length == 0) return;
         first = Math.max(0, Math.min(array.length-1, first));
         second = Math.max(0, Math.min(array.length-1, second));
-        var temp = array[first];
+        short temp = array[first];
         array[first] = array[second];
         array[second] = temp;
     }
@@ -1205,7 +1205,7 @@ public class ArrayUtil {
         if(array == null || array.length == 0) return;
         first = Math.max(0, Math.min(array.length-1, first));
         second = Math.max(0, Math.min(array.length-1, second));
-        var temp = array[first];
+        float temp = array[first];
         array[first] = array[second];
         array[second] = temp;
     }
@@ -1221,7 +1221,7 @@ public class ArrayUtil {
         if(array == null || array.length == 0) return;
         first = Math.max(0, Math.min(array.length-1, first));
         second = Math.max(0, Math.min(array.length-1, second));
-        var temp = array[first];
+        double temp = array[first];
         array[first] = array[second];
         array[second] = temp;
     }
@@ -1237,7 +1237,7 @@ public class ArrayUtil {
         if(array == null || array.length == 0) return;
         first = Math.max(0, Math.min(array.length-1, first));
         second = Math.max(0, Math.min(array.length-1, second));
-        var temp = array[first];
+        char temp = array[first];
         array[first] = array[second];
         array[second] = temp;
     }
@@ -1254,7 +1254,7 @@ public class ArrayUtil {
         if(array == null || array.length == 0) return;
         first = Math.max(0, Math.min(array.length-1, first));
         second = Math.max(0, Math.min(array.length-1, second));
-        var temp = array[first];
+        T temp = array[first];
         array[first] = array[second];
         array[second] = temp;
     }
@@ -1265,8 +1265,8 @@ public class ArrayUtil {
      */
     public static void reverse(int[] array){
         if(array == null || array.length == 0) return;
-        var left = 0;
-        var right = array.length - 1;
+        int left = 0;
+        int right = array.length - 1;
 
         while(left < right) {
             swap(array, left, right);
@@ -1281,8 +1281,8 @@ public class ArrayUtil {
      */
     public static void reverse(boolean[] array){
         if(array == null || array.length == 0) return;
-        var left = 0;
-        var right = array.length - 1;
+        int left = 0;
+        int right = array.length - 1;
 
         while(left < right) {
             swap(array, left, right);
@@ -1297,8 +1297,8 @@ public class ArrayUtil {
      */
     public static void reverse(long[] array){
         if(array == null || array.length == 0) return;
-        var left = 0;
-        var right = array.length - 1;
+        int left = 0;
+        int right = array.length - 1;
 
         while(left < right) {
             swap(array, left, right);
@@ -1313,8 +1313,8 @@ public class ArrayUtil {
      */
     public static void reverse(byte[] array){
         if(array == null || array.length == 0) return;
-        var left = 0;
-        var right = array.length - 1;
+        int left = 0;
+        int right = array.length - 1;
 
         while(left < right) {
             swap(array, left, right);
@@ -1329,8 +1329,8 @@ public class ArrayUtil {
      */
     public static void reverse(short[] array){
         if(array == null || array.length == 0) return;
-        var left = 0;
-        var right = array.length - 1;
+        int left = 0;
+        int right = array.length - 1;
 
         while(left < right) {
             swap(array, left, right);
@@ -1345,8 +1345,8 @@ public class ArrayUtil {
      */
     public static void reverse(float[] array){
         if(array == null || array.length == 0) return;
-        var left = 0;
-        var right = array.length - 1;
+        int left = 0;
+        int right = array.length - 1;
 
         while(left < right) {
             swap(array, left, right);
@@ -1361,8 +1361,8 @@ public class ArrayUtil {
      */
     public static void reverse(double[] array){
         if(array == null || array.length == 0) return;
-        var left = 0;
-        var right = array.length - 1;
+        int left = 0;
+        int right = array.length - 1;
 
         while(left < right) {
             swap(array, left, right);
@@ -1377,8 +1377,8 @@ public class ArrayUtil {
      */
     public static void reverse(char[] array){
         if(array == null || array.length == 0) return;
-        var left = 0;
-        var right = array.length - 1;
+        int left = 0;
+        int right = array.length - 1;
 
         while(left < right) {
             swap(array, left, right);
@@ -1394,8 +1394,8 @@ public class ArrayUtil {
      */
     public static <T> void reverse(T[] array){
         if(array == null || array.length == 0) return;
-        var left = 0;
-        var right = array.length - 1;
+        int left = 0;
+        int right = array.length - 1;
 
         while(left < right) {
             swap(array, left, right);
@@ -1501,7 +1501,7 @@ public class ArrayUtil {
      */
     public static void shuffle(int[] array){
         if(array == null || array.length == 0) return;
-        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+        for (int i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
     }
 
     /**
@@ -1510,7 +1510,7 @@ public class ArrayUtil {
      */
     public static void shuffle(boolean[] array){
         if(array == null || array.length == 0) return;
-        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+        for (int i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
     }
 
     /**
@@ -1519,7 +1519,7 @@ public class ArrayUtil {
      */
     public static void shuffle(long[] array){
         if(array == null || array.length == 0) return;
-        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+        for (int i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
     }
 
     /**
@@ -1528,7 +1528,7 @@ public class ArrayUtil {
      */
     public static void shuffle(byte[] array){
         if(array == null || array.length == 0) return;
-        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+        for (int i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
     }
 
     /**
@@ -1537,7 +1537,7 @@ public class ArrayUtil {
      */
     public static void shuffle(short[] array){
         if(array == null || array.length == 0) return;
-        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+        for (int i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
     }
 
     /**
@@ -1546,7 +1546,7 @@ public class ArrayUtil {
      */
     public static void shuffle(float[] array){
         if(array == null || array.length == 0) return;
-        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+        for (int i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
     }
 
     /**
@@ -1555,7 +1555,7 @@ public class ArrayUtil {
      */
     public static void shuffle(double[] array){
         if(array == null || array.length == 0) return;
-        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+        for (int i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
     }
 
     /**
@@ -1564,7 +1564,7 @@ public class ArrayUtil {
      */
     public static void shuffle(char[] array){
         if(array == null || array.length == 0) return;
-        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+        for (int i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
     }
 
     /**
@@ -1574,7 +1574,7 @@ public class ArrayUtil {
      */
     public static <T> void shuffle(T[] array){
         if(array == null || array.length == 0) return;
-        for (var i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
+        for (int i = 0; i < array.length; i++) swap(array, i, RandomUtil.randomInt(0, array.length-1));
     }
 
     /**
@@ -1584,8 +1584,8 @@ public class ArrayUtil {
      */
     public static int[] uniquify(@NotNull @NotEmpty int[] array){
         Condition.argNotEmpty("array", array);
-        for(var i = 0; i < array.length-1; i++){
-            for(var j = i+1; j < array.length; j++){
+        for(int i = 0; i < array.length-1; i++){
+            for(int j = i+1; j < array.length; j++){
                 if(array[i] == array[j]) array = remove(array, j);
             }
         }
@@ -1599,8 +1599,8 @@ public class ArrayUtil {
      */
     public static boolean[] uniquify(@NotNull @NotEmpty boolean[] array){
         Condition.argNotEmpty("array", array);
-        for(var i = 0; i < array.length-1; i++){
-            for(var j = i+1; j < array.length; j++){
+        for(int i = 0; i < array.length-1; i++){
+            for(int j = i+1; j < array.length; j++){
                 if(array[i] == array[j]) array = remove(array, j);
             }
         }
@@ -1614,8 +1614,8 @@ public class ArrayUtil {
      */
     public static long[] uniquify(@NotNull @NotEmpty long[] array){
         Condition.argNotEmpty("array", array);
-        for(var i = 0; i < array.length-1; i++){
-            for(var j = i+1; j < array.length; j++){
+        for(int i = 0; i < array.length-1; i++){
+            for(int j = i+1; j < array.length; j++){
                 if(array[i] == array[j]) array = remove(array, j);
             }
         }
@@ -1629,8 +1629,8 @@ public class ArrayUtil {
      */
     public static byte[] uniquify(@NotNull @NotEmpty byte[] array){
         Condition.argNotEmpty("array", array);
-        for(var i = 0; i < array.length-1; i++){
-            for(var j = i+1; j < array.length; j++){
+        for(int i = 0; i < array.length-1; i++){
+            for(int j = i+1; j < array.length; j++){
                 if(array[i] == array[j]) array = remove(array, j);
             }
         }
@@ -1644,8 +1644,8 @@ public class ArrayUtil {
      */
     public static short[] uniquify(@NotNull @NotEmpty short[] array){
         Condition.argNotEmpty("array", array);
-        for(var i = 0; i < array.length-1; i++){
-            for(var j = i+1; j < array.length; j++){
+        for(int i = 0; i < array.length-1; i++){
+            for(int j = i+1; j < array.length; j++){
                 if(array[i] == array[j]) array = remove(array, j);
             }
         }
@@ -1659,8 +1659,8 @@ public class ArrayUtil {
      */
     public static float[] uniquify(@NotNull @NotEmpty float[] array){
         Condition.argNotEmpty("array", array);
-        for(var i = 0; i < array.length-1; i++){
-            for(var j = i+1; j < array.length; j++){
+        for(int i = 0; i < array.length-1; i++){
+            for(int j = i+1; j < array.length; j++){
                 if(array[i] == array[j]) array = remove(array, j);
             }
         }
@@ -1674,8 +1674,8 @@ public class ArrayUtil {
      */
     public static double[] uniquify(@NotNull @NotEmpty double[] array){
         Condition.argNotEmpty("array", array);
-        for(var i = 0; i < array.length-1; i++){
-            for(var j = i+1; j < array.length; j++){
+        for(int i = 0; i < array.length-1; i++){
+            for(int j = i+1; j < array.length; j++){
                 if(array[i] == array[j]) array = remove(array, j);
             }
         }
@@ -1689,8 +1689,8 @@ public class ArrayUtil {
      */
     public static char[] uniquify(@NotNull @NotEmpty char[] array){
         Condition.argNotEmpty("array", array);
-        for(var i = 0; i < array.length-1; i++){
-            for(var j = i+1; j < array.length; j++){
+        for(int i = 0; i < array.length-1; i++){
+            for(int j = i+1; j < array.length; j++){
                 if(array[i] == array[j]) array = remove(array, j);
             }
         }
@@ -1705,8 +1705,8 @@ public class ArrayUtil {
      */
     public static <T> T[] uniquify(@NotNull @NotEmpty T[] array){
         Condition.argNotEmpty("array", array);
-        for(var i = 0; i < array.length-1; i++){
-            for(var j = i+1; j < array.length; j++){
+        for(int i = 0; i < array.length-1; i++){
+            for(int j = i+1; j < array.length; j++){
                 if(ObjectUtil.deepCompare(array[i], array[j]) == 0) array = remove(array, j);
             }
         }
