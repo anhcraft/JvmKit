@@ -4,6 +4,10 @@ import dev.anhcraft.jvmkit.lang.enumeration.ComparisonOption;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Test1 {
@@ -35,7 +39,7 @@ public class Test1 {
                 new Integer[]{5, 0, -4},
                 new Integer[]{7, 2}
         ));
-        var array = new Integer[]{3, 0, -4, -7, 6, -2};
+        Integer[] array = new Integer[]{3, 0, -4, -7, 6, -2};
         ArrayUtil.swap(array, 0, 3);
         Assert.assertArrayEquals(new Integer[]{-7, 0, -4, 3, 6, -2}, array);
         ArrayUtil.reverse(array);
@@ -54,16 +58,16 @@ public class Test1 {
     }
 
     @Test
-    public void IOUtil(){/*
+    public void IOUtil(){
         try {
-            var in1 = new FileInputStream("JvmKit.iml");
-            var in2 = new FileInputStream("pom.xml");
+            FileInputStream in1 = new FileInputStream("JvmKit.iml");
+            FileInputStream in2 = new FileInputStream("pom.xml");
             Assert.assertNotEquals(0, IOUtil.compare(in1, in2));
             in1.close();
             in2.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     @Test
@@ -91,10 +95,10 @@ public class Test1 {
     }
 
     @Test
-    public void fileUtil(){/*
-        var f1 = new File("./src/test/resources/hello world.txt");
-        var f2 = new File("./src/test/resources/temp.hello world.txt");
-        var f3 = new File("./src/test/resources/temp.hello world.dat");
+    public void fileUtil(){
+        File f1 = new File("./src/test/resources/hello world.txt");
+        File f2 = new File("./src/test/resources/temp.hello world.txt");
+        File f3 = new File("./src/test/resources/temp.hello world.dat");
         try {
             Assert.assertEquals("hello world", FileUtil.readText(f1));
             try {
@@ -107,13 +111,13 @@ public class Test1 {
             FileUtil.clean(f2);
             Assert.assertTrue(FileUtil.readText(f2).isEmpty());
 
-            var if1 = new BufferedInputStream(new FileInputStream(f1));
+            BufferedInputStream if1 = new BufferedInputStream(new FileInputStream(f1));
             FileUtil.append(f2, if1);
             if1.close();
             if1 = new BufferedInputStream(new FileInputStream(f1));
             FileUtil.append(f2, if1);
             if1.close();
-            var tf1 = FileUtil.readText(f1);
+            String tf1 = FileUtil.readText(f1);
             Assert.assertEquals(tf1+tf1, FileUtil.readText(f2));
 
             FileUtil.compress(f1, f1);
@@ -123,7 +127,7 @@ public class Test1 {
             f3.delete();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     @Test
@@ -168,7 +172,7 @@ public class Test1 {
     }
 
     @Test
-    public void timedCollection(){/*
+    public void timedCollection(){
         TimedList<Integer> list = new TimedList<>();
         list.add(0, 1500);
         Assert.assertTrue(list.contains(0));
@@ -201,12 +205,11 @@ public class Test1 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Assert.assertFalse(map.containsValue(1));*/
+        Assert.assertFalse(map.containsValue(1));
     }
 
     @Test
     public void charUtil(){
-        //System.out.println(CharUtil.DIGITS);
         //System.out.println(CharUtil.DIGITS);
     }
 }

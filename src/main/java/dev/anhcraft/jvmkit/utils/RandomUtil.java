@@ -43,6 +43,14 @@ public class RandomUtil {
     }
 
     /**
+     * Generates a random {@code boolean}.
+     * @return {@code true} or {@code false}
+     */
+    public static boolean randomBoolean(){
+        return RANDOMIZER.nextBoolean();
+    }
+
+    /**
      * Generates an array of letters.
      * @param length array's length
      * @return {@code char} array

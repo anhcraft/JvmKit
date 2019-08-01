@@ -1,7 +1,6 @@
 package dev.anhcraft.jvmkit.utils;
 
 import dev.anhcraft.jvmkit.lang.annotation.Immutable;
-import kotlin.Pair;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -80,9 +79,7 @@ public class ImmutableTimedCollection<E> extends TimedCollection<E> {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            E current = get(next);
-            next++;
-            return current;
+            return get(next++);
         }
 
         /**

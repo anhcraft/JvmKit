@@ -1,5 +1,6 @@
 package dev.anhcraft.jvmkit.helpers;
 
+import dev.anhcraft.jvmkit.utils.IOUtil;
 import org.jetbrains.annotations.NotNull;
 import dev.anhcraft.jvmkit.utils.ArrayUtil;
 import dev.anhcraft.jvmkit.utils.Condition;
@@ -154,7 +155,7 @@ public class HTTPConnectionHelper {
     public byte[] read(){
         if(input != null) {
             try {
-                return input.readAllBytes();
+                return IOUtil.toByteArray(input, 4096);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -171,7 +172,7 @@ public class HTTPConnectionHelper {
     public String readText(){
         if(input != null) {
             try {
-                return new String(input.readAllBytes());
+                return new String(IOUtil.toByteArray(input, 4096));
             } catch (IOException e) {
                 e.printStackTrace();
             }

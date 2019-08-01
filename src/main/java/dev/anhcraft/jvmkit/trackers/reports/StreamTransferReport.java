@@ -122,8 +122,8 @@ public class StreamTransferReport extends Report implements Serializable {
     }
 
     /**
-     * Checks if the action was finished.
-     * @return {@code true} if it was, or {@code false} if not
+     * Checks if the action finished.
+     * @return {@code true} if it did, or {@code false} if not
      */
     public boolean isFinished() {
         return isFinished;

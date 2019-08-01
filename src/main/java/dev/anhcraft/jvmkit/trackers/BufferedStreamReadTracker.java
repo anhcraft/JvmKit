@@ -62,19 +62,19 @@ public class BufferedStreamReadTracker implements Tracker<StreamTransferReport> 
             try {
                 byte[] buffer = new byte[bufferSize];
                 int n;
-                boolean eof;
+                boolean eos;
                 do {
                     long buffStartNanos = System.nanoTime();
                     n = inputStream.read(buffer, 0, bufferSize);
-                    eof = n != -1;
-                    if(eof) {
+                    eos = n != -1;
+                    if(eos) {
                         long buffEndNanos = System.nanoTime();
                         long deltaNanos = buffEndNanos - buffStartNanos;
                         report.setElapsedNanos(report.getElapsedNanos() + deltaNanos);
                         report.setTransferredBytes(report.getTransferredBytes() + n);
                         bufferCallback.accept(buffer);
                     }
-                } while (eof);
+                } while (eos);
                 report.setFinished(true);
                 endCallback.run();
             } catch (IOException e) {
