@@ -169,4 +169,16 @@ public class StringUtil {
                 StringBuilder::append
         ).toString();
     }
+
+    /**
+     * Cuts the string safely.
+     * @param str the string to be cut
+     * @param expectedNewLen the new length of the string (as expected)
+     * @return cut string
+     */
+    public static String cutString(@NotNull String str, int expectedNewLen){
+        Condition.argNotNull("str", str);
+        if(str.isEmpty()) return str;
+        return str.substring(0, Math.min(str.length(), Math.max(0, expectedNewLen)));
+    }
 }
