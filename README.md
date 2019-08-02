@@ -13,8 +13,8 @@ My personal utility kit for JVM languages.
 
 ```xml
 <dependency>
-    <groupId>dev.anhcraft.jvmkit</groupId>
-    <artifactId>JvmKit</artifactId>
+    <groupId>dev.anhcraft</groupId>
+    <artifactId>jvmkit</artifactId>
     <version>VERSION</version>
     <scope>compile</scope>
 </dependency>
