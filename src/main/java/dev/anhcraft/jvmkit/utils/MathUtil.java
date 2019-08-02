@@ -7,6 +7,36 @@ public class MathUtil {
 
     static {
         format.setGroupingUsed(false);
+        format.setMaximumFractionDigits(2);
+    }
+
+    /**
+     * Rounds up the given a number.
+     * @param number the number
+     * @return rounded number as string
+     */
+    public static String formatRound(double number){
+        return format.format(number);
+    }
+
+    /**
+     * Rounds up the given a number.
+     * @param number the number
+     * @return rounded number
+     */
+    public static double round(double number){
+        return Double.parseDouble(format.format(number));
+    }
+
+    /**
+     * Rounds up the given a number.
+     * @param number the number
+     * @param fractionDigits the maximum numbers of digits in the fraction part.
+     * @return rounded number as string
+     */
+    public static String formatRound(double number, int fractionDigits){
+        format.setMaximumFractionDigits(fractionDigits);
+        return format.format(number);
     }
 
     /**
