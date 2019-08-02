@@ -62,4 +62,18 @@ public class IOUtil {
         int n;
         while((n = in.read(data, 0, buff)) != -1) out.write(data, 0, n);
     }
+
+    /**
+     * Reads a specific resource. The resource must be within the class loader of the given class.
+     * @param clazz the class
+     * @param file the file path
+     * @return an byte array represents the resource data
+     * @throws IOException if I/O errors occur
+     */
+    public static byte[] readResource(Class<?> clazz, String file) throws IOException {
+        InputStream in = clazz.getResourceAsStream(file);
+        byte[] bytes = toByteArray(in, 2048);
+        in.close();
+        return bytes;
+    }
 }
