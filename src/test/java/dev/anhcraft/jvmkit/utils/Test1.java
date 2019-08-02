@@ -172,43 +172,6 @@ public class Test1 {
     }
 
     @Test
-    public void timedCollection(){
-        TimedList<Integer> list = new TimedList<>();
-        list.add(0, 1500);
-        Assert.assertTrue(list.contains(0));
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Assert.assertFalse(list.contains(0));
-
-        list.add(1, 1500);
-        list.removeAt(0);
-        Assert.assertFalse(list.contains(1));
-
-        list.add(1, 1500);
-        list.add(1, 1500);
-        list.add(1, 1500);
-        list.removeAll(1);
-        Assert.assertFalse(list.contains(1));
-
-        list.add(2, 300);
-        Assert.assertEquals(2, list.get(0).intValue());
-        Assert.assertEquals(2, list.stream().findFirst().orElse(0).intValue());
-
-        TimedMap<String, Integer> map = new TimedMap<>();
-        map.put("a", 1, 200);
-        Assert.assertTrue(map.containsKey("a"));
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Assert.assertFalse(map.containsValue(1));
-    }
-
-    @Test
     public void charUtil(){
         //System.out.println(CharUtil.DIGITS);
     }
