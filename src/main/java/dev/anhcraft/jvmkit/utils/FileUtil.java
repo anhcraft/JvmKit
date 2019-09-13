@@ -52,7 +52,7 @@ public class FileUtil {
     }
 
     /**
-     * Returns a {@link Stream} contains all fiels in the given directory.
+     * Returns a {@link Stream} contains all files in the given directory.
      * @param dir the directory
      * @return file stream
      */
