@@ -7,6 +7,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This class provides utility methods for array manipulation.
@@ -286,14 +287,8 @@ public class ArrayUtil {
      */
     public static <T> boolean contains(T[] array, T elem){
         if(array == null) return false;
-        if(elem == null){
-            for(T e : array) {
-                if(e == null) return true;
-            }
-        } else {
-            for(T e : array) {
-                if(elem.equals(e)) return true;
-            }
+        for(T e : array) {
+            if(Objects.equals(elem, e)) return true;
         }
         return false;
     }
@@ -476,6 +471,150 @@ public class ArrayUtil {
             if(x == 0) return mid;
             else if(x > 0) low = mid + 1;
             else high = mid - 1;
+        }
+        return -1;
+    }
+
+    /**
+     * Does a linear search though all elements in the given array.
+     * @param arr an array
+     * @param elem the element to be searched for
+     * @return the index of that element in the array (or <b>-1</b> if not found)
+     */
+    public static int linearSearch(int[] arr, int elem){
+        if(arr == null || arr.length == 0) return -1;
+        int i = 0;
+        while(i < arr.length){
+            if(arr[i] == elem) return i;
+            i++;
+        }
+        return -1;
+    }
+
+    /**
+     * Does a linear search though all elements in the given array.
+     * @param arr an array
+     * @param elem the element to be searched for
+     * @return the index of that element in the array (or <b>-1</b> if not found)
+     */
+    public static int linearSearch(boolean[] arr, boolean elem){
+        if(arr == null || arr.length == 0) return -1;
+        int i = 0;
+        while(i < arr.length){
+            if(arr[i] == elem) return i;
+            i++;
+        }
+        return -1;
+    }
+
+    /**
+     * Does a linear search though all elements in the given array.
+     * @param arr an array
+     * @param elem the element to be searched for
+     * @return the index of that element in the array (or <b>-1</b> if not found)
+     */
+    public static int linearSearch(long[] arr, long elem){
+        if(arr == null || arr.length == 0) return -1;
+        int i = 0;
+        while(i < arr.length){
+            if(arr[i] == elem) return i;
+            i++;
+        }
+        return -1;
+    }
+
+    /**
+     * Does a linear search though all elements in the given array.
+     * @param arr an array
+     * @param elem the element to be searched for
+     * @return the index of that element in the array (or <b>-1</b> if not found)
+     */
+    public static int linearSearch(byte[] arr, byte elem){
+        if(arr == null || arr.length == 0) return -1;
+        int i = 0;
+        while(i < arr.length){
+            if(arr[i] == elem) return i;
+            i++;
+        }
+        return -1;
+    }
+
+    /**
+     * Does a linear search though all elements in the given array.
+     * @param arr an array
+     * @param elem the element to be searched for
+     * @return the index of that element in the array (or <b>-1</b> if not found)
+     */
+    public static int linearSearch(short[] arr, short elem){
+        if(arr == null || arr.length == 0) return -1;
+        int i = 0;
+        while(i < arr.length){
+            if(arr[i] == elem) return i;
+            i++;
+        }
+        return -1;
+    }
+
+    /**
+     * Does a linear search though all elements in the given array.
+     * @param arr an array
+     * @param elem the element to be searched for
+     * @return the index of that element in the array (or <b>-1</b> if not found)
+     */
+    public static int linearSearch(float[] arr, float elem){
+        if(arr == null || arr.length == 0) return -1;
+        int i = 0;
+        while(i < arr.length){
+            if(arr[i] == elem) return i;
+            i++;
+        }
+        return -1;
+    }
+
+    /**
+     * Does a linear search though all elements in the given array.
+     * @param arr an array
+     * @param elem the element to be searched for
+     * @return the index of that element in the array (or <b>-1</b> if not found)
+     */
+    public static int linearSearch(double[] arr, double elem){
+        if(arr == null || arr.length == 0) return -1;
+        int i = 0;
+        while(i < arr.length){
+            if(arr[i] == elem) return i;
+            i++;
+        }
+        return -1;
+    }
+
+    /**
+     * Does a linear search though all elements in the given array.
+     * @param arr an array
+     * @param elem the element to be searched for
+     * @return the index of that element in the array (or <b>-1</b> if not found)
+     */
+    public static int linearSearch(char[] arr, char elem){
+        if(arr == null || arr.length == 0) return -1;
+        int i = 0;
+        while(i < arr.length){
+            if(arr[i] == elem) return i;
+            i++;
+        }
+        return -1;
+    }
+
+    /**
+     * Does a linear search though all elements in the given array.
+     * @param arr an array
+     * @param elem the element to be searched for
+     * @return the index of that element in the array (or <b>-1</b> if not found)
+     */
+    public static <T> int linearSearch(T[] arr, T elem){
+        if(arr == null || arr.length == 0) return -1;
+        int i = 0;
+        while(i < arr.length){
+            if(arr[i].equals(elem)) return i;
+            i++;
         }
         return -1;
     }
