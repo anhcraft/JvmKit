@@ -36,9 +36,9 @@ public class FileUtil {
     /**
      * The current working directory.
      */
-    public static final File WORKING_DIR = Paths.get("").toFile();
+    public static final File WORKING_DIR = Paths.get("").toFile().getAbsoluteFile();
 
-    private static final int DEFAULT_BUFF_SIZE = 8192;
+    public static final int DEFAULT_BUFF_SIZE = 8192;
 
     private static Stream.Builder<File> getFiles(Stream.Builder<File> sb, File d){
         File[] files = d.listFiles();
