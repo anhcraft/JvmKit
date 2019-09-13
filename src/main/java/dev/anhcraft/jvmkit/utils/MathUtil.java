@@ -99,4 +99,56 @@ public class MathUtil {
         if(num % multiplier != 0) num -= num % multiplier;
         return num;
     }
+
+    /**
+     * Clamps the given number to make it stay between the minimum and maximum.
+     * @param value the value
+     * @param min the minimum
+     * @param max the maximum
+     * @return the new value
+     */
+    public static int clampInt(int value, int min, int max){
+        if(value < min) return min;
+        else if(value > max) return max;
+        else return value;
+    }
+
+    /**
+     * Clamps the given number to make it stay between the minimum and maximum.
+     * @param value the value
+     * @param min the minimum
+     * @param max the maximum
+     * @return the new value
+     */
+    public static double clampDouble(double value, double min, double max){
+        if(value < min) return min;
+        else if(value > max) return max;
+        else return value;
+    }
+
+    /**
+     * Clamps the given number to make it stay between the minimum and maximum.
+     * @param value the value
+     * @param min the minimum
+     * @param max the maximum
+     * @return the new value
+     */
+    public static long clampLong(long value, long min, long max){
+        if(value < min) return min;
+        else if(value > max) return max;
+        else return value;
+    }
+
+    /**
+     * Clamps the given number to make it stay between the minimum and maximum.
+     * @param value the value
+     * @param min the minimum
+     * @param max the maximum
+     * @return the new value
+     */
+    public static float clampFloat(float value, float min, float max){
+        if(value < min) return min;
+        else if(value > max) return max;
+        else return value;
+    }
 }
