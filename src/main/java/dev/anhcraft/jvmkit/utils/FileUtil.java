@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
+import java.util.stream.Stream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -38,7 +39,30 @@ public class FileUtil {
     public static final File WORKING_DIR = Paths.get("").toFile();
 
     private static final int DEFAULT_BUFF_SIZE = 8192;
-    
+
+    private static Stream.Builder<File> getFiles(Stream.Builder<File> sb, File d){
+        File[] files = d.listFiles();
+        if(files != null) {
+            for (File f : files){
+                sb.add(f);
+                if(f.isDirectory()) getFiles(sb, f);
+            }
+        }
+        return sb;
+    }
+
+    /**
+     * Returns a {@link Stream} contains all fiels in the given directory.
+     * @param dir the directory
+     * @return file stream
+     */
+    @NotNull
+    public static Stream<File> streamFiles(@NotNull File dir){
+        Condition.argNotNull("dir", dir);
+        Condition.check(dir.isDirectory(), "`dir` must be an directory");
+        return getFiles(Stream.builder(), dir).build();
+    }
+
     /**
      * This method will copy:
      * <ul>
