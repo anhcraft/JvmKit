@@ -179,6 +179,24 @@ public class StringUtil {
     public static String cutString(@NotNull String str, int expectedNewLen){
         Condition.argNotNull("str", str);
         if(str.isEmpty()) return str;
-        return str.substring(0, Math.min(str.length(), Math.max(0, expectedNewLen)));
+        return str.substring(0, MathUtil.clampInt(expectedNewLen, 0, str.length()));
+    }
+
+    /**
+     * Repeats the given string for a specific times and returns the output.
+     * @param str the string
+     * @param times the number of repeat times
+     * @return new string
+     */
+    @NotNull
+    public static String repeat(@NotNull String str, int times){
+        Condition.argNotNull("str", str);
+        if(str.isEmpty()) return str;
+        if(times <= 0) return "";
+        if(times == 1) return str;
+
+        StringBuilder sb = new StringBuilder();
+        while(times-- > 0) sb.append(str);
+        return sb.toString();
     }
 }

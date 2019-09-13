@@ -153,6 +153,7 @@ public class Test1 {
         Assert.assertEquals("dlrow olleh", StringUtil.reverse("hello world"));
         Assert.assertEquals("he wrd", StringUtil.removeDigits("he110 w0r1d"));
         Assert.assertEquals("110 01", StringUtil.removeLetters("he110 w0r1d"));
+        Assert.assertEquals("abcabcabc", StringUtil.repeat("abc", 3));
     }
 
     @Test
