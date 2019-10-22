@@ -17,7 +17,7 @@ public class CollectionUtil {
      * @param clazz the class represents elements type
      * @return new list
      */
-    @SuppressWarnings(value = "unchecked")
+    @NotNull
     public static <E> E[] toArray(@NotNull Collection<E> collection, @NotNull Class<? extends E> clazz){
         Condition.argNotNull("collection", collection);
         Condition.argNotNull("clazz", clazz);
