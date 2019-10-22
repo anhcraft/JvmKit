@@ -1,7 +1,8 @@
 package dev.anhcraft.jvmkit.helpers;
 
-import org.jetbrains.annotations.NotNull;
 import dev.anhcraft.jvmkit.utils.Condition;
+import dev.anhcraft.jvmkit.utils.MathUtil;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
@@ -40,7 +41,7 @@ public class PaginationHelper<T> {
      * @return this object whose given page is opened
      */
     public PaginationHelper<T> open(int index){
-        currentPage = Math.max(1, Math.min(totalPage, index));
+        currentPage = MathUtil.clampInt(index, 1, totalPage);
         return this;
     }
 
@@ -86,7 +87,7 @@ public class PaginationHelper<T> {
 
     /**
      * Returns the current page.
-     * @return page index
+     * @return page index (>= 1)
      */
     public int getCurrentPage() {
         return currentPage;
