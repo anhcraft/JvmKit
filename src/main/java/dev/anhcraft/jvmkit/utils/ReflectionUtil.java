@@ -334,4 +334,19 @@ public class ReflectionUtil {
         }
         return fields;
     }
+
+    /**
+     * Gets all methods from the given class and its superclasses in the class hierarchy.
+     * @param clazz the lowest class in the class hierarchy
+     * @return array of methods
+     */
+    @NotNull
+    public static Method[] getAllMethods(@NotNull Class<?> clazz) {
+        Condition.argNotNull("clazz", clazz);
+        Method[] methods = clazz.getDeclaredMethods();
+        while(!(clazz = clazz.getDeclaringClass().getSuperclass()).equals(Object.class)){
+            methods = ArrayUtil.concat(methods, clazz.getDeclaredMethods());
+        }
+        return methods;
+    }
 }
