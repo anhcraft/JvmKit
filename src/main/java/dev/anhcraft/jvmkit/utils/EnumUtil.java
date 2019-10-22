@@ -12,8 +12,15 @@ import java.util.stream.Collectors;
 public class EnumUtil {
     private static final Map<Class<? extends Enum>, List<String>> ENUM_MAP = new WeakHashMap<>();
 
+    /**
+     * Finds the enum by its name.
+     * @param clazz the enum class
+     * @param name enum's name (<b>case-sensitive</b>)
+     * @param <T> enum's type
+     * @return the enum (or null if not found)
+     */
     @Nullable
-    public static <T extends Enum> Object getEnum(@NotNull Class<T> clazz, @NotNull String name){
+    public static <T extends Enum> Object findEnum(@NotNull Class<T> clazz, @NotNull String name){
         Condition.argNotNull("clazz", clazz);
         Condition.argNotNull("name", name);
         List<String> list = ENUM_MAP.get(clazz);
@@ -26,7 +33,6 @@ public class EnumUtil {
             }
         }
 
-        name = name.toUpperCase();
         if(list.contains(name)) {
             return Enum.valueOf(clazz, name);
         } else {
