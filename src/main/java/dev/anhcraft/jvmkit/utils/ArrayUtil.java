@@ -607,6 +607,7 @@ public class ArrayUtil {
      * Does a linear search though all elements in the given array.
      * @param arr an array
      * @param elem the element to be searched for
+     * @param <T> element type
      * @return the index of that element in the array (or <b>-1</b> if not found)
      */
     public static <T> int linearSearch(T[] arr, T elem){

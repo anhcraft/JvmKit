@@ -93,7 +93,7 @@ public class PaginationHelper<T> {
 
     /**
      * Returns the current page.
-     * @return page index (>= 1)
+     * @return page index (starting from 1)
      */
     public int getCurrentPage() {
         return currentPage;
