@@ -11,6 +11,7 @@ public class StringUtil {
      * @param str a string
      * @return escaped string
      */
+    @NotNull
     public static String escape(@NotNull String str){
         Condition.argNotNull("str", str);
         return str.replace("\\", "\\\\").replace("'", "\\'").replace("\0", "\\0").replace("\n", "\\n").replace("\r", "\\r").replace("\"", "\\\"").replace("\\x1a", "\\Z");
@@ -21,6 +22,7 @@ public class StringUtil {
      * @param str a string
      * @return unescaped string
      */
+    @NotNull
     public static String unescape(@NotNull String str){
         Condition.argNotNull("str", str);
         return str.replace("\\\\\\", "\\").replace("\\'", "'").replace("\\0", "\0").replace("\\n", "\n").replace("\\r", "\r").replace("\\\"", "\"").replace("\\Z", "\\xla");
@@ -72,6 +74,7 @@ public class StringUtil {
      * @param str a string
      * @return the string which was converted
      */
+    @NotNull
     public static String toUpperCamelCase(@NotNull String str){
         return toCamelCase(str, false);
     }
@@ -81,6 +84,7 @@ public class StringUtil {
      * @param str a string
      * @return the string which was converted
      */
+    @NotNull
     public static String toLowerCamelCase(@NotNull String str){
         return toCamelCase(str, true);
     }
@@ -117,6 +121,7 @@ public class StringUtil {
      * @param str a string
      * @return the string which was converted
      */
+    @NotNull
     public static String toScreamSnakeCase(@NotNull String str){
         return toSnakeCase(str, true);
     }
@@ -126,6 +131,7 @@ public class StringUtil {
      * @param str a string
      * @return the string which was converted
      */
+    @NotNull
     public static String toSnakeCase(@NotNull String str){
         return toSnakeCase(str, false);
     }
@@ -135,6 +141,7 @@ public class StringUtil {
      * @param str a string
      * @return reversed string
      */
+    @NotNull
     public static String reverse(@NotNull String str){
         Condition.argNotNull("str", str);
         char[] chars = str.toCharArray();
@@ -147,6 +154,7 @@ public class StringUtil {
      * @param str a string
      * @return a string with no digits
      */
+    @NotNull
     public static String removeDigits(@NotNull String str) {
         Condition.argNotNull("str", str);
         return str.chars().filter(value -> !Character.isDigit(value)).collect(
@@ -161,6 +169,7 @@ public class StringUtil {
      * @param str a string
      * @return a string with no letters
      */
+    @NotNull
     public static String removeLetters(@NotNull String str) {
         Condition.argNotNull("str", str);
         return str.chars().filter(value -> !Character.isLetter(value)).collect(
@@ -176,6 +185,7 @@ public class StringUtil {
      * @param expectedNewLen the new length of the string (as expected)
      * @return cut string
      */
+    @NotNull
     public static String cutString(@NotNull String str, int expectedNewLen){
         Condition.argNotNull("str", str);
         if(str.isEmpty()) return str;

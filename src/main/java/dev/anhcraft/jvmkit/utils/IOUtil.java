@@ -39,6 +39,7 @@ public class IOUtil {
      * @return an array of bytes
      * @throws IOException if I/O errors occur
      */
+    @NotNull
     public static byte[] toByteArray(@NotNull InputStream stream, int buff) throws IOException {
         Condition.argNotNull("stream", stream);
         byte[] data = new byte[buff];
@@ -70,6 +71,7 @@ public class IOUtil {
      * @return an byte array represents the resource data
      * @throws IOException if I/O errors occur
      */
+    @NotNull
     public static byte[] readResource(Class<?> clazz, String file) throws IOException {
         InputStream in = clazz.getResourceAsStream(file);
         byte[] bytes = toByteArray(in, 2048);

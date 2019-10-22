@@ -1,5 +1,8 @@
 package dev.anhcraft.jvmkit.utils;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.Nullable;
+
 import java.io.*;
 
 /**
@@ -11,7 +14,8 @@ public class SerializationUtil {
      * @param object object
      * @return an array of bytes which represents that object
      */
-    public static byte[] serialize(Object object) {
+    @Contract("null -> null")
+    public static byte[] serialize(@Nullable Object object) {
         if(object == null) return null;
         ByteArrayOutputStream b = new ByteArrayOutputStream();
         try {
@@ -29,7 +33,8 @@ public class SerializationUtil {
      * @param bytes an array of bytes which represents the object
      * @return the object
      */
-    public static Object deserialize(byte[] bytes) {
+    @Contract("null -> null")
+    public static Object deserialize(@Nullable byte[] bytes) {
         if (bytes == null) return null;
         try {
             ObjectInputStream is = new ObjectInputStream(new ByteArrayInputStream(bytes));

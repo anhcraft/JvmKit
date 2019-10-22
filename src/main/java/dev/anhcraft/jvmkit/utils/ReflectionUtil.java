@@ -1,6 +1,7 @@
 package dev.anhcraft.jvmkit.utils;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -19,7 +20,8 @@ public class ReflectionUtil {
      * @param fieldName the name of the field
      * @return the value of the field
      */
-    public static Object getField(@NotNull Class<?> clazz, Object object, @NotNull String fieldName){
+    @Nullable
+    public static Object getField(@NotNull Class<?> clazz, @Nullable Object object, @NotNull String fieldName){
         Condition.argNotNull("clazz", clazz);
         Condition.argNotNull("fieldName", fieldName);
         try {
@@ -40,7 +42,8 @@ public class ReflectionUtil {
      * @param fieldName the name of the field
      * @return the value of the field
      */
-    public static Object getDeclaredField(@NotNull Class<?> clazz, Object object, @NotNull String fieldName){
+    @Nullable
+    public static Object getDeclaredField(@NotNull Class<?> clazz, @Nullable Object object, @NotNull String fieldName){
         Condition.argNotNull("clazz", clazz);
         Condition.argNotNull("fieldName", fieldName);
         try {
@@ -59,7 +62,8 @@ public class ReflectionUtil {
      * @param fieldName the name of the field
      * @return the value of the field
      */
-    public static Object getStaticField(@NotNull Class<?> clazz, String fieldName){
+    @Nullable
+    public static Object getStaticField(@NotNull Class<?> clazz, @NotNull String fieldName){
         return getField(clazz, null, fieldName);
     }
 
@@ -69,7 +73,8 @@ public class ReflectionUtil {
      * @param fieldName the name of the field
      * @return the value of the field
      */
-    public static Object getDeclaredStaticField(@NotNull Class<?> clazz, String fieldName){
+    @Nullable
+    public static Object getDeclaredStaticField(@NotNull Class<?> clazz, @NotNull String fieldName){
         return getDeclaredField(clazz, null, fieldName);
     }
 
@@ -81,7 +86,7 @@ public class ReflectionUtil {
      * @param fieldName the name of the field
      * @param fieldValue the new value
      */
-    public static void setField(@NotNull Class<?> clazz, Object object, @NotNull String fieldName, Object fieldValue){
+    public static void setField(@NotNull Class<?> clazz, @Nullable Object object, @NotNull String fieldName, @Nullable Object fieldValue){
         Condition.argNotNull("clazz", clazz);
         Condition.argNotNull("fieldName", fieldName);
         try {
@@ -101,7 +106,7 @@ public class ReflectionUtil {
      * @param fieldName the name of the field
      * @param fieldValue the new value
      */
-    public static void setDeclaredField(@NotNull Class<?> clazz, Object object, @NotNull String fieldName, Object fieldValue){
+    public static void setDeclaredField(@NotNull Class<?> clazz, @Nullable Object object, @NotNull String fieldName, @Nullable Object fieldValue){
         Condition.argNotNull("clazz", clazz);
         Condition.argNotNull("fieldName", fieldName);
         try {
@@ -119,7 +124,7 @@ public class ReflectionUtil {
      * @param fieldName the name of the field
      * @param fieldValue the new value
      */
-    public static void setStaticField(@NotNull Class<?> clazz, @NotNull String fieldName, Object fieldValue){
+    public static void setStaticField(@NotNull Class<?> clazz, @NotNull String fieldName, @Nullable Object fieldValue){
         setField(clazz, null, fieldName, fieldValue);
     }
 
@@ -129,7 +134,7 @@ public class ReflectionUtil {
      * @param fieldName the name of the field
      * @param fieldValue the new value
      */
-    public static void setDeclaredStaticField(@NotNull Class<?> clazz, @NotNull String fieldName, Object fieldValue){
+    public static void setDeclaredStaticField(@NotNull Class<?> clazz, @NotNull String fieldName, @Nullable Object fieldValue){
         setDeclaredField(clazz, null, fieldName, fieldValue);
     }
 
@@ -143,7 +148,8 @@ public class ReflectionUtil {
      * @param args all arguments to be passed into parameters
      * @return the received result after called the method
      */
-    public static Object invokeMethod(@NotNull Class<?> clazz, Object object, @NotNull String method, Class<?>[] params, Object[] args){
+    @Nullable
+    public static Object invokeMethod(@NotNull Class<?> clazz, @Nullable Object object, @NotNull String method, @Nullable Class<?>[] params, @Nullable Object[] args){
         Condition.argNotNull("clazz", clazz);
         Condition.argNotNull("method", method);
         try {
@@ -166,7 +172,8 @@ public class ReflectionUtil {
      * @param args all arguments to be passed into parameters
      * @return the received result after called the method
      */
-    public static Object invokeDeclaredMethod(@NotNull Class<?> clazz, Object object, @NotNull String method, Class<?>[] params, Object[] args){
+    @Nullable
+    public static Object invokeDeclaredMethod(@NotNull Class<?> clazz, @Nullable Object object, @NotNull String method, @Nullable Class<?>[] params, @Nullable Object[] args){
         Condition.argNotNull("clazz", clazz);
         Condition.argNotNull("method", method);
         try {
@@ -187,7 +194,8 @@ public class ReflectionUtil {
      * @param method the method name
      * @return the received result after called the method
      */
-    public static Object invokeMethod(@NotNull Class<?> clazz, Object object, @NotNull String method){
+    @Nullable
+    public static Object invokeMethod(@NotNull Class<?> clazz, @Nullable Object object, @NotNull String method){
         return invokeMethod(clazz, object, method, null, null);
     }
 
@@ -199,7 +207,8 @@ public class ReflectionUtil {
      * @param method the method name
      * @return the received result after called the method
      */
-    public static Object invokeDeclaredMethod(@NotNull Class<?> clazz, Object object, @NotNull String method){
+    @Nullable
+    public static Object invokeDeclaredMethod(@NotNull Class<?> clazz, @Nullable Object object, @NotNull String method){
         return invokeDeclaredMethod(clazz, object, method, null, null);
     }
 
@@ -211,7 +220,8 @@ public class ReflectionUtil {
      * @param args all arguments to be passed into parameters
      * @return the received result after called the method
      */
-    public static Object invokeStaticMethod(@NotNull Class<?> clazz, @NotNull String method, Class<?>[] params, Object[] args){
+    @Nullable
+    public static Object invokeStaticMethod(@NotNull Class<?> clazz, @NotNull String method, @Nullable Class<?>[] params, @Nullable Object[] args){
         return invokeMethod(clazz, null, method, params, args);
     }
 
@@ -223,7 +233,8 @@ public class ReflectionUtil {
      * @param args all arguments to be passed into parameters
      * @return the received result after called the method
      */
-    public static Object invokeDeclaredStaticMethod(@NotNull Class<?> clazz, @NotNull String method, Class<?>[] params, Object[] args){
+    @Nullable
+    public static Object invokeDeclaredStaticMethod(@NotNull Class<?> clazz, @NotNull String method, @Nullable Class<?>[] params, @Nullable Object[] args){
         return invokeDeclaredMethod(clazz, null, method, params, args);
     }
 
@@ -233,6 +244,7 @@ public class ReflectionUtil {
      * @param method the method name
      * @return the received result after called the method
      */
+    @Nullable
     public static Object invokeStaticMethod(@NotNull Class<?> clazz, @NotNull String method){
         return invokeMethod(clazz, null, method, null, null);
     }
@@ -243,6 +255,7 @@ public class ReflectionUtil {
      * @param method the method name
      * @return the received result after called the method
      */
+    @Nullable
     public static Object invokeDeclaredStaticMethod(@NotNull Class<?> clazz, @NotNull String method){
         return invokeDeclaredMethod(clazz, null, method, null, null);
     }
@@ -254,7 +267,8 @@ public class ReflectionUtil {
      * @param args all arguments to be passed into parameters
      * @return the new object which is a result of calling the constructor
      */
-    public static Object invokeConstructor(@NotNull Class<?> clazz, Class<?>[] params, Object[] args){
+    @Nullable
+    public static Object invokeConstructor(@NotNull Class<?> clazz, @Nullable Class<?>[] params, @Nullable Object[] args){
         Condition.argNotNull("clazz", clazz);
         try {
             Constructor<?> f = clazz.getConstructor(params);
@@ -273,7 +287,8 @@ public class ReflectionUtil {
      * @param args all arguments to be passed into parameters
      * @return the new object which is a result of calling the constructor
      */
-    public static Object invokeDeclaredConstructor(@NotNull Class<?> clazz, Class<?>[] params, Object[] args){
+    @Nullable
+    public static Object invokeDeclaredConstructor(@NotNull Class<?> clazz, @Nullable Class<?>[] params, @Nullable Object[] args){
         Condition.argNotNull("clazz", clazz);
         try {
             Constructor<?> f = clazz.getDeclaredConstructor(params);
@@ -290,6 +305,7 @@ public class ReflectionUtil {
      * @param clazz the class which contains the constructor
      * @return the new object which is a result of calling the constructor
      */
+    @Nullable
     public static Object invokeConstructor(@NotNull Class<?> clazz){
         return invokeConstructor(clazz, null, null);
     }
@@ -299,6 +315,7 @@ public class ReflectionUtil {
      * @param clazz the class which contains the constructor
      * @return the new object which is a result of calling the constructor
      */
+    @Nullable
     public static Object invokeDeclaredConstructor(@NotNull Class<?> clazz){
         return invokeDeclaredConstructor(clazz, null, null);
     }
@@ -308,6 +325,7 @@ public class ReflectionUtil {
      * @param clazz the lowest class in the class hierarchy
      * @return array of fields
      */
+    @NotNull
     public static Field[] getAllFields(@NotNull Class<?> clazz) {
         Condition.argNotNull("clazz", clazz);
         Field[] fields = clazz.getDeclaredFields();

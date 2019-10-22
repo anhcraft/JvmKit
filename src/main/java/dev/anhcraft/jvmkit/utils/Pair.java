@@ -1,5 +1,7 @@
 package dev.anhcraft.jvmkit.utils;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -24,7 +26,7 @@ public class Pair<F, S> implements Serializable {
      * @param first the first object
      * @param second the second object
      */
-    public Pair(F first, S second){
+    public Pair(@Nullable F first, @Nullable S second){
         this.first = first;
         this.second = second;
     }
@@ -33,6 +35,7 @@ public class Pair<F, S> implements Serializable {
      * Returns the first object
      * @return the object
      */
+    @Nullable
     public F getFirst() {
         return first;
     }
@@ -41,7 +44,7 @@ public class Pair<F, S> implements Serializable {
      * Overrides the first object
      * @param first the object to be set
      */
-    public void setFirst(F first) {
+    public void setFirst(@Nullable F first) {
         this.first = first;
     }
 
@@ -49,6 +52,7 @@ public class Pair<F, S> implements Serializable {
      * Returns the second object
      * @return the object
      */
+    @Nullable
     public S getSecond() {
         return second;
     }
@@ -57,7 +61,7 @@ public class Pair<F, S> implements Serializable {
      * Overrides the second object
      * @param second the object to be set
      */
-    public void setSecond(S second) {
+    public void setSecond(@Nullable S second) {
         this.second = second;
     }
 

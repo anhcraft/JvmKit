@@ -41,6 +41,7 @@ public class BufferedStreamReadTracker implements Tracker<StreamTransferReport> 
      * Returns the buffer callback.
      * @return buffer callback
      */
+    @NotNull
     public Consumer<byte[]> getBufferCallback() {
         return bufferCallback;
     }
@@ -49,7 +50,8 @@ public class BufferedStreamReadTracker implements Tracker<StreamTransferReport> 
      * Sets the buffer callback
      * @param bufferCallback buffer callback
      */
-    public void setBufferCallback(Consumer<byte[]> bufferCallback) {
+    public void setBufferCallback(@NotNull Consumer<byte[]> bufferCallback) {
+        Condition.argNotNull("bufferCallback", bufferCallback);
         this.bufferCallback = bufferCallback;
     }
 

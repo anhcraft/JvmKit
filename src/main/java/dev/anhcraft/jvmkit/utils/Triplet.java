@@ -1,6 +1,8 @@
 package dev.anhcraft.jvmkit.utils;
 
 
+import org.jetbrains.annotations.Nullable;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -28,7 +30,7 @@ public class Triplet<F, S, T> implements Serializable {
      * @param second the second object
      * @param third the third object
      */
-    public Triplet(F first, S second, T third){
+    public Triplet(@Nullable F first, @Nullable S second, @Nullable T third){
         this.first = first;
         this.second = second;
         this.third = third;
@@ -38,6 +40,7 @@ public class Triplet<F, S, T> implements Serializable {
      * Returns the first object
      * @return the object
      */
+    @Nullable
     public F getFirst() {
         return first;
     }
@@ -46,7 +49,7 @@ public class Triplet<F, S, T> implements Serializable {
      * Overrides the first object
      * @param first the object to be set
      */
-    public void setFirst(F first) {
+    public void setFirst(@Nullable F first) {
         this.first = first;
     }
 
@@ -54,6 +57,7 @@ public class Triplet<F, S, T> implements Serializable {
      * Returns the second object
      * @return the object
      */
+    @Nullable
     public S getSecond() {
         return second;
     }
@@ -62,7 +66,7 @@ public class Triplet<F, S, T> implements Serializable {
      * Overrides the second object
      * @param second the object to be set
      */
-    public void setSecond(S second) {
+    public void setSecond(@Nullable S second) {
         this.second = second;
     }
 
@@ -70,6 +74,7 @@ public class Triplet<F, S, T> implements Serializable {
      * Returns the third object
      * @return the object
      */
+    @Nullable
     public T getThird() {
         return third;
     }
@@ -78,7 +83,7 @@ public class Triplet<F, S, T> implements Serializable {
      * Overrides the third object
      * @param third the object to be set
      */
-    public void setThird(T third) {
+    public void setThird(@Nullable T third) {
         this.third = third;
     }
 

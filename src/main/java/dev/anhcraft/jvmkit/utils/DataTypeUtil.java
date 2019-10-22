@@ -1,5 +1,7 @@
 package dev.anhcraft.jvmkit.utils;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 
 /**
@@ -38,7 +40,9 @@ public class DataTypeUtil {
      * @param objectClass object class
      * @return primitive class (or the old class if failed)
      */
-    public static Class<?> getPrimitiveClass(Class<?> objectClass){
+    @NotNull
+    public static Class<?> getPrimitiveClass(@NotNull Class<?> objectClass){
+        Condition.argNotNull("objectClass", objectClass);
         return fromObject.getOrDefault(objectClass, objectClass);
     }
 
@@ -47,7 +51,9 @@ public class DataTypeUtil {
      * @param primitiveClass primitive class
      * @return object class (or the old class if failed)
      */
-    public static Class<?> getObjectClass(Class<?> primitiveClass){
+    @NotNull
+    public static Class<?> getObjectClass(@NotNull Class<?> primitiveClass){
+        Condition.argNotNull("primitiveClass", primitiveClass);
         return fromPrimitive.getOrDefault(primitiveClass, primitiveClass);
     }
 }

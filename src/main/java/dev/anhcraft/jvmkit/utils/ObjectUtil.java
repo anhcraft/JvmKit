@@ -3,6 +3,7 @@ package dev.anhcraft.jvmkit.utils;
 import dev.anhcraft.jvmkit.lang.annotation.Beta;
 import dev.anhcraft.jvmkit.lang.annotation.Label;
 import dev.anhcraft.jvmkit.lang.enumeration.ComparisonOption;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -24,7 +25,7 @@ public class ObjectUtil {
      * Otherwise, both of them are equal)
      */
     @Beta
-    public static int deepCompare(Object a, Object b, ComparisonOption... options){
+    public static int deepCompare(@Nullable Object a, @Nullable Object b, @Nullable ComparisonOption... options){
         if(a == null && b == null) return 0;
         else if(a == null) return -1;
         else if(b == null) return 1;

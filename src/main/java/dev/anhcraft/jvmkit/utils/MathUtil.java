@@ -1,5 +1,7 @@
 package dev.anhcraft.jvmkit.utils;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.DecimalFormat;
 
 public class MathUtil {
@@ -15,6 +17,7 @@ public class MathUtil {
      * @param number the number
      * @return rounded number as string
      */
+    @NotNull
     public static String formatRound(double number){
         return format.format(number);
     }
@@ -34,6 +37,7 @@ public class MathUtil {
      * @param fractionDigits the maximum numbers of digits in the fraction part.
      * @return rounded number as string
      */
+    @NotNull
     public static String formatRound(double number, int fractionDigits){
         format.setMaximumFractionDigits(fractionDigits);
         return format.format(number);

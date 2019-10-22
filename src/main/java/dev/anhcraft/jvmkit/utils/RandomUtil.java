@@ -1,5 +1,8 @@
 package dev.anhcraft.jvmkit.utils;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.security.SecureRandom;
 import java.util.List;
 
@@ -55,6 +58,7 @@ public class RandomUtil {
      * @param length array's length
      * @return {@code char} array
      */
+    @NotNull
     public static char[] randomLetters(int length){
         Condition.check(length >= 0, "'length' must not be negative");
         char[] chars = new char[length];
@@ -67,6 +71,7 @@ public class RandomUtil {
      * @param length array's length
      * @return {@code char} array
      */
+    @NotNull
     public static char[] randomDigits(int length){
         Condition.check(length >= 0, "'length' must not be negative");
         char[] chars = new char[length];
@@ -80,7 +85,8 @@ public class RandomUtil {
      * @param <E> element type
      * @return picked element
      */
-    public static <E> E pickRandom(List<E> list){
+    @Nullable
+    public static <E> E pickRandom(@NotNull List<E> list){
         return list.get(RANDOMIZER.nextInt(list.size()));
     }
 }
