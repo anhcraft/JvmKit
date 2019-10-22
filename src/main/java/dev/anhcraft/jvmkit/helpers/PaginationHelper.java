@@ -2,7 +2,9 @@ package dev.anhcraft.jvmkit.helpers;
 
 import dev.anhcraft.jvmkit.utils.Condition;
 import dev.anhcraft.jvmkit.utils.MathUtil;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
@@ -40,6 +42,7 @@ public class PaginationHelper<T> {
      * @param index the page index (starting from one)
      * @return this object whose given page is opened
      */
+    @Contract("_ -> this")
     public PaginationHelper<T> open(int index){
         currentPage = MathUtil.clampInt(index, 1, totalPage);
         return this;
@@ -49,6 +52,7 @@ public class PaginationHelper<T> {
      * Opens the next page.
      * @return this object whose next page is opened
      */
+    @Contract("-> this")
     public PaginationHelper<T> next(){
         return open(currentPage+1);
     }
@@ -57,6 +61,7 @@ public class PaginationHelper<T> {
      * Opens the previous page.
      * @return this object whose previous page is opened
      */
+    @Contract("-> this")
     public PaginationHelper<T> prev(){
         return open(currentPage-1);
     }
@@ -65,6 +70,7 @@ public class PaginationHelper<T> {
      * Returns the data
      * @return data
      */
+    @NotNull
     public T[] getData() {
         return data;
     }
@@ -105,6 +111,7 @@ public class PaginationHelper<T> {
      * Collects all elements in the current page.
      * @return an array of elements
      */
+    @NotNull
     public T[] collect(){
         return Arrays.copyOfRange(data, (currentPage-1)*slotPerPage, Math.min(totalSlot, currentPage*slotPerPage));
     }
@@ -114,7 +121,8 @@ public class PaginationHelper<T> {
      * @param consumer consumer
      * @return this object
      */
-    public PaginationHelper<T> each(Consumer<T> consumer){
+    @Contract("_ -> this")
+    public PaginationHelper<T> each(@Nullable Consumer<T> consumer){
         if(consumer != null) {
             for (T e : collect()) consumer.accept(e);
         }

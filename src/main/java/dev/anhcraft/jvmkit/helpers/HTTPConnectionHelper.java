@@ -1,6 +1,7 @@
 package dev.anhcraft.jvmkit.helpers;
 
 import dev.anhcraft.jvmkit.utils.IOUtil;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import dev.anhcraft.jvmkit.utils.ArrayUtil;
 import dev.anhcraft.jvmkit.utils.Condition;
@@ -63,6 +64,7 @@ public class HTTPConnectionHelper {
      * @param method method (e.g: get, post, etc)
      * @return this object
      */
+    @Contract("_ -> this")
     public HTTPConnectionHelper setMethod(@NotNull String method){
         Condition.argNotNull("method", method);
         this.method = method;
@@ -75,6 +77,7 @@ public class HTTPConnectionHelper {
      * @param value property value
      * @return this object
      */
+    @Contract("_, _ -> this")
     public HTTPConnectionHelper setProperty(@NotNull String name, @NotNull String value){
         Condition.argNotNull("name", name);
         Condition.argNotNull("value", value);
@@ -86,6 +89,7 @@ public class HTTPConnectionHelper {
      * Enables the output.
      * @return this object
      */
+    @Contract("-> this")
     public HTTPConnectionHelper doOutput(){
         this.doOutput = true;
         return this;
@@ -95,6 +99,7 @@ public class HTTPConnectionHelper {
      * Connects to the url.
      * @return this object
      */
+    @Contract("-> this")
     public HTTPConnectionHelper connect(){
         try {
             conn = (HttpURLConnection) this.url.openConnection();
@@ -119,6 +124,7 @@ public class HTTPConnectionHelper {
      * @param b a byte
      * @return this object
      */
+    @Contract("_ -> this")
     public HTTPConnectionHelper write(byte b){
         if(output != null) {
             try {
@@ -136,8 +142,11 @@ public class HTTPConnectionHelper {
      * @param bytes an array of bytes
      * @return this object
      */
-    public HTTPConnectionHelper write(byte[] bytes){
+    @Contract("_ -> this")
+    public HTTPConnectionHelper write(@NotNull byte[] bytes){
+        Condition.argNotNull("bytes", bytes);
         if(output != null) {
+            Condition.argNotNull("bytes", bytes);
             try {
                 this.output.write(bytes);
             } catch(IOException e) {
@@ -152,13 +161,15 @@ public class HTTPConnectionHelper {
      * This method only works after use the method {@link #connect()}.
      * @return data
      */
+    @NotNull
     public byte[] read(){
-        if(input != null) {
-            try {
-                return IOUtil.toByteArray(input, 4096);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if(input == null) {
+            throw new UnsupportedOperationException("Please connect first");
+        }
+        try {
+            return IOUtil.toByteArray(input, 4096);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return ArrayUtil.EMPTY_BYTE_ARRAY;
     }
@@ -168,23 +179,28 @@ public class HTTPConnectionHelper {
      * This method only works after use the method {@link #connect()}.
      * @return text
      */
-    @Nullable
+    @NotNull
     public String readText(){
-        if(input != null) {
-            try {
-                return new String(IOUtil.toByteArray(input, 4096));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if(input == null) {
+            throw new UnsupportedOperationException("Please connect first");
         }
-        return null;
+        try {
+            return new String(IOUtil.toByteArray(input, 4096));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     /**
      * Returns the input stream of this connection.
      * @return input stream
      */
+    @NotNull
     public BufferedInputStream getInput(){
+        if(input == null) {
+            throw new UnsupportedOperationException("Please connect first");
+        }
         return input;
     }
 
@@ -192,6 +208,7 @@ public class HTTPConnectionHelper {
      * Returns the output stream of this connection.
      * @return output stream
      */
+    @Nullable
     public BufferedOutputStream getOutput(){
         return output;
     }
@@ -200,6 +217,9 @@ public class HTTPConnectionHelper {
      * Disconnects from the current connection.
      */
     public void disconnect(){
+        if(conn == null) {
+            throw new UnsupportedOperationException("Please connect first");
+        }
         conn.disconnect();
     }
 
@@ -208,6 +228,9 @@ public class HTTPConnectionHelper {
      * @return content's length (or {@code -1} if this connection did not start)
      */
     public long getContentLength(){
+        if(conn == null) {
+            throw new UnsupportedOperationException("Please connect first");
+        }
         return conn.getContentLengthLong();
     }
 
@@ -215,7 +238,11 @@ public class HTTPConnectionHelper {
      * Returns this connection.
      * @return connection
      */
+    @NotNull
     public HttpURLConnection getConnection(){
+        if(conn == null) {
+            throw new UnsupportedOperationException("Please connect first");
+        }
         return conn;
     }
 }

@@ -1,6 +1,7 @@
 package dev.anhcraft.jvmkit.builders;
 
 import dev.anhcraft.jvmkit.utils.Condition;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -41,6 +42,7 @@ public class FilePathBuilder implements Builder<String> {
      * @param names list of directories
      * @return this object
      */
+    @Contract("_ -> this")
     public FilePathBuilder dir(String... names){
         if(names != null && !locked.get()) {
             for(String n : names) {
@@ -56,6 +58,7 @@ public class FilePathBuilder implements Builder<String> {
      * @param name file name
      * @return this object
      */
+    @Contract("_ -> this")
     public FilePathBuilder file(String name){
         if(name != null && locked.compareAndSet(false, true)) path.append(name);
         return this;
@@ -66,6 +69,7 @@ public class FilePathBuilder implements Builder<String> {
      * @return path
      */
     @Override
+    @NotNull
     public String build() {
         return path.toString();
     }

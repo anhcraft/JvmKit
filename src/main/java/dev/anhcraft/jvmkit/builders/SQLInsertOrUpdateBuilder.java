@@ -1,8 +1,10 @@
 package dev.anhcraft.jvmkit.builders;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import dev.anhcraft.jvmkit.utils.Condition;
 import dev.anhcraft.jvmkit.utils.StringUtil;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +31,9 @@ public class SQLInsertOrUpdateBuilder implements Builder<String> {
      * @param value entry value
      * @return this object
      */
-    public SQLInsertOrUpdateBuilder add(String name, String value){
+    @Contract("_, _ -> this")
+    public SQLInsertOrUpdateBuilder add(@NotNull String name, @Nullable String value){
+        Condition.argNotNull("name", name);
         data.put(name, value == null ? "null" : value);
         return this;
     }
@@ -40,7 +44,9 @@ public class SQLInsertOrUpdateBuilder implements Builder<String> {
      * @param value entry value
      * @return this object
      */
-    public SQLInsertOrUpdateBuilder add(String name, double value){
+    @Contract("_, _ -> this")
+    public SQLInsertOrUpdateBuilder add(@NotNull String name, double value){
+        Condition.argNotNull("name", name);
         data.put(name, Double.toString(value));
         return this;
     }
@@ -51,7 +57,9 @@ public class SQLInsertOrUpdateBuilder implements Builder<String> {
      * @param value entry value
      * @return this object
      */
-    public SQLInsertOrUpdateBuilder add(String name, float value){
+    @Contract("_, _ -> this")
+    public SQLInsertOrUpdateBuilder add(@NotNull String name, float value){
+        Condition.argNotNull("name", name);
         data.put(name, Float.toString(value));
         return this;
     }
@@ -62,7 +70,9 @@ public class SQLInsertOrUpdateBuilder implements Builder<String> {
      * @param value entry value
      * @return this object
      */
-    public SQLInsertOrUpdateBuilder add(String name, short value){
+    @Contract("_, _ -> this")
+    public SQLInsertOrUpdateBuilder add(@NotNull String name, short value){
+        Condition.argNotNull("name", name);
         data.put(name, Short.toString(value));
         return this;
     }
@@ -73,7 +83,9 @@ public class SQLInsertOrUpdateBuilder implements Builder<String> {
      * @param value entry value
      * @return this object
      */
-    public SQLInsertOrUpdateBuilder add(String name, long value){
+    @Contract("_, _ -> this")
+    public SQLInsertOrUpdateBuilder add(@NotNull String name, long value){
+        Condition.argNotNull("name", name);
         data.put(name, Long.toString(value));
         return this;
     }
@@ -84,7 +96,9 @@ public class SQLInsertOrUpdateBuilder implements Builder<String> {
      * @param value entry value
      * @return this object
      */
-    public SQLInsertOrUpdateBuilder add(String name, int value){
+    @Contract("_, _ -> this")
+    public SQLInsertOrUpdateBuilder add(@NotNull String name, int value){
+        Condition.argNotNull("name", name);
         data.put(name, Integer.toString(value));
         return this;
     }
@@ -95,7 +109,9 @@ public class SQLInsertOrUpdateBuilder implements Builder<String> {
      * @param value entry value
      * @return this object
      */
-    public SQLInsertOrUpdateBuilder add(String name, boolean value){
+    @Contract("_, _ -> this")
+    public SQLInsertOrUpdateBuilder add(@NotNull String name, boolean value){
+        Condition.argNotNull("name", name);
         data.put(name, Boolean.toString(value));
         return this;
     }
@@ -106,8 +122,10 @@ public class SQLInsertOrUpdateBuilder implements Builder<String> {
      * @param value entry value
      * @return this object
      */
-    public SQLInsertOrUpdateBuilder add(String name, Enum<?> value) {
-        data.put(name, value == null ? "null" : value.toString());
+    @Contract("_, _ -> this")
+    public SQLInsertOrUpdateBuilder add(@NotNull String name, @Nullable Enum<?> value) {
+        Condition.argNotNull("name", name);
+        data.put(name, value == null ? "null" : value.name());
         return this;
     }
 
@@ -116,6 +134,7 @@ public class SQLInsertOrUpdateBuilder implements Builder<String> {
      * @return statement
      */
     @Override
+    @NotNull
     public String build(){
         StringBuilder x = new StringBuilder("INSERT INTO `" + tableName + "`(" +
                 String.join(",", data.keySet()) + ") VALUES(");
