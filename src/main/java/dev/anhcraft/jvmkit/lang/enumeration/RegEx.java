@@ -1,5 +1,8 @@
 package dev.anhcraft.jvmkit.lang.enumeration;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.regex.Pattern;
 
 /**
@@ -30,6 +33,7 @@ public enum RegEx {
      * Returns this expression.
      * @return expression
      */
+    @NotNull
     public String getExpression(){
         return this.regex;
     }
@@ -39,7 +43,8 @@ public enum RegEx {
      * @param str a string
      * @return {@code true} if matched or {@code false} if not
      */
-    public boolean valid(String str){
+    public boolean valid(@Nullable String str){
+        if(str == null) return false;
         return pattern.matcher(str).matches();
     }
 }
