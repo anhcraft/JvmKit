@@ -329,7 +329,8 @@ public class ReflectionUtil {
     public static Field[] getAllFields(@NotNull Class<?> clazz) {
         Condition.argNotNull("clazz", clazz);
         Field[] fields = clazz.getDeclaredFields();
-        while(!(clazz = clazz.getDeclaringClass().getSuperclass()).equals(Object.class)){
+        Class<?> x;
+        while((x = clazz.getDeclaringClass()) != null && !(clazz = x.getSuperclass()).equals(Object.class)){
             fields = ArrayUtil.concat(fields, clazz.getDeclaredFields());
         }
         return fields;
@@ -344,7 +345,8 @@ public class ReflectionUtil {
     public static Method[] getAllMethods(@NotNull Class<?> clazz) {
         Condition.argNotNull("clazz", clazz);
         Method[] methods = clazz.getDeclaredMethods();
-        while(!(clazz = clazz.getDeclaringClass().getSuperclass()).equals(Object.class)){
+        Class<?> x;
+        while((x = clazz.getDeclaringClass()) != null && !(clazz = x.getSuperclass()).equals(Object.class)){
             methods = ArrayUtil.concat(methods, clazz.getDeclaredMethods());
         }
         return methods;
