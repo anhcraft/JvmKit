@@ -87,6 +87,7 @@ public class RandomUtil {
      */
     @Nullable
     public static <E> E pickRandom(@NotNull List<E> list){
+        Condition.argNotNull("list", list);
         return list.get(RANDOMIZER.nextInt(list.size()));
     }
 }
