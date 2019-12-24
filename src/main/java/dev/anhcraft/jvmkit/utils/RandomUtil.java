@@ -19,7 +19,7 @@ public class RandomUtil {
      * @return random number
      */
     public static int randomInt(int min, int max){
-        Condition.argLower("min", "max", min, max);
+        Condition.check(min <= max, "%s is higher than %s", min, max);
         return min + RANDOMIZER.nextInt(max-min+1);
     }
 
@@ -30,7 +30,7 @@ public class RandomUtil {
      * @return random number
      */
     public static double randomDouble(double min, double max){
-        Condition.argLower("min", "max", min, max);
+        Condition.check(min <= max, "%s is higher than %s", min, max);
         return min + RANDOMIZER.nextDouble() * (max-min);
     }
 
@@ -41,7 +41,7 @@ public class RandomUtil {
      * @return random number
      */
     public static float randomFloat(float min, float max){
-        Condition.argLower("min", "max", min, max);
+        Condition.check(min <= max, "%s is higher than %s", min, max);
         return min + RANDOMIZER.nextFloat() * (max-min);
     }
 
