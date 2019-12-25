@@ -1,10 +1,13 @@
 package dev.anhcraft.jvmkit.utils;
 
+import dev.anhcraft.jvmkit.utils.function.ByteArraySupplier;
+import dev.anhcraft.jvmkit.utils.function.StringSupplier;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
@@ -189,6 +192,55 @@ public class FileUtil {
      */
     public static boolean init(@NotNull File file, @NotNull String content){
         return init(file, content.getBytes(StandardCharsets.UTF_8));
+    }
+
+    /**
+     * Initializes a file for the first time with the data from the given input stream.<br>
+     * If the file exists, this method won't work.
+     * @param file file
+     * @param streamSupplier input stream supplier
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
+     */
+    public static boolean init(@NotNull File file, @NotNull Supplier<InputStream> streamSupplier){
+        Condition.argNotNull("file", file);
+        Condition.argNotNull("streamSupplier", streamSupplier);
+        try {
+            if(!file.createNewFile()) return false;
+            write(file, streamSupplier.get());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    /**
+     * Initializes a file for the first time with the given data.<br>
+     * If the file exists, this method won't work.
+     * @param file file
+     * @param dataSupplier data supplier
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
+     */
+    public static boolean init(@NotNull File file, @NotNull ByteArraySupplier dataSupplier){
+        Condition.argNotNull("file", file);
+        Condition.argNotNull("dataSupplier", dataSupplier);
+        try {
+            if(!file.createNewFile()) return false;
+            write(file, dataSupplier.get());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    /**
+     * Initializes a file for the first time with the given content.
+     * @param file file
+     * @param contentSupplier content supplier
+     * @return {@code true} if the action was done. Otherwise is {@code false}.
+     * @see #init(File, byte[])
+     */
+    public static boolean init(@NotNull File file, @NotNull StringSupplier contentSupplier){
+        return init(file, contentSupplier.get().getBytes(StandardCharsets.UTF_8));
     }
 
     /**
