@@ -31,7 +31,7 @@ public class FileUtil {
     /**
      * The user's home directory.
      */
-    public static final File USER_HOME_DIR = new File(TEMP_DIR_PATH);
+    public static final File USER_HOME_DIR = new File(USER_HOME_DIR_PATH);
     /**
      * The path to the current working directory.
      */
@@ -39,7 +39,7 @@ public class FileUtil {
     /**
      * The current working directory.
      */
-    public static final File WORKING_DIR = Paths.get("").toFile().getAbsoluteFile();
+    public static final File WORKING_DIR = Paths.get("").toFile();
 
     public static final int DEFAULT_BUFF_SIZE = 8192;
 
