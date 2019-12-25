@@ -105,6 +105,50 @@ public class MathUtil {
     }
 
     /**
+     * Rounds the given number up to the next multiple.
+     * @param num the number
+     * @param multiplier the multiplier
+     * @return the next multiple
+     */
+    public static float nextMultiple(float num, float multiplier){
+        if(num % multiplier != 0) num += multiplier - num % multiplier;
+        return num;
+    }
+
+    /**
+     * Rounds the given number to the previous multiple.
+     * @param num the number
+     * @param multiplier the multiplier
+     * @return the previous multiple
+     */
+    public static float prevMultiple(float num, float multiplier){
+        if(num % multiplier != 0) num -= num % multiplier;
+        return num;
+    }
+
+    /**
+     * Rounds the given number up to the next multiple.
+     * @param num the number
+     * @param multiplier the multiplier
+     * @return the next multiple
+     */
+    public static int nextMultiple(int num, int multiplier){
+        if(num % multiplier != 0) num += multiplier - num % multiplier;
+        return num;
+    }
+
+    /**
+     * Rounds the given number to the previous multiple.
+     * @param num the number
+     * @param multiplier the multiplier
+     * @return the previous multiple
+     */
+    public static int prevMultiple(int num, int multiplier){
+        if(num % multiplier != 0) num -= num % multiplier;
+        return num;
+    }
+
+    /**
      * Clamps the given number to make it stay between the minimum and maximum.
      * @param value the value
      * @param min the minimum
