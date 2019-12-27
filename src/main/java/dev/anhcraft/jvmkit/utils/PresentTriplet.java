@@ -13,7 +13,7 @@ import java.util.Objects;
  * @param <T> The data type of the third
  */
 public class PresentTriplet<F, S, T> implements Serializable {
-    private static final long serialVersionUID = -5618681661713280433L;
+    private static final long serialVersionUID = 7531783469480959997L;
 
     private F first;
     private S second;

@@ -11,7 +11,7 @@ import java.util.Objects;
  * @param <S> The data type of the second
  */
 public class PresentPair<F, S> implements Serializable {
-    private static final long serialVersionUID = 8101761173614189785L;
+    private static final long serialVersionUID = 2185618105681400669L;
 
     private F first;
     private S second;
