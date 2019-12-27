@@ -1,5 +1,7 @@
 package dev.anhcraft.jvmkit.utils;
 
+import dev.anhcraft.jvmkit.kits.geometry.Vector2d;
+import dev.anhcraft.jvmkit.kits.geometry.Vector3d;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -89,5 +91,23 @@ public class RandomUtil {
     public static <E> E pickRandom(@NotNull List<E> list){
         Condition.argNotNull("list", list);
         return list.get(RANDOMIZER.nextInt(list.size()));
+    }
+
+    /**
+     * Generates a random 2D vector.
+     * @return generated vector
+     */
+    @NotNull
+    public static Vector2d randomVector2d(){
+        return new Vector2d(RANDOMIZER.nextDouble(), RANDOMIZER.nextDouble());
+    }
+
+    /**
+     * Generates a random 3D vector.
+     * @return generated vector
+     */
+    @NotNull
+    public static Vector3d randomVector3d(){
+        return new Vector3d(RANDOMIZER.nextDouble(), RANDOMIZER.nextDouble(), RANDOMIZER.nextDouble());
     }
 }
