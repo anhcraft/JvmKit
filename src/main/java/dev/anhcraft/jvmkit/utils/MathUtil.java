@@ -9,7 +9,7 @@ public class MathUtil {
 
     static {
         format.setGroupingUsed(false);
-        format.setMaximumFractionDigits(2);
+        format.setMaximumFractionDigits(1);
     }
 
     /**
@@ -144,6 +144,28 @@ public class MathUtil {
      * @return the previous multiple
      */
     public static int prevMultiple(int num, int multiplier){
+        if(num % multiplier != 0) num -= num % multiplier;
+        return num;
+    }
+
+    /**
+     * Rounds the given number up to the next multiple.
+     * @param num the number
+     * @param multiplier the multiplier
+     * @return the next multiple
+     */
+    public static long nextMultiple(long num, long multiplier){
+        if(num % multiplier != 0) num += multiplier - num % multiplier;
+        return num;
+    }
+
+    /**
+     * Rounds the given number to the previous multiple.
+     * @param num the number
+     * @param multiplier the multiplier
+     * @return the previous multiple
+     */
+    public static long prevMultiple(long num, long multiplier){
         if(num % multiplier != 0) num -= num % multiplier;
         return num;
     }
