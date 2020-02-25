@@ -1,9 +1,11 @@
 package dev.anhcraft.jvmkit.utils;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Array;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * This class provides utility methods for {@link Collection} manipulation.
@@ -22,5 +24,15 @@ public class CollectionUtil {
         Condition.argNotNull("collection", collection);
         Condition.argNotNull("clazz", clazz);
         return collection.toArray((E[]) Array.newInstance(DataTypeUtil.getObjectClass(clazz), collection.size()));
+    }
+
+    @Nullable
+    public static <E> E getElementAt(int index, @NotNull Collection<E> collection){
+        Condition.argNotNull("collection", collection);
+        if(collection instanceof List) {
+            return ((List<E>) collection).get(index);
+        } else {
+            return collection.stream().skip(index).findFirst().orElse(null);
+        }
     }
 }
