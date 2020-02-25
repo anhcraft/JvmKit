@@ -20,16 +20,18 @@ import java.util.Map;
  */
 public class HTTPConnectionHelper {
     /**
-     * The Firefox user-agent string.
+     * @deprecated use {@link dev.anhcraft.jvmkit.utils.UserAgent} instead.
      */
+    @Deprecated
     public static final String USER_AGENT_FIREFOX = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
 
     /**
-     * The Chrome (or Chromium-based browsers) user-agent string.
+     * @deprecated use {@link dev.anhcraft.jvmkit.utils.UserAgent} instead.
      */
+    @Deprecated
     public static final String USER_AGENT_CHROME = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36";
 
-    private final HashMap<String, String> properties = new HashMap<>();
+    private final Map<String, String> properties = new HashMap<>();
     private URL url;
     private HttpURLConnection conn;
     private boolean doOutput;
@@ -101,6 +103,16 @@ public class HTTPConnectionHelper {
      */
     @Contract("-> this")
     public HTTPConnectionHelper connect(){
+        return connect(null);
+    }
+
+    /**
+     * Connects to the url.
+     * @param onError callback on having connection errors.
+     * @return this object
+     */
+    @Contract("_, -> this")
+    public HTTPConnectionHelper connect(@Nullable Runnable onError){
         try {
             conn = (HttpURLConnection) this.url.openConnection();
             conn.setRequestMethod(method);
@@ -113,7 +125,9 @@ public class HTTPConnectionHelper {
             }
             input = new BufferedInputStream(conn.getInputStream());
         } catch(IOException e) {
-            e.printStackTrace();
+            if(onError != null) {
+                onError.run();
+            }
         }
         return this;
     }
