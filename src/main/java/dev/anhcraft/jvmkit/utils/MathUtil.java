@@ -199,4 +199,28 @@ public class MathUtil {
         else if(value > max) return max;
         else return value;
     }
+
+    /**
+     * Converts the given number in {@link Float} to {@link Integer}.
+     * @param v float
+     * @return integer
+     */
+    public static int toInt(float v){
+        if(v >= Integer.MAX_VALUE) return Integer.MAX_VALUE;
+        if(v <= Integer.MIN_VALUE) return Integer.MIN_VALUE;
+        int i = (int) v;
+        return (v - i) <= 0.5 ? i : i + 1;
+    }
+
+    /**
+     * Converts the given number in {@link Double} to {@link Integer}.
+     * @param v float
+     * @return integer
+     */
+    public static int toInt(double v){
+        if(v >= Integer.MAX_VALUE) return Integer.MAX_VALUE;
+        if(v <= Integer.MIN_VALUE) return Integer.MIN_VALUE;
+        int i = (int) v;
+        return (v - i) <= 0.5 ? i : i + 1;
+    }
 }
