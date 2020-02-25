@@ -15,10 +15,10 @@ public class Test1 {
     public void BufferedStreamReadTracker(){
         File file = new File("./src/test/resources/50MB.zip");
         HTTPConnectionHelper conn = new HTTPConnectionHelper("http://212.183.159.230/50MB.zip").connect();
-        BufferedStreamReadTracker tracker = new BufferedStreamReadTracker(2048, conn.getInput());
+        BufferedStreamReadTracker tracker = new BufferedStreamReadTracker(4096, conn.getInput());
         FixedStreamTransferReport report = new FixedStreamTransferReport(conn.getContentLength());
         tracker.setBufferCallback(bytes -> {
-            if(RandomUtil.randomBoolean()) {
+            if(RandomUtil.randomInt(0, 30) == 0) {
                 System.out.println("=============================================================================");
                 System.out.println("Current size: " + report.getTransferredMBytes() + " MB/" + report.getTotalMBytes() + " MB (Remaining: " + report.getRemainingMBytes() + " MB)");
                 System.out.println("Speed: " + MathUtil.round(report.getBytesPerSecs(), 3) + "b/s (" + MathUtil.round(report.getMBytesPerSecs(), 3) + " MB/s)");
