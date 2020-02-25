@@ -21,6 +21,14 @@ public class JarUtil {
         }
     }
 
+    /**
+     * Loads the given jar to the class loader.
+     * @param jarFile the .jar file
+     * @param loader class loader
+     * @throws IOException if failed
+     * @throws InvocationTargetException if failed
+     * @throws IllegalAccessException if failed
+     */
     public static void loadJar(@NotNull File jarFile, @NotNull URLClassLoader loader) throws IOException, InvocationTargetException, IllegalAccessException {
         Condition.argNotNull("jarFile", jarFile);
         Condition.argNotNull("loader", loader);
