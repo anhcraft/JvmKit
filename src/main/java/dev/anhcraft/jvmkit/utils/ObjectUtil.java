@@ -3,6 +3,7 @@ package dev.anhcraft.jvmkit.utils;
 import dev.anhcraft.jvmkit.lang.annotation.Beta;
 import dev.anhcraft.jvmkit.lang.annotation.Label;
 import dev.anhcraft.jvmkit.lang.enumeration.ComparisonOption;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Array;
@@ -77,5 +78,22 @@ public class ObjectUtil {
             return a.hashCode() - b.hashCode();
         }
         return 0;
+    }
+
+    /**
+     * This method comes with an input of a nullable object<br>
+     * and returns a non-null object.<br>
+     * If the given one is null, the default will be chosen,<br>
+     * otherwise, both input and output are the same.<br>
+     * This method is similar to how {@link java.util.Optional} works<br>
+     * but this one does not make any new object.
+     * @param value the value (nullable)
+     * @param defaultValue the default value (non-null)
+     * @param <T> data type
+     * @return non-null object (either the given value or the default value)
+     */
+    @NotNull
+    public static <T> T optional(@Nullable T value, @NotNull T defaultValue){
+        return value == null ? defaultValue : value;
     }
 }
