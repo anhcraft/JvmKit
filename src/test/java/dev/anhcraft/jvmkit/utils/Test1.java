@@ -86,6 +86,8 @@ public class Test1 {
         Assert.assertTrue(ObjectUtil.deepCompare(2, 6) < 0);
         Assert.assertTrue(ObjectUtil.deepCompare("XYZ", "xyz") < 0);
         Assert.assertTrue(ObjectUtil.deepCompare(ARRAY_1, ARRAY_2) < 0);
+        Assert.assertEquals(0, ObjectUtil.deepCompare(new Pair<>(5, 4), new Pair<>(5, 4)));
+        Assert.assertNotEquals(0, ObjectUtil.deepCompare(new Pair<>(5, 4), new Pair<>(4, 5)));
     }
 
     @Test

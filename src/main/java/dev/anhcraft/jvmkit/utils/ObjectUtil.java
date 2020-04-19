@@ -56,7 +56,7 @@ public class ObjectUtil {
         if(a.getClass() != b.getClass()) return a.hashCode() - b.hashCode();
         if(a instanceof Comparable) return ((Comparable) a).compareTo(b);
 
-        Field[] fields = a.getClass().getDeclaredFields();
+        Field[] fields = ReflectionUtil.getAllFields(a.getClass());
         try{
             if(a.getClass().isAnnotationPresent(Label.class) &&
                     Arrays.binarySearch(a.getClass().getAnnotation(Label.class).value(), Label.COMPARISON_LABEL) >= 0){
