@@ -50,6 +50,7 @@ public class MathUtil {
      * @return rounded number
      */
     public static double round(double number, int fractionDigits){
+        if(Double.isInfinite(number) || Double.isNaN(number)) return number;
         format.setMaximumFractionDigits(fractionDigits);
         return Double.parseDouble(format.format(number));
     }
