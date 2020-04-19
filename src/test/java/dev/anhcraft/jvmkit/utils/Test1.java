@@ -178,4 +178,13 @@ public class Test1 {
     public void charUtil(){
         //System.out.println(CharUtil.DIGITS);
     }
+
+    @Test
+    public void httpUtil(){/*
+        try {
+            System.out.println(HttpUtil.fetchString("https://gist.githubusercontent.com/anhcraft/fb57bd1c13ba6e3ff0425ced98c52a61/raw/af9a385e96b9c3d4429a4455310e2666d7e2953e/gistfile1.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        };*/
+    }
 }
