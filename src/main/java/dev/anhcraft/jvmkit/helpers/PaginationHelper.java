@@ -102,7 +102,7 @@ public class PaginationHelper<T> {
 
     /**
      * Returns the total number of pages.<br>
-     * @return total number of pages (0 if given data is empty; or > 0 otherwise)
+     * @return total number of pages (0 if given data is empty)
      */
     public int getTotalPage() {
         return totalPage;
