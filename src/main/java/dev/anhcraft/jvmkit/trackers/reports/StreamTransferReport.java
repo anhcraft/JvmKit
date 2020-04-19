@@ -8,11 +8,11 @@ import java.util.Objects;
  */
 public class StreamTransferReport extends Report implements Serializable {
     private static final long serialVersionUID = -1311690460729324796L;
-    protected static final double p3 = Math.pow(10, 3);
-    protected static final double p6 = Math.pow(10, 6);
+    static final double p3 = Math.pow(10, 3);
+    static final double p6 = Math.pow(10, 6);
     private static final double p9 = Math.pow(10, 9);
 
-    private double bytesPerSecs;
+    private double speed;
     private long transferredBytes;
     private long elapsedNanos;
     private boolean isFinished;
@@ -102,7 +102,15 @@ public class StreamTransferReport extends Report implements Serializable {
      * @return speed
      */
     public double getBytesPerSecs() {
-        return transferredBytes/getElapsedSecs();
+        return speed;
+    }
+
+    /**
+     * Sets the speed.
+     * @param bytesPerSecs speed in b/s
+     */
+    public void setSpeed(double bytesPerSecs) {
+        speed = bytesPerSecs;
     }
 
     /**
@@ -110,7 +118,7 @@ public class StreamTransferReport extends Report implements Serializable {
      * @return speed
      */
     public double getKBytesPerSecs() {
-        return getBytesPerSecs()/p3;
+        return speed/p3;
     }
 
     /**
@@ -118,7 +126,7 @@ public class StreamTransferReport extends Report implements Serializable {
      * @return speed
      */
     public double getMBytesPerSecs() {
-        return getBytesPerSecs()/p6;
+        return speed/p6;
     }
 
     /**
@@ -142,14 +150,14 @@ public class StreamTransferReport extends Report implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StreamTransferReport that = (StreamTransferReport) o;
-        return Double.compare(that.bytesPerSecs, bytesPerSecs) == 0 &&
-                transferredBytes == that.transferredBytes &&
+        return transferredBytes == that.transferredBytes &&
                 elapsedNanos == that.elapsedNanos &&
+                speed == that.speed &&
                 isFinished == that.isFinished;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bytesPerSecs, transferredBytes, elapsedNanos, isFinished);
+        return Objects.hash(transferredBytes, elapsedNanos, speed, isFinished);
     }
 }

@@ -13,8 +13,8 @@ import java.io.File;
 public class Test1 {
     @Test
     public void BufferedStreamReadTracker(){
-        File file = new File("./src/test/resources/50MB.zip");
-        HTTPConnectionHelper conn = new HTTPConnectionHelper("http://212.183.159.230/50MB.zip").connect();
+        File file = new File("./src/test/resources/rsp.zip");
+        HTTPConnectionHelper conn = new HTTPConnectionHelper("https://tichcucquaytayvanmayseden.000webhostapp.com/abm-1.15.zip").connect();
         BufferedStreamReadTracker tracker = new BufferedStreamReadTracker(4096, conn.getInput());
         FixedStreamTransferReport report = new FixedStreamTransferReport(conn.getContentLength());
         tracker.setBufferCallback(bytes -> {
@@ -31,6 +31,6 @@ public class Test1 {
             FileUtil.append(file, bytes);
         });
         tracker.start(report, () -> Assert.assertTrue(report.validate()));
-        file.delete();
+        //file.delete();
     }
 }

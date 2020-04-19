@@ -6,6 +6,7 @@ import dev.anhcraft.jvmkit.utils.Condition;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.function.Consumer;
 
 /**
@@ -64,19 +65,14 @@ public class BufferedStreamReadTracker implements Tracker<StreamTransferReport> 
             try {
                 byte[] buffer = new byte[bufferSize];
                 int n;
-                boolean eos;
-                do {
-                    long buffStartNanos = System.nanoTime();
-                    n = inputStream.read(buffer, 0, bufferSize);
-                    eos = n == -1;
-                    if(!eos) {
-                        long buffEndNanos = System.nanoTime();
-                        long deltaNanos = buffEndNanos - buffStartNanos;
-                        report.setElapsedNanos(report.getElapsedNanos() + deltaNanos);
-                        report.setTransferredBytes(report.getTransferredBytes() + n);
-                        bufferCallback.accept(buffer);
-                    }
-                } while (!eos);
+                while ((n = inputStream.read(buffer, 0, bufferSize)) >= 0) {
+                    long startTime = System.nanoTime();
+                    bufferCallback.accept(n == bufferSize ? buffer : Arrays.copyOfRange(buffer, 0, n));
+                    long deltaTime = System.nanoTime() - startTime;
+                    report.setElapsedNanos(report.getElapsedNanos() + deltaTime);
+                    report.setTransferredBytes(report.getTransferredBytes() + n);
+                    report.setSpeed(n / (deltaTime / p9));
+                }
                 report.setFinished(true);
                 endCallback.run();
             } catch (IOException e) {
