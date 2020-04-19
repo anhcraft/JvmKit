@@ -100,8 +100,8 @@ public class PaginationHelper<T> {
     }
 
     /**
-     * Returns the total number of pages.
-     * @return total number of pages.
+     * Returns the total number of pages.<br>
+     * @return total number of pages (0 if given data is empty; or > 0 otherwise)
      */
     public int getTotalPage() {
         return totalPage;
@@ -113,6 +113,7 @@ public class PaginationHelper<T> {
      */
     @NotNull
     public T[] collect(){
+        Condition.check(totalPage > 0, "Cannot handling #collect() while totalPage == 0");
         return Arrays.copyOfRange(data, (currentPage-1)*slotPerPage, Math.min(totalSlot, currentPage*slotPerPage));
     }
 
@@ -123,7 +124,7 @@ public class PaginationHelper<T> {
      */
     @Contract("_ -> this")
     public PaginationHelper<T> each(@Nullable Consumer<T> consumer){
-        if(consumer != null) {
+        if(consumer != null && totalPage > 0) {
             for (T e : collect()) consumer.accept(e);
         }
         return this;
