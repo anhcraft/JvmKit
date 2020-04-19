@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 /**
  * This class helps you to divide a set of data into small ones per page.<br>
@@ -115,6 +116,15 @@ public class PaginationHelper<T> {
     public T[] collect(){
         Condition.check(totalPage > 0, "Cannot handling #collect() while totalPage == 0");
         return Arrays.copyOfRange(data, (currentPage-1)*slotPerPage, Math.min(totalSlot, currentPage*slotPerPage));
+    }
+
+    /**
+     * Creates a stream though all elements in the current page.
+     * @return stream (maybe empty if the given data is empty)
+     */
+    @NotNull
+    public Stream<T> stream(){
+        return totalPage > 0 ? Arrays.stream(collect()) : Stream.empty();
     }
 
     /**
