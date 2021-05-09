@@ -3,9 +3,11 @@ package dev.anhcraft.jvmkit.utils;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class MathUtil {
-    private static final DecimalFormat format = new DecimalFormat();
+    private static final DecimalFormat format = (DecimalFormat) NumberFormat.getInstance(Locale.US);
 
     static {
         format.setGroupingUsed(false);
