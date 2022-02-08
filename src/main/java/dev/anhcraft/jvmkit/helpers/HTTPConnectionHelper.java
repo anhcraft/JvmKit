@@ -14,23 +14,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * A helper class provides methods for making a new HTTP Connection and manipulates it later.
  */
 public class HTTPConnectionHelper {
-    /**
-     * @deprecated use {@link dev.anhcraft.jvmkit.utils.UserAgent} instead.
-     */
-    @Deprecated
-    public static final String USER_AGENT_FIREFOX = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
-
-    /**
-     * @deprecated use {@link dev.anhcraft.jvmkit.utils.UserAgent} instead.
-     */
-    @Deprecated
-    public static final String USER_AGENT_CHROME = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36";
-
     private final Map<String, String> properties = new HashMap<>();
     private URL url;
     private HttpURLConnection conn;
@@ -103,7 +93,16 @@ public class HTTPConnectionHelper {
      */
     @Contract("-> this")
     public HTTPConnectionHelper connect(){
-        return connect(null);
+        return connect((Runnable) null);
+    }
+
+    /**
+     * Connects to the url.
+     * @param onError callback on having connection errors.
+     * @return this object
+     */
+    public HTTPConnectionHelper connect(@Nullable Runnable onError){
+        return this.connect(e -> { });
     }
 
     /**
@@ -112,7 +111,7 @@ public class HTTPConnectionHelper {
      * @return this object
      */
     @Contract("_, -> this")
-    public HTTPConnectionHelper connect(@Nullable Runnable onError){
+    public HTTPConnectionHelper connect(@Nullable Consumer<Exception> onError){
         try {
             conn = (HttpURLConnection) this.url.openConnection();
             conn.setRequestMethod(method);
@@ -126,7 +125,7 @@ public class HTTPConnectionHelper {
             input = new BufferedInputStream(conn.getInputStream());
         } catch(IOException e) {
             if(onError != null) {
-                onError.run();
+                onError.accept(e);
             }
         }
         return this;
@@ -157,7 +156,7 @@ public class HTTPConnectionHelper {
      * @return this object
      */
     @Contract("_ -> this")
-    public HTTPConnectionHelper write(@NotNull byte[] bytes){
+    public HTTPConnectionHelper write(byte @NotNull [] bytes){
         Condition.argNotNull("bytes", bytes);
         if(output != null) {
             Condition.argNotNull("bytes", bytes);
@@ -175,7 +174,6 @@ public class HTTPConnectionHelper {
      * This method only works after use the method {@link #connect()}.
      * @return data
      */
-    @NotNull
     public byte[] read(){
         if(input == null) {
             throw new UnsupportedOperationException("Please connect first");
